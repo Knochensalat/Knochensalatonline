@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabeln lernen - FSND31 Übungsplattform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .vocab-container {
+            max-width: 800px;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .vocab-item {
+            margin-bottom: 15px;
+        }
+        .vocab-item label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004080;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        function checkAnswer(wordId, correctAnswer) {
+            const userAnswer = document.getElementById(`answer-${wordId}`).value.trim().toLowerCase();
+            const result = document.getElementById(`result-${wordId}`);
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                result.textContent = "Richtig!";
+                result.className = "result correct";
+            } else {
+                result.textContent = `Falsch! Die richtige Antwort ist: ${correctAnswer}`;
+                result.className = "result incorrect";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>Vokabeln lernen - Deutsch/Englisch</h1>
+
+<div class="vocab-container">
+    <!-- Alle Vokabeln -->
+    <div class="vocab-item">
+        <label for="answer-1">Werkstatt (Englisch):</label>
+        <input type="text" id="answer-1" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('1', 'workshop')">Überprüfen</button>
+        <p id="result-1" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-2">Schreinerei, Tischlerei (Englisch):</label>
+        <input type="text" id="answer-2" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('2', 'joinery')">Überprüfen</button>
+        <p id="result-2" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-3">Erläuterung, Erklärung (Englisch):</label>
+        <input type="text" id="answer-3" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('3', 'explanation')">Überprüfen</button>
+        <p id="result-3" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-4">verstellbar, einstellbar (Englisch):</label>
+        <input type="text" id="answer-4" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('4', 'adjustable')">Überprüfen</button>
+        <p id="result-4" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-5">Schraubenschlüssel (Englisch):</label>
+        <input type="text" id="answer-5" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('5', 'spanner')">Überprüfen</button>
+        <p id="result-5" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-6">Rollgabelschlüssel (Englisch):</label>
+        <input type="text" id="answer-6" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('6', 'adjustable spanner')">Überprüfen</button>
+        <p id="result-6" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-7">Bügelsäge, Eisensäge (Englisch):</label>
+        <input type="text" id="answer-7" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('7', 'hacksaw')">Überprüfen</button>
+        <p id="result-7" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-8">Schraubenzieher, Schraubendreher (Englisch):</label>
+        <input type="text" id="answer-8" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('8', 'screwdriver')">Überprüfen</button>
+        <p id="result-8" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-9">Kreuzschlitzschraubenzieher (Englisch):</label>
+        <input type="text" id="answer-9" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('9', 'phillips screwdriver')">Überprüfen</button>
+        <p id="result-9" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-10">Schlitzschraubenzieher (Englisch):</label>
+        <input type="text" id="answer-10" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('10', 'slot-headed screwdriver')">Überprüfen</button>
+        <p id="result-10" class="result"></p>
+    </div>
+
+    <!-- Füge weitere Vokabeln in demselben Format hinzu -->
+    <!-- Beispiel für mehr Vokabeln -->
+
+    <div class="vocab-item">
+        <label for="answer-11">Blechschere (Englisch):</label>
+        <input type="text" id="answer-11" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('11', 'tin snips')">Überprüfen</button>
+        <p id="result-11" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-12">Anschlagwinkel (Englisch):</label>
+        <input type="text" id="answer-12" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('12', 'try square')">Überprüfen</button>
+        <p id="result-12" class="result"></p>
+    </div>
+
+    <div class="vocab-item">
+        <label for="answer-13">Lineal (Englisch):</label>
+        <input type="text" id="answer-13" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer('13', 'rule')">Überprüfen</button>
+        <p id="result-13" class="result"></p>
+    </div>
+
+<div class="vocab-item">
+    <label for="answer-14">Wasserwaage (Englisch):</label>
+    <input type="text" id="answer-14" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('14', 'spirit level')">Überprüfen</button>
+    <p id="result-14" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-15">Säge (Englisch):</label>
+    <input type="text" id="answer-15" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('15', 'saw')">Überprüfen</button>
+    <p id="result-15" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-16">Rückensäge (Englisch):</label>
+    <input type="text" id="answer-16" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('16', 'tenon saw')">Überprüfen</button>
+    <p id="result-16" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-17">universell, Universalfile (Englisch):</label>
+    <input type="text" id="answer-17" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('17', 'universal')">Überprüfen</button>
+    <p id="result-17" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-18">Feile (Englisch):</label>
+    <input type="text" id="answer-18" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('18', 'file')">Überprüfen</button>
+    <p id="result-18" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-19">Flachfeile (Englisch):</label>
+    <input type="text" id="answer-19" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('19', 'flat file')">Überprüfen</button>
+    <p id="result-19" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-20">Rundfeile (Englisch):</label>
+    <input type="text" id="answer-20" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('20', 'round file')">Überprüfen</button>
+    <p id="result-20" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-21">Stechbeitel (Englisch):</label>
+    <input type="text" id="answer-21" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('21', 'chisel')">Überprüfen</button>
+    <p id="result-21" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-22">Schraubzwinge (Englisch):</label>
+    <input type="text" id="answer-22" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('22', 'clamp')">Überprüfen</button>
+    <p id="result-22" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-23">Schraubstock (Englisch):</label>
+    <input type="text" id="answer-23" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('23', 'vice')">Überprüfen</button>
+    <p id="result-23" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-24">Körner (Englisch):</label>
+    <input type="text" id="answer-24" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('24', 'centre punch')">Überprüfen</button>
+    <p id="result-24" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-25">Inbusschlüssel (Englisch):</label>
+    <input type="text" id="answer-25" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('25', 'Allen key')">Überprüfen</button>
+    <p id="result-25" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-26">Steckschlüssel, Knarre (Englisch):</label>
+    <input type="text" id="answer-26" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('26', 'socket wrench')">Überprüfen</button>
+    <p id="result-26" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-27">Steckschlüsseleinsatz, Nuss (Englisch):</label>
+    <input type="text" id="answer-27" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('27', 'socket')">Überprüfen</button>
+    <p id="result-27" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-28">Messschieber (Englisch):</label>
+    <input type="text" id="answer-28" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('28', 'caliper')">Überprüfen</button>
+    <p id="result-28" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-29">Schreiner/in, Tischler/in (Englisch):</label>
+    <input type="text" id="answer-29" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('29', 'T joiner')">Überprüfen</button>
+    <p id="result-29" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-30">Anordnung (Englisch):</label>
+    <input type="text" id="answer-30" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('30', 'layout')">Überprüfen</button>
+    <p id="result-30" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-31">Stecktafel, Werkzeugtafel (Englisch):</label>
+    <input type="text" id="answer-31" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('31', 'pegboard')">Überprüfen</button>
+    <p id="result-31" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-32">häufig, (weit) verbreitet (Englisch):</label>
+    <input type="text" id="answer-32" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('32', 'common(ly)')">Überprüfen</button>
+    <p id="result-32" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-33">Stahl (Englisch):</label>
+    <input type="text" id="answer-33" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('33', 'steel')">Überprüfen</button>
+    <p id="result-33" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-34">praktisch (Englisch):</label>
+    <input type="text" id="answer-34" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('34', 'handy')">Überprüfen</button>
+    <p id="result-34" class="result"></p>
+</div>
+<div class="vocab-item">
+    <label for="answer-35">(Metall-)Band, Reif (Englisch):</label>
+    <input type="text" id="answer-35" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('35', 'strapping')">Überprüfen</button>
+    <p id="result-35" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-36">Messinstrument (Englisch):</label>
+    <input type="text" id="answer-36" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('36', 'measuring instrument')">Überprüfen</button>
+    <p id="result-36" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-37">Schublade (Englisch):</label>
+    <input type="text" id="answer-37" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('37', 'drawer')">Überprüfen</button>
+    <p id="result-37" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-38">Schloss (Englisch):</label>
+    <input type="text" id="answer-38" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('38', 'lock')">Überprüfen</button>
+    <p id="result-38" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-39">wertvoll (Englisch):</label>
+    <input type="text" id="answer-39" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('39', 'valuable')">Überprüfen</button>
+    <p id="result-39" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-40">Geheimnis (Englisch):</label>
+    <input type="text" id="answer-40" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('40', 'secret')">Überprüfen</button>
+    <p id="result-40" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-41">zum Beispiel (Englisch):</label>
+    <input type="text" id="answer-41" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('41', 'for example')">Überprüfen</button>
+    <p id="result-41" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-42">(kleine) Sachen, dies und das (Englisch):</label>
+    <input type="text" id="answer-42" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('42', 'bits and pieces')">Überprüfen</button>
+    <p id="result-42" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-43">persönlich, privat (Englisch):</label>
+    <input type="text" id="answer-43" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('43', 'personal')">Überprüfen</button>
+    <p id="result-43" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-44">Werkzeugkasten, -kiste (Englisch):</label>
+    <input type="text" id="answer-44" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('44', 'toolbox')">Überprüfen</button>
+    <p id="result-44" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-45">befestigen, fixieren (Englisch):</label>
+    <input type="text" id="answer-45" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('45', 'to secure')">Überprüfen</button>
+    <p id="result-45" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-46">Werkstück(e) (Englisch):</label>
+    <input type="text" id="answer-46" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('46', 'work')">Überprüfen</button>
+    <p id="result-46" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-47">Elektrowerkzeug (Englisch):</label>
+    <input type="text" id="answer-47" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('47', 'power tool')">Überprüfen</button>
+    <p id="result-47" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-48">Nagel (Englisch):</label>
+    <input type="text" id="answer-48" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('48', 'nail')">Überprüfen</button>
+    <p id="result-48" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-49">Nagelpistole (Englisch):</label>
+    <input type="text" id="answer-49" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('49', 'nail gun')">Überprüfen</button>
+    <p id="result-49" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-50">etw (Nagel) einschlagen, etw (Schraube) eindrehen (Englisch):</label>
+    <input type="text" id="answer-50" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('50', 'to drive sth in')">Überprüfen</button>
+    <p id="result-50" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-51">Oberfräse (Englisch):</label>
+    <input type="text" id="answer-51" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('51', 'router')">Überprüfen</button>
+    <p id="result-51" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-52">formen (Englisch):</label>
+    <input type="text" id="answer-52" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('52', 'to shape')">Überprüfen</button>
+    <p id="result-52" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-53">(Bau-, Nutz-)Holz (Englisch):</label>
+    <input type="text" id="answer-53" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('53', 'timber')">Überprüfen</button>
+    <p id="result-53" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-54">Gehrungssäge, Tischkreissäge (Englisch):</label>
+    <input type="text" id="answer-54" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('54', 'mitre saw')">Überprüfen</button>
+    <p id="result-54" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-55">Laubsäge (Englisch):</label>
+    <input type="text" id="answer-55" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('55', 'jigsaw')">Überprüfen</button>
+    <p id="result-55" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-56">kabellos (Englisch):</label>
+    <input type="text" id="answer-56" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('56', 'cordless')">Überprüfen</button>
+    <p id="result-56" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-57">Bandschleifmaschine (Englisch):</label>
+    <input type="text" id="answer-57" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('57', 'belt sander')">Überprüfen</button>
+    <p id="result-57" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-58">glätten (Englisch):</label>
+    <input type="text" id="answer-58" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('58', 'to smooth')">Überprüfen</button>
+    <p id="result-58" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-59">Bohrer, Bohrmaschine (Englisch):</label>
+    <input type="text" id="answer-59" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('59', 'drill')">Überprüfen</button>
+    <p id="result-59" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-60">bohren (Englisch):</label>
+    <input type="text" id="answer-60" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('60', 'to bore')">Überprüfen</button>
+    <p id="result-60" class="result"></p>
+</div>
+<div class="vocab-item">
+    <label for="answer-61">Loch (Englisch):</label>
+    <input type="text" id="answer-61" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('61', 'hole')">Überprüfen</button>
+    <p id="result-61" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-62">Werkzeugschleifmaschine (Englisch):</label>
+    <input type="text" id="answer-62" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('62', 'bench grinder')">Überprüfen</button>
+    <p id="result-62" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-63">schärfen (Englisch):</label>
+    <input type="text" id="answer-63" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('63', 'to sharpen')">Überprüfen</button>
+    <p id="result-63" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-64">Klinge (Englisch):</label>
+    <input type="text" id="answer-64" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('64', 'blade')">Überprüfen</button>
+    <p id="result-64" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-65">entgraten (Englisch):</label>
+    <input type="text" id="answer-65" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('65', 'to deburr')">Überprüfen</button>
+    <p id="result-65" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-66">biegen (Englisch):</label>
+    <input type="text" id="answer-66" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('66', 'to bend')">Überprüfen</button>
+    <p id="result-66" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-67">Draht (Englisch):</label>
+    <input type="text" id="answer-67" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('67', 'wire')">Überprüfen</button>
+    <p id="result-67" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-68">Winkel (Englisch):</label>
+    <input type="text" id="answer-68" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('68', 'angle')">Überprüfen</button>
+    <p id="result-68" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-69">Niveau, Lot (Englisch):</label>
+    <input type="text" id="answer-69" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('69', 'level')">Überprüfen</button>
+    <p id="result-69" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-70">markieren, anzeichnen (Englisch):</label>
+    <input type="text" id="answer-70" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('70', 'to mark')">Überprüfen</button>
+    <p id="result-70" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-71">messen (Englisch):</label>
+    <input type="text" id="answer-71" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('71', 'to measure')">Überprüfen</button>
+    <p id="result-71" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-72">Abmessungen, Maße (Englisch):</label>
+    <input type="text" id="answer-72" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('72', 'dimensions')">Überprüfen</button>
+    <p id="result-72" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-73">herausziehen (Englisch):</label>
+    <input type="text" id="answer-73" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('73', 'to pull out')">Überprüfen</button>
+    <p id="result-73" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-74">festziehen, anziehen (Englisch):</label>
+    <input type="text" id="answer-74" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('74', 'to tighten')">Überprüfen</button>
+    <p id="result-74" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-75">(mit einer Mutter gesicherte) Schraube (Englisch):</label>
+    <input type="text" id="answer-75" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('75', 'bolt')">Überprüfen</button>
+    <p id="result-75" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-76">raten, erraten (Englisch):</label>
+    <input type="text" id="answer-76" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('76', 'to guess')">Überprüfen</button>
+    <p id="result-76" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-77">Schweißgerät (Englisch):</label>
+    <input type="text" id="answer-77" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('77', 'welder')">Überprüfen</button>
+    <p id="result-77" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-78">verbinden (Englisch):</label>
+    <input type="text" id="answer-78" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('78', 'to join')">Überprüfen</button>
+    <p id="result-78" class="result"></p>
+</div>
+<div class="vocab-item">
+    <label for="answer-79">Werkstatt (Englisch):</label>
+    <input type="text" id="answer-79" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('79', 'workshop')">Überprüfen</button>
+    <p id="result-79" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-80">Schreinerei, Tischlerei (Englisch):</label>
+    <input type="text" id="answer-80" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('80', 'joinery')">Überprüfen</button>
+    <p id="result-80" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-81">Erläuterung, Erklärung (Englisch):</label>
+    <input type="text" id="answer-81" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('81', 'explanation')">Überprüfen</button>
+    <p id="result-81" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-82">verstellbar, einstellbar (Englisch):</label>
+    <input type="text" id="answer-82" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('82', 'adjustable')">Überprüfen</button>
+    <p id="result-82" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-83">Schraubenschlüssel (Englisch):</label>
+    <input type="text" id="answer-83" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('83', 'spanner')">Überprüfen</button>
+    <p id="result-83" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-84">Rollgabelschlüssel (Englisch):</label>
+    <input type="text" id="answer-84" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('84', 'adjustable spanner')">Überprüfen</button>
+    <p id="result-84" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-85">Bügelsäge, Eisensäge (Englisch):</label>
+    <input type="text" id="answer-85" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('85', 'hacksaw')">Überprüfen</button>
+    <p id="result-85" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-86">Schraubenzieher, Schraubendreher (Englisch):</label>
+    <input type="text" id="answer-86" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('86', 'screwdriver')">Überprüfen</button>
+    <p id="result-86" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-87">Kreuzschlitzschraubenzieher (Englisch):</label>
+    <input type="text" id="answer-87" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('87', 'Phillips screwdriver')">Überprüfen</button>
+    <p id="result-87" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-88">Schlitzschraubenzieher (Englisch):</label>
+    <input type="text" id="answer-88" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('88', 'slot-headed screwdriver')">Überprüfen</button>
+    <p id="result-88" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-89">Blechschere (Englisch):</label>
+    <input type="text" id="answer-89" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('89', 'tin snips')">Überprüfen</button>
+    <p id="result-89" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-90">Anschlagwinkel (Englisch):</label>
+    <input type="text" id="answer-90" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('90', 'try square')">Überprüfen</button>
+    <p id="result-90" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-91">Lineal (Englisch):</label>
+    <input type="text" id="answer-91" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('91', 'rule')">Überprüfen</button>
+    <p id="result-91" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-92">Wasserwaage (Englisch):</label>
+    <input type="text" id="answer-92" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('92', 'spirit level')">Überprüfen</button>
+    <p id="result-92" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-93">Säge (Englisch):</label>
+    <input type="text" id="answer-93" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('93', 'saw')">Überprüfen</button>
+    <p id="result-93" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-94">Rückensäge (Englisch):</label>
+    <input type="text" id="answer-94" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('94', 'tenon saw')">Überprüfen</button>
+    <p id="result-94" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-95">universell, Universalfile (Englisch):</label>
+    <input type="text" id="answer-95" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('95', 'universal')">Überprüfen</button>
+    <p id="result-95" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-96">Feile (Englisch):</label>
+    <input type="text" id="answer-96" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('96', 'file')">Überprüfen</button>
+    <p id="result-96" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-97">Flachfeile (Englisch):</label>
+    <input type="text" id="answer-97" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('97', 'flat file')">Überprüfen</button>
+    <p id="result-97" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-98">Rundfeile (Englisch):</label>
+    <input type="text" id="answer-98" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('98', 'round file')">Überprüfen</button>
+    <p id="result-98" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-99">Stechbeitel (Englisch):</label>
+    <input type="text" id="answer-99" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('99', 'chisel')">Überprüfen</button>
+    <p id="result-99" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-100">Schraubzwinge (Englisch):</label>
+    <input type="text" id="answer-100" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('100', 'clamp')">Überprüfen</button>
+    <p id="result-100" class="result"></p>
+</div>
+<div class="vocab-item">
+    <label for="answer-101">Schraubstock (Englisch):</label>
+    <input type="text" id="answer-101" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('101', 'vice')">Überprüfen</button>
+    <p id="result-101" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-102">Körner (Englisch):</label>
+    <input type="text" id="answer-102" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('102', 'centre punch')">Überprüfen</button>
+    <p id="result-102" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-103">Inbusschlüssel (Englisch):</label>
+    <input type="text" id="answer-103" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('103', 'Allen key')">Überprüfen</button>
+    <p id="result-103" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-104">Steckschlüssel, Knarre (Englisch):</label>
+    <input type="text" id="answer-104" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('104', 'socket wrench')">Überprüfen</button>
+    <p id="result-104" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-105">Steckschlüsseleinsatz, Nuss (Englisch):</label>
+    <input type="text" id="answer-105" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('105', 'socket')">Überprüfen</button>
+    <p id="result-105" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-106">Messschieber (Englisch):</label>
+    <input type="text" id="answer-106" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('106', 'caliper')">Überprüfen</button>
+    <p id="result-106" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-107">Schreiner/in, Tischler/in (Englisch):</label>
+    <input type="text" id="answer-107" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('107', 'T joiner')">Überprüfen</button>
+    <p id="result-107" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-108">Anordnung (Englisch):</label>
+    <input type="text" id="answer-108" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('108', 'layout')">Überprüfen</button>
+    <p id="result-108" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-109">Stecktafel, Werkzeugtafel (Englisch):</label>
+    <input type="text" id="answer-109" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('109', 'pegboard')">Überprüfen</button>
+    <p id="result-109" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-110">häufig, (weit) verbreitet (Englisch):</label>
+    <input type="text" id="answer-110" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('110', 'common(ly)')">Überprüfen</button>
+    <p id="result-110" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-111">Stahl (Englisch):</label>
+    <input type="text" id="answer-111" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('111', 'steel')">Überprüfen</button>
+    <p id="result-111" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-112">praktisch (Englisch):</label>
+    <input type="text" id="answer-112" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('112', 'handy')">Überprüfen</button>
+    <p id="result-112" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-113">(Metall-)Band, Reif (Englisch):</label>
+    <input type="text" id="answer-113" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('113', 'strapping')">Überprüfen</button>
+    <p id="result-113" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-114">Messinstrument (Englisch):</label>
+    <input type="text" id="answer-114" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('114', 'measuring instrument')">Überprüfen</button>
+    <p id="result-114" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-115">Schublade (Englisch):</label>
+    <input type="text" id="answer-115" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('115', 'drawer')">Überprüfen</button>
+    <p id="result-115" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-116">Schloss (Englisch):</label>
+    <input type="text" id="answer-116" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('116', 'lock')">Überprüfen</button>
+    <p id="result-116" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-117">wertvoll (Englisch):</label>
+    <input type="text" id="answer-117" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('117', 'valuable')">Überprüfen</button>
+    <p id="result-117" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-118">Geheimnis (Englisch):</label>
+    <input type="text" id="answer-118" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('118', 'secret')">Überprüfen</button>
+    <p id="result-118" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-119">zum Beispiel (Englisch):</label>
+    <input type="text" id="answer-119" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('119', 'for example')">Überprüfen</button>
+    <p id="result-119" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-120">(kleine) Sachen, dies und das (Englisch):</label>
+    <input type="text" id="answer-120" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('120', 'bits and pieces')">Überprüfen</button>
+    <p id="result-120" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-121">persönlich, privat (Englisch):</label>
+    <input type="text" id="answer-121" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('121', 'personal')">Überprüfen</button>
+    <p id="result-121" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-122">Werkzeugkasten, -kiste (Englisch):</label>
+    <input type="text" id="answer-122" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('122', 'toolbox')">Überprüfen</button>
+    <p id="result-122" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-123">befestigen, fixieren (Englisch):</label>
+    <input type="text" id="answer-123" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('123', 'to secure')">Überprüfen</button>
+    <p id="result-123" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-124">Werkstück(e) (Englisch):</label>
+    <input type="text" id="answer-124" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('124', 'work')">Überprüfen</button>
+    <p id="result-124" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-125">Elektrowerkzeug (Englisch):</label>
+    <input type="text" id="answer-125" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('125', 'power tool')">Überprüfen</button>
+    <p id="result-125" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-126">Nagel (Englisch):</label>
+    <input type="text" id="answer-126" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('126', 'nail')">Überprüfen</button>
+    <p id="result-126" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-127">Nagelpistole (Englisch):</label>
+    <input type="text" id="answer-127" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('127', 'nail gun')">Überprüfen</button>
+    <p id="result-127" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-128">etw (Nagel) einschlagen, etw (Schraube) eindrehen (Englisch):</label>
+    <input type="text" id="answer-128" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('128', 'to drive sth in')">Überprüfen</button>
+    <p id="result-128" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-129">Oberfräse (Englisch):</label>
+    <input type="text" id="answer-129" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('129', 'router')">Überprüfen</button>
+    <p id="result-129" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-130">formen (Englisch):</label>
+    <input type="text" id="answer-130" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('130', 'to shape')">Überprüfen</button>
+    <p id="result-130" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-131">(Bau-, Nutz-)Holz (Englisch):</label>
+    <input type="text" id="answer-131" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('131', 'timber')">Überprüfen</button>
+    <p id="result-131" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-132">Gehrungssäge, Tischkreissäge (Englisch):</label>
+    <input type="text" id="answer-132" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('132', 'mitre saw')">Überprüfen</button>
+    <p id="result-132" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-133">Laubsäge (Englisch):</label>
+    <input type="text" id="answer-133" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('133', 'jigsaw')">Überprüfen</button>
+    <p id="result-133" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-134">kabellos (Englisch):</label>
+    <input type="text" id="answer-134" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('134', 'cordless')">Überprüfen</button>
+    <p id="result-134" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-135">Bandschleifmaschine (Englisch):</label>
+    <input type="text" id="answer-135" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('135', 'belt sander')">Überprüfen</button>
+    <p id="result-135" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-136">glätten (Englisch):</label>
+    <input type="text" id="answer-136" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('136', 'to smooth')">Überprüfen</button>
+    <p id="result-136" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-137">Bohrer, Bohrmaschine (Englisch):</label>
+    <input type="text" id="answer-137" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('137', 'drill')">Überprüfen</button>
+    <p id="result-137" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-138">bohren (Englisch):</label>
+    <input type="text" id="answer-138" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('138', 'to bore')">Überprüfen</button>
+    <p id="result-138" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-139">Loch (Englisch):</label>
+    <input type="text" id="answer-139" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('139', 'hole')">Überprüfen</button>
+    <p id="result-139" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-140">Werkzeugschleifmaschine (Englisch):</label>
+    <input type="text" id="answer-140" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('140', 'bench grinder')">Überprüfen</button>
+    <p id="result-140" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-141">schärfen (Englisch):</label>
+    <input type="text" id="answer-141" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('141', 'to sharpen')">Überprüfen</button>
+    <p id="result-141" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-142">Klinge (Englisch):</label>
+    <input type="text" id="answer-142" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('142', 'blade')">Überprüfen</button>
+    <p id="result-142" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-143">entgraten (Englisch):</label>
+    <input type="text" id="answer-143" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('143', 'to deburr')">Überprüfen</button>
+    <p id="result-143" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-144">biegen (Englisch):</label>
+    <input type="text" id="answer-144" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('144', 'to bend')">Überprüfen</button>
+    <p id="result-144" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-145">Draht (Englisch):</label>
+    <input type="text" id="answer-145" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('145', 'wire')">Überprüfen</button>
+    <p id="result-145" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-146">Winkel (Englisch):</label>
+    <input type="text" id="answer-146" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('146', 'angle')">Überprüfen</button>
+    <p id="result-146" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-147">Niveau, Lot (Englisch):</label>
+    <input type="text" id="answer-147" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('147', 'level')">Überprüfen</button>
+    <p id="result-147" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-148">markieren, anzeichnen (Englisch):</label>
+    <input type="text" id="answer-148" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('148', 'to mark')">Überprüfen</button>
+    <p id="result-148" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-149">messen (Englisch):</label>
+    <input type="text" id="answer-149" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('149', 'to measure')">Überprüfen</button>
+    <p id="result-149" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-150">Abmessungen, Maße (Englisch):</label>
+    <input type="text" id="answer-150" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('150', 'dimensions')">Überprüfen</button>
+    <p id="result-150" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-151">herausziehen (Englisch):</label>
+    <input type="text" id="answer-151" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('151', 'to pull out')">Überprüfen</button>
+    <p id="result-151" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-152">festziehen, anziehen (Englisch):</label>
+    <input type="text" id="answer-152" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('152', 'to tighten')">Überprüfen</button>
+    <p id="result-152" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-153">(mit einer Mutter gesicherte) Schraube (Englisch):</label>
+    <input type="text" id="answer-153" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('153', 'bolt')">Überprüfen</button>
+    <p id="result-153" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-154">raten, erraten (Englisch):</label>
+    <input type="text" id="answer-154" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('154', 'to guess')">Überprüfen</button>
+    <p id="result-154" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-155">Schweißgerät (Englisch):</label>
+    <input type="text" id="answer-155" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('155', 'welder')">Überprüfen</button>
+    <p id="result-155" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-156">verbinden (Englisch):</label>
+    <input type="text" id="answer-156" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('156', 'to join')">Überprüfen</button>
+    <p id="result-156" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-157">zweitgrößte Stadt Australiens (Englisch):</label>
+    <input type="text" id="answer-157" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('157', 'Melbourne')">Überprüfen</button>
+    <p id="result-157" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-158">Australien (Englisch):</label>
+    <input type="text" id="answer-158" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('158', 'Australia')">Überprüfen</button>
+    <p id="result-158" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-159">Labor (Englisch):</label>
+    <input type="text" id="answer-159" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('159', 'lab(oratory)')">Überprüfen</button>
+    <p id="result-159" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-160">Laborant/in, Laborassistent (Englisch):</label>
+    <input type="text" id="answer-160" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('160', 'lab(oratory) assistant')">Überprüfen</button>
+    <p id="result-160" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-161">Kunststoff(e) (Englisch):</label>
+    <input type="text" id="answer-161" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('161', 'plastics')">Überprüfen</button>
+    <p id="result-161" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-162">herstellen, produzieren (Englisch):</label>
+    <input type="text" id="answer-162" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('162', 'to produce')">Überprüfen</button>
+    <p id="result-162" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-163">Auswahl, Sortiment, Reihe, (Produkt-)Palette (Englisch):</label>
+    <input type="text" id="answer-163" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('163', 'range')">Überprüfen</button>
+    <p id="result-163" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-164">umweltfreundlich (Englisch):</label>
+    <input type="text" id="answer-164" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('164', 'environmentally friendly')">Überprüfen</button>
+    <p id="result-164" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-165">Verpackung (Englisch):</label>
+    <input type="text" id="answer-165" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('165', 'packaging')">Überprüfen</button>
+    <p id="result-165" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-166">Arbeitskollege/-in (Englisch):</label>
+    <input type="text" id="answer-166" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('166', 'teammate')">Überprüfen</button>
+    <p id="result-166" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-167">Reihenfolge (Englisch):</label>
+    <input type="text" id="answer-167" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('167', 'order')">Überprüfen</button>
+    <p id="result-167" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-168">überprüfen, kontrollieren (Englisch):</label>
+    <input type="text" id="answer-168" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('168', 'to check')">Überprüfen</button>
+    <p id="result-168" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-169">ebenso, ebenfalls (Englisch):</label>
+    <input type="text" id="answer-169" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('169', 'likewise')">Überprüfen</button>
+    <p id="result-169" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-170">etw. genießen, an etwas Gefallen finden (Englisch):</label>
+    <input type="text" id="answer-170" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('170', 'to enjoy sth')">Überprüfen</button>
+    <p id="result-170" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-171">leitend, höherrangig, vorgesetzt (Englisch):</label>
+    <input type="text" id="answer-171" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('171', 'senior')">Überprüfen</button>
+    <p id="result-171" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-172">Techniker/in, Mechaniker/in (Englisch):</label>
+    <input type="text" id="answer-172" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('172', 'technician')">Überprüfen</button>
+    <p id="result-172" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-173">für etw. zuständig/verantwortlich sein (Englisch):</label>
+    <input type="text" id="answer-173" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('173', 'to be responsible for sth')">Überprüfen</button>
+    <p id="result-173" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-174">Ausstattung, Geräte (Englisch):</label>
+    <input type="text" id="answer-174" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('174', 'equipment')">Überprüfen</button>
+    <p id="result-174" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-175">Leiter/in (Englisch):</label>
+    <input type="text" id="answer-175" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('175', 'supervisor')">Überprüfen</button>
+    <p id="result-175" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-176">eng (Englisch):</label>
+    <input type="text" id="answer-176" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('176', 'close(ly)')">Überprüfen</button>
+    <p id="result-176" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-177">gut zueinander passen (Englisch):</label>
+    <input type="text" id="answer-177" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('177', 'to be well suited')">Überprüfen</button>
+    <p id="result-177" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-178">wichtig, bedeutend (für jdn/etw) (Englisch):</label>
+    <input type="text" id="answer-178" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('178', 'important (to sb/sth)')">Überprüfen</button>
+    <p id="result-178" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-179">Unternehmen, Firma (Englisch):</label>
+    <input type="text" id="answer-179" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('179', 'company')">Überprüfen</button>
+    <p id="result-179" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-180">Akzent (Englisch):</label>
+    <input type="text" id="answer-180" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('180', 'accent')">Überprüfen</button>
+    <p id="result-180" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-181">Deutschland (Englisch):</label>
+    <input type="text" id="answer-181" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('181', 'Germany')">Überprüfen</button>
+    <p id="result-181" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-182">Eltern (Englisch):</label>
+    <input type="text" id="answer-182" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('182', 'parents')">Überprüfen</button>
+    <p id="result-182" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-183">Wartung, Instandhaltung (Englisch):</label>
+    <input type="text" id="answer-183" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('183', 'maintenance')">Überprüfen</button>
+    <p id="result-183" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-184">rufen, anrufen (Englisch):</label>
+    <input type="text" id="answer-184" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('184', 'to call')">Überprüfen</button>
+    <p id="result-184" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-185">Fähigkeit, Fertigkeit, Wissen (Englisch):</label>
+    <input type="text" id="answer-185" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('185', 'skill')">Überprüfen</button>
+    <p id="result-185" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-186">Fachwissen, Fachkenntnis(se) (Englisch):</label>
+    <input type="text" id="answer-186" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('186', 'expertise')">Überprüfen</button>
+    <p id="result-186" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-187">reparieren (Englisch):</label>
+    <input type="text" id="answer-187" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('187', 'to fix')">Überprüfen</button>
+    <p id="result-187" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-188">Mikroskop (Englisch):</label>
+    <input type="text" id="answer-188" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('188', 'microscope')">Überprüfen</button>
+    <p id="result-188" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-189">Ehefrau (Englisch):</label>
+    <input type="text" id="answer-189" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('189', 'wife')">Überprüfen</button>
+    <p id="result-189" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-190">schön (Englisch):</label>
+    <input type="text" id="answer-190" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('190', 'beautiful')">Überprüfen</button>
+    <p id="result-190" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-191">Strand (Englisch):</label>
+    <input type="text" id="answer-191" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('191', 'beach')">Überprüfen</button>
+    <p id="result-191" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-192">etw. gern tun, Gefallen an etw. finden (Englisch):</label>
+    <input type="text" id="answer-192" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('192', 'to enjoy doing sth')">Überprüfen</button>
+    <p id="result-192" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-193">formell, förmlich (Englisch):</label>
+    <input type="text" id="answer-193" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('193', 'formal')">Überprüfen</button>
+    <p id="result-193" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-194">informell, locker, zwanglos (Englisch):</label>
+    <input type="text" id="answer-194" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('194', 'informal')">Überprüfen</button>
+    <p id="result-194" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-195">(auf etw.) antworten, (auf etw.) reagieren (Englisch):</label>
+    <input type="text" id="answer-195" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('195', 'to reply (to sth)')">Überprüfen</button>
+    <p id="result-195" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-196">Vergnügen (Englisch):</label>
+    <input type="text" id="answer-196" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('196', 'pleasure')">Überprüfen</button>
+    <p id="result-196" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-197">etw. erwidern (Englisch):</label>
+    <input type="text" id="answer-197" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('197', 'to return sth')">Überprüfen</button>
+    <p id="result-197" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-198">Kompliment (Englisch):</label>
+    <input type="text" id="answer-198" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('198', 'compliment')">Überprüfen</button>
+    <p id="result-198" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-199">Aussage (Englisch):</label>
+    <input type="text" id="answer-199" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('199', 'statement')">Überprüfen</button>
+    <p id="result-199" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-200">Und Sie? Und du/ihr? (Englisch):</label>
+    <input type="text" id="answer-200" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('200', 'What/How about you?')">Überprüfen</button>
+    <p id="result-200" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-201">französisch, Franzose/Französin (Englisch):</label>
+    <input type="text" id="answer-201" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('201', 'French')">Überprüfen</button>
+    <p id="result-201" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-202">Motorradfahren (Englisch):</label>
+    <input type="text" id="answer-202" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('202', 'motorcycling')">Überprüfen</button>
+    <p id="result-202" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-203">Zeit haben (Englisch):</label>
+    <input type="text" id="answer-203" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('203', 'to be free')">Überprüfen</button>
+    <p id="result-203" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-204">Nur zu! Na los! (Englisch):</label>
+    <input type="text" id="answer-204" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('204', 'Go ahead!')">Überprüfen</button>
+    <p id="result-204" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-205">heißen (Englisch):</label>
+    <input type="text" id="answer-205" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('205', 'to be called')">Überprüfen</button>
+    <p id="result-205" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-206">Ingenieur/in (Englisch):</label>
+    <input type="text" id="answer-206" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('206', 'engineer')">Überprüfen</button>
+    <p id="result-206" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-207">Österreich (Englisch):</label>
+    <input type="text" id="answer-207" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('207', 'Austria')">Überprüfen</button>
+    <p id="result-207" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-208">etw. dagegen haben (Englisch):</label>
+    <input type="text" id="answer-208" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('208', 'to mind')">Überprüfen</button>
+    <p id="result-208" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-209">rauchen (Englisch):</label>
+    <input type="text" id="answer-209" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('209', 'to smoke')">Überprüfen</button>
+    <p id="result-209" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-210">Mitglied (Englisch):</label>
+    <input type="text" id="answer-210" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('210', 'member')">Überprüfen</button>
+    <p id="result-210" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-211">Gruppe (Englisch):</label>
+    <input type="text" id="answer-211" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('211', 'group')">Überprüfen</button>
+    <p id="result-211" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-212">austauschen (Englisch):</label>
+    <input type="text" id="answer-212" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('212', 'to exchange')">Überprüfen</button>
+    <p id="result-212" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-213">Personalabteilung (Englisch):</label>
+    <input type="text" id="answer-213" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('213', 'Human Resources (HR)')">Überprüfen</button>
+    <p id="result-213" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-214">Nachname (Englisch):</label>
+    <input type="text" id="answer-214" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('214', 'surname')">Überprüfen</button>
+    <p id="result-214" class="result"></p>
+</div>
+
+<div class="vocab-item">
+    <label for="answer-215">Reisepass (Englisch):</label>
+    <input type="text" id="answer-215" placeholder="Antwort eingeben">
+    <button onclick="checkAnswer('215', 'passport')">Überprüfen</button>
+    <p id="result-215" class="result"></p>
+</div>
+
+
+</div>
+
+</body>
+</html>
