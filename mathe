@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathe - FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518309373780-d5f743c82b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 220px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Mathe Übungen</h1>
+            <p>Verbessere deine mathematischen Fähigkeiten</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Reiter -->
+        <section class="section">
+            <h2>Mathe Reiter 1-10</h2>
+            <div class="cards">
+                <!-- Reiter 1 -->
+                <a href="#reiter1">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 1">
+                        <h3>Reiter 1</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 2 -->
+                <a href="#reiter2">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 2">
+                        <h3>Reiter 2</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 3 -->
+                <a href="#reiter3">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 3">
+                        <h3>Reiter 3</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 4 -->
+                <a href="#reiter4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 4">
+                        <h3>Reiter 4</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 5 -->
+                <a href="#reiter5">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 5">
+                        <h3>Reiter 5</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 6 -->
+                <a href="#reiter6">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 6">
+                        <h3>Reiter 6</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 7 -->
+                <a href="#reiter7">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 7">
+                        <h3>Reiter 7</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 8 -->
+                <a href="#reiter8">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 8">
+                        <h3>Reiter 8</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 9 -->
+                <a href="#reiter9">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 9">
+                        <h3>Reiter 9</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+                <!-- Reiter 10 -->
+                <a href="#reiter10">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="Reiter 10">
+                        <h3>Reiter 10</h3>
+                        <p>Folgt noch</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
