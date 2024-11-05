@@ -62,6 +62,13 @@
             font-size: 1.5rem;
         }
 
+        .countdown {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
         /* Hauptinhalt */
         .container {
             max-width: 1200px;
@@ -154,8 +161,34 @@
         <div class="hero-content">
             <h1>FSND31 Übungsplattform</h1>
             <p>Deine Lernfelder und Fächer auf einen Blick</p>
+            <div class="countdown" id="countdown"></div>
         </div>
     </header>
+
+    <!-- JavaScript für Countdown -->
+    <script>
+        function countWeekdaysUntil(targetDate) {
+            let today = new Date();
+            let weekdaysCount = 0;
+
+            while (today < targetDate) {
+                today.setDate(today.getDate() + 1);
+                let day = today.getDay();
+                if (day !== 0 && day !== 6) {
+                    weekdaysCount++;
+                }
+            }
+            return weekdaysCount;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const targetDate = new Date("2024-12-20");
+            const countdownElement = document.getElementById("countdown");
+            const weekdaysLeft = countWeekdaysUntil(targetDate);
+
+            countdownElement.textContent = `Nur noch ${weekdaysLeft} Schultage bis zu den Weihnachtsferien`;
+        });
+    </script>
 
     <!-- Hauptinhalt -->
     <div class="container">
@@ -241,7 +274,7 @@
                     <div class="card">
                         <img src="https://thevolteragroup.com/wp-content/uploads/2024/09/Python-Symbol.png" alt="Lernfeld 10">
                         <h3>Lernfeld 10</h3>
-                        <p>Programieren</p>
+                        <p>Programmieren</p>
                     </div>
                 </a>
             </div>
@@ -251,16 +284,14 @@
         <section class="section">
             <h2>Fächer</h2>
             <div class="cards">
-            <!-- Mathe -->
-<a href="https://knochensalat.de/mathe">
-    <div class="card">
-        <img src="https://ohm-professional-school.de/fileadmin/_processed_/1/6/csm_Brueckenkurs-Mathe_AdobeStock_200345229_rgb_29f8208664.jpg" alt="Mathe">
-        <h3>Mathe</h3>
-        <p>Mathematik Übungen</p>
-    </div>
-</a>
-
-
+                <!-- Mathe -->
+                <a href="https://knochensalat.de/mathe">
+                    <div class="card">
+                        <img src="https://ohm-professional-school.de/fileadmin/_processed_/1/6/csm_Brueckenkurs-Mathe_AdobeStock_200345229_rgb_29f8208664.jpg" alt="Mathe">
+                        <h3>Mathe</h3>
+                        <p>Mathematik Übungen</p>
+                    </div>
+                </a>
                 <!-- Deutsch -->
                 <a href="#deutsch">
                     <div class="card">
@@ -270,7 +301,7 @@
                     </div>
                 </a>
                 <!-- Englisch -->
-                <a href="#englisch">
+                <a href="englisch">
                     <div class="card">
                         <img src="https://goethe-gymnasium.berlin/wp-content/uploads/2021/10/Englisch.png" alt="Englisch">
                         <h3>Englisch</h3>
@@ -287,6 +318,5 @@
         <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <!-- Optional: JavaScript für weitere Funktionalitäten -->
 </body>
 </html>
