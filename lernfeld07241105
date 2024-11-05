@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP-Adressierung und Subnetzmasken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        .question {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004080;
+        }
+    </style>
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const result = document.getElementById(`${questionId}-result`);
+            
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    result.textContent = "Richtig!";
+                    result.className = "correct";
+                } else {
+                    result.textContent = "Falsch!";
+                    result.className = "incorrect";
+                }
+            } else {
+                result.textContent = "Bitte eine Antwort auswählen.";
+                result.className = "";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>IP-Adressierung und Subnetzmasken</h1>
+
+<h2>Grundlagen der IP-Adressierung</h2>
+<p>Eine IP-Adresse besteht aus vier Oktetts (8 Bits pro Oktett), die durch Punkte getrennt und als Dezimalzahlen dargestellt werden (z.B., <code>192.168.100.10</code>). Jedes Oktett kann einen Wert von 0 bis 255 annehmen, da 8 Bits eine Spannweite von 256 möglichen Kombinationen (0 bis 255) haben. Dieses Format wird als „dotted Decimal“ bezeichnet.</p>
+
+<h2>Netz-ID und Host-ID</h2>
+<p>Eine IP-Adresse setzt sich aus zwei Teilen zusammen:</p>
+<ul>
+    <li><strong>Netz-ID</strong>: Identifiziert das Netzwerk, in dem sich die IP-Adresse befindet.</li>
+    <li><strong>Host-ID</strong>: Identifiziert den spezifischen Host (Computer, Gerät usw.) innerhalb dieses Netzwerks.</li>
+</ul>
+<p>Zusammen bilden Netz-ID und Host-ID eine 32-Bit-Adresse. Es gibt eine spezielle Adresse im Netzwerk, die nur zur Netzwerkselbstreferenz genutzt wird: <code>127.0.0.1</code>, die sogenannte „Loopback“-Adresse.</p>
+
+<h2>Subnetzmaske</h2>
+<p>Die Subnetzmaske ist eine Bitmaske, die festlegt, welche Bits der IP-Adresse zum Netzwerk und welche zum Host gehören. Beispiel: Die Subnetzmaske <code>255.255.255.0</code> (in Binärform <code>11111111.11111111.11111111.00000000</code>) zeigt an, dass die ersten 24 Bits (drei Oktetts) die Netz-ID bilden, während das letzte Oktett die Host-ID ist.</p>
+
+<h2>Klassen von IP-Adressen</h2>
+<p>Es gibt verschiedene Klassen von IP-Adressen:</p>
+<ul>
+    <li><strong>Klasse A</strong>: Große Netzwerke (z.B., private Nutzung: <code>10.0.0.0/8</code>)</li>
+    <li><strong>Klasse B</strong>: Mittlere Netzwerke (z.B., private Nutzung: <code>172.16.0.0/16</code>)</li>
+    <li><strong>Klasse C</strong>: Kleine Netzwerke (z.B., private Nutzung: <code>192.168.0.0/24</code>)</li>
+    <li><strong>Klasse D</strong>: Verwendet für Multicast-Adressen</li>
+    <li><strong>Klasse E</strong>: Reserviert für experimentelle Zwecke</li>
+</ul>
+
+<h2>Broadcast-Adresse</h2>
+<p>Die Broadcast-Adresse ist die letzte Adresse in einem IP-Adressbereich und wird verwendet, um eine Nachricht an alle Hosts innerhalb eines Netzwerks zu senden. Beispiel: In einem Netzwerk mit der Adresse <code>192.168.100.0/24</code> ist die Broadcast-Adresse <code>192.168.100.255</code>.</p>
+
+<hr>
+
+<h2>Fragen</h2>
+
+<div class="question">
+    <p><strong>1. Wie viele Bits hat eine IP-Adresse?</strong></p>
+    <input type="radio" name="q1" value="32"> 32 Bits<br>
+    <input type="radio" name="q1" value="16"> 16 Bits<br>
+    <input type="radio" name="q1" value="8"> 8 Bits<br>
+    <button onclick="checkAnswer('q1', '32')">Antwort überprüfen</button>
+    <p id="q1-result"></p>
+</div>
+
+<div class="question">
+    <p><strong>2. Welche Subnetzmaske hat ein Klasse C Netzwerk typischerweise?</strong></p>
+    <input type="radio" name="q2" value="255.0.0.0"> 255.0.0.0<br>
+    <input type="radio" name="q2" value="255.255.0.0"> 255.255.0.0<br>
+    <input type="radio" name="q2" value="255.255.255.0"> 255.255.255.0<br>
+    <button onclick="checkAnswer('q2', '255.255.255.0')">Antwort überprüfen</button>
+    <p id="q2-result"></p>
+</div>
+
+<div class="question">
+    <p><strong>3. Die Adresse 127.0.0.1 ist eine ...?</strong></p>
+    <input type="radio" name="q3" value="Broadcast-Adresse"> Broadcast-Adresse<br>
+    <input type="radio" name="q3" value="Loopback-Adresse"> Loopback-Adresse<br>
+    <input type="radio" name="q3" value="Multicast-Adresse"> Multicast-Adresse<br>
+    <button onclick="checkAnswer('q3', 'Loopback-Adresse')">Antwort überprüfen</button>
+    <p id="q3-result"></p>
+</div>
+
+<div class="question">
+    <p><strong>4. Eine IP-Adresse besteht aus vier Oktetts mit jeweils ...?</strong></p>
+    <input type="radio" name="q4" value="4 Bits"> 4 Bits<br>
+    <input type="radio" name="q4" value="8 Bits"> 8 Bits<br>
+    <input type="radio" name="q4" value="16 Bits"> 16 Bits<br>
+    <button onclick="checkAnswer('q4', '8 Bits')">Antwort überprüfen</button>
+    <p id="q4-result"></p>
+</div>
+
+<div class="question">
+    <p><strong>5. Was ist die Broadcast-Adresse für das Netzwerk 192.168.100.0/24?</strong></p>
+    <input type="radio" name="q5" value="192.168.100.0"> 192.168.100.0<br>
+    <input type="radio" name="q5" value="192.168.100.1"> 192.168.100.1<br>
+    <input type="radio" name="q5" value="192.168.100.255"> 192.168.100.255<br>
+    <button onclick="checkAnswer('q5', '192.168.100.255')">Antwort überprüfen</button>
+    <p id="q5-result"></p>
+</div>
+
+</body>
+</html>
