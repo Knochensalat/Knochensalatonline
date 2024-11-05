@@ -17,14 +17,26 @@
         h1, h2 {
             text-align: center;
         }
-        .card {
+        .content, .card, .nav-buttons {
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 300px;
-            padding: 20px;
-            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
             text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
         .solution {
             display: none;
@@ -43,7 +55,7 @@
         .nav-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            justify-content: center;
         }
         .nav-button {
             background-color: #333;
@@ -64,38 +76,63 @@
 <body>
 
     <h1>FSND31 Übungsplattform - Mathematik</h1>
+
+    <!-- Zusammenfassung vor den Übungsaufgaben -->
+    <div class="content">
+        <h2>Zusammenfassung: Stammfunktionen und Unbestimmte Integrale</h2>
+        <p><strong>Begriffe und Definitionen</strong></p>
+        <table>
+            <tr>
+                <th>Größe</th>
+                <th>Momentane Änderungsrate</th>
+                <th>Gesamte Änderung der Größe</th>
+            </tr>
+            <tr>
+                <td>Weg (s)</td>
+                <td>Geschwindigkeit (v(t))</td>
+                <td>S = ∫ v(t) dt von t1 bis t2</td>
+            </tr>
+            <tr>
+                <td>Schadstoffausstoß (E)</td>
+                <td>Momentaner Schadstoffausstoß (e(t))</td>
+                <td>E = ∫ e(t) dt von t1 bis t2</td>
+            </tr>
+            <tr>
+                <td>Durchflussmenge (D)</td>
+                <td>Momentane Durchflussmenge (d(t))</td>
+                <td>D = ∫ d(t) dt von t1 bis t2</td>
+            </tr>
+        </table>
+        <p>Die Geschwindigkeits-Zeit-Funktion v(t) = s'(t) einer Bewegung ist gegeben. Gesucht ist die Weg-Zeit-Funktion s(t). Das bedeutet, wir müssen eine Funktion s(t) finden, deren Ableitung v(t) ist.</p>
+        
+        <p><strong>Stammfunktionen</strong></p>
+        <p>Für eine gegebene Funktion f(x) ist die Stammfunktion F(x) eine Funktion, die die Bedingung F'(x) = f(x) erfüllt.</p>
+        
+        <p><em>Beispiel:</em> Gegeben: f(x) = x². Gesucht ist F(x), sodass F'(x) = f(x).</p>
+        <p>Lösung: F(x) = (1/3)x³ + C</p>
+        
+        <p>Das unbestimmte Integral stellt die Menge aller Stammfunktionen dar: ∫ f(x) dx = F(x) + C</p>
+    </div>
+
+    <!-- Übungsaufgaben -->
     <h2>Übungsaufgaben</h2>
 
-    <!-- Übungsaufgabe 1 -->
     <div class="card">
-        <p><strong>Aufgabe 1:</strong> Berechne das bestimmte Integral <br> ∫(3x²) dx von 1 bis 4</p>
+        <p><strong>Aufgabe 1:</strong> Berechne das unbestimmte Integral ∫ (4x + 2) dx</p>
         <button onclick="toggleSolution('solution1')">Lösung anzeigen</button>
-        <p class="solution" id="solution1">
-            <strong>Lösung:</strong><br>
-            Stammfunktion: x³<br>
-            Berechnung: [x³] von 1 bis 4 = 4³ - 1³ = 64 - 1 = 63
-        </p>
+        <p class="solution" id="solution1">Lösung: F(x) = 2x² + 2x + C</p>
     </div>
 
-    <!-- Übungsaufgabe 2 -->
     <div class="card">
-        <p><strong>Aufgabe 2:</strong> Löse die Gleichung: <br> x² - 5x + 6 = 0</p>
+        <p><strong>Aufgabe 2:</strong> Berechne das unbestimmte Integral ∫ 1/x² dx</p>
         <button onclick="toggleSolution('solution2')">Lösung anzeigen</button>
-        <p class="solution" id="solution2">
-            <strong>Lösung:</strong><br>
-            Faktorisierung: (x - 2)(x - 3) = 0<br>
-            Lösungen: x = 2 oder x = 3
-        </p>
+        <p class="solution" id="solution2">Lösung: F(x) = -1/x + C</p>
     </div>
 
-    <!-- Übungsaufgabe 3 -->
     <div class="card">
-        <p><strong>Aufgabe 3:</strong> Berechne die Ableitung von <br> f(x) = 4x³ + 3x² - 2x + 5</p>
+        <p><strong>Aufgabe 3:</strong> Berechne das unbestimmte Integral ∫ (4x³ + 12 - 6x) dx</p>
         <button onclick="toggleSolution('solution3')">Lösung anzeigen</button>
-        <p class="solution" id="solution3">
-            <strong>Lösung:</strong><br>
-            Ableitung: f'(x) = 12x² + 6x - 2
-        </p>
+        <p class="solution" id="solution3">Lösung: F(x) = x⁴ + 4x³ - 3x² + C</p>
     </div>
 
     <!-- Navigation Buttons -->
