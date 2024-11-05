@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Datenbanken Übungsseite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50"><text x="0" y="25" font-size="20" fill="rgba(0,0,0,0.05)">Stefan ist der beste</text></svg>');
+            background-repeat: repeat;
+            background-size: contain;
+            z-index: -1;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .question {
+            margin: 20px;
+        }
+
+        .question input[type="text"] {
+            width: 200px;
+            padding: 5px;
+        }
+
+        .result {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .check-button {
+            margin-top: 10px;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50"><text x="0" y="25" font-size="20" fill="rgba(0,0,0,0.05)">Stefan ist der beste</text></svg>');
+            background-repeat: repeat;
+            background-size: contain;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Datenbanken Übungsseite</h1>
+
+    <!-- ER-Modelle -->
+    <div class="section">
+        <h2>ER-Modelle</h2>
+        <!-- Fragen zu ER-Modellen -->
+        <!-- Frage 1 bis 20 -->
+        <!-- Frage 1 -->
+        <div class="question">
+        <!-- Frage 1 -->
+<div class="question">
+    <p><strong>Frage 1:</strong> In einem ER-Diagramm repräsentiert ein Rechteck ein:</p>
+    <input type="radio" name="er-q1" value="a"> A) Attribut<br>
+    <input type="radio" name="er-q1" value="b"> B) Entitätstyp<br>
+    <input type="radio" name="er-q1" value="c"> C) Beziehungstyp<br>
+    <input type="radio" name="er-q1" value="d"> D) Schlüssel<br>
+    <button onclick="checkMC('er-q1', 'b')">Überprüfen</button>
+    <span id="result-er-q1" class="result"></span>
+</div>
+
+<!-- Frage 2 -->
+<div class="question">
+    <p><strong>Frage 2:</strong> In einem ER-Modell werden Attribute durch eine ________ dargestellt.</p>
+    <p>Optionen: <strong>Ellipse</strong>, <strong>Rechteck</strong>, <strong>Raute</strong>, <strong>Linie</strong>, <strong>Pfeil</strong></p>
+    <input type="text" id="er-q2-answer">
+    <button onclick="checkFillBlank('er-q2-answer', ['Ellipse'])">Überprüfen</button>
+    <span id="result-er-q2-answer" class="result"></span>
+</div>
+
+<!-- Frage 3 -->
+<div class="question">
+    <p><strong>Frage 3:</strong> Was stellt eine Raute in einem ER-Diagramm dar?</p>
+    <input type="radio" name="er-q3" value="a"> A) Entität<br>
+    <input type="radio" name="er-q3" value="b"> B) Attribut<br>
+    <input type="radio" name="er-q3" value="c"> C) Beziehung<br>
+    <input type="radio" name="er-q3" value="d"> D) Schlüsselattribut<br>
+    <button onclick="checkMC('er-q3', 'c')">Überprüfen</button>
+    <span id="result-er-q3" class="result"></span>
+</div>
+
+<!-- Frage 4 -->
+<div class="question">
+    <p><strong>Frage 4:</strong> Ein ________ Attribut kann in mehrere Unterattribute unterteilt werden.</p>
+    <p>Optionen: <strong>Einfaches</strong>, <strong>Zusammengesetztes</strong>, <strong>Mehrwertiges</strong>, <strong>Abgeleitetes</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="er-q4-answer">
+    <button onclick="checkFillBlank('er-q4-answer', ['Zusammengesetztes'])">Überprüfen</button>
+    <span id="result-er-q4-answer" class="result"></span>
+</div>
+
+<!-- Frage 5 -->
+<div class="question">
+    <p><strong>Frage 5:</strong> Welche Kardinalität beschreibt eine Eins-zu-Viele-Beziehung?</p>
+    <input type="radio" name="er-q5" value="a"> A) 1:1<br>
+    <input type="radio" name="er-q5" value="b"> B) 1:N<br>
+    <input type="radio" name="er-q5" value="c"> C) N:1<br>
+    <input type="radio" name="er-q5" value="d"> D) N:M<br>
+    <button onclick="checkMC('er-q5', 'b')">Überprüfen</button>
+    <span id="result-er-q5" class="result"></span>
+</div>
+
+<!-- Frage 6 -->
+<div class="question">
+    <p><strong>Frage 6:</strong> Ein Attribut, das aus dem Wert eines anderen Attributs berechnet wird, nennt man ________ Attribut.</p>
+    <p>Optionen: <strong>Einfaches</strong>, <strong>Zusammengesetztes</strong>, <strong>Abgeleitetes</strong>, <strong>Mehrwertiges</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="er-q6-answer">
+    <button onclick="checkFillBlank('er-q6-answer', ['Abgeleitetes'])">Überprüfen</button>
+    <span id="result-er-q6-answer" class="result"></span>
+</div>
+
+<!-- Frage 7 -->
+<div class="question">
+    <p><strong>Frage 7:</strong> Was bedeutet "Mehrwertiges Attribut" in einem ER-Modell?</p>
+    <input type="radio" name="er-q7" value="a"> A) Ein Attribut mit mehreren Werten für einen Entitätssatz<br>
+    <input type="radio" name="er-q7" value="b"> B) Ein Attribut, das sich aus mehreren Attributen zusammensetzt<br>
+    <input type="radio" name="er-q7" value="c"> C) Ein Attribut, das in der Beziehung mehrfach vorkommt<br>
+    <input type="radio" name="er-q7" value="d"> D) Ein Attribut, das von anderen Attributen abgeleitet wird<br>
+    <button onclick="checkMC('er-q7', 'a')">Überprüfen</button>
+    <span id="result-er-q7" class="result"></span>
+</div>
+
+<!-- Frage 8 -->
+<div class="question">
+    <p><strong>Frage 8:</strong> Eine schwache Entität ist eine Entität, die ohne eine ________ Entität nicht existieren kann.</p>
+    <p>Optionen: <strong>Starke</strong>, <strong>Schwache</strong>, <strong>Abgeleitete</strong>, <strong>Assoziative</strong>, <strong>Mehrwertige</strong></p>
+    <input type="text" id="er-q8-answer">
+    <button onclick="checkFillBlank('er-q8-answer', ['Starke'])">Überprüfen</button>
+    <span id="result-er-q8-answer" class="result"></span>
+</div>
+
+<!-- Frage 9 -->
+<div class="question">
+    <p><strong>Frage 9:</strong> Welche Art von Attribut wird in einem ER-Diagramm durch eine gestrichelte Ellipse dargestellt?</p>
+    <input type="radio" name="er-q9" value="a"> A) Einfaches Attribut<br>
+    <input type="radio" name="er-q9" value="b"> B) Abgeleitetes Attribut<br>
+    <input type="radio" name="er-q9" value="c"> C) Mehrwertiges Attribut<br>
+    <input type="radio" name="er-q9" value="d"> D) Zusammengesetztes Attribut<br>
+    <button onclick="checkMC('er-q9', 'b')">Überprüfen</button>
+    <span id="result-er-q9" class="result"></span>
+</div>
+
+<!-- Frage 10 -->
+<div class="question">
+    <p><strong>Frage 10:</strong> Ein ________ Attribut besteht aus mehreren einfachen Attributen.</p>
+    <p>Optionen: <strong>Einfaches</strong>, <strong>Zusammengesetztes</strong>, <strong>Abgeleitetes</strong>, <strong>Mehrwertiges</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="er-q10-answer">
+    <button onclick="checkFillBlank('er-q10-answer', ['Zusammengesetztes'])">Überprüfen</button>
+    <span id="result-er-q10-answer" class="result"></span>
+</div>
+
+<!-- Frage 11 -->
+<div class="question">
+    <p><strong>Frage 11:</strong> Was beschreibt die Kardinalität in einem ER-Modell?</p>
+    <input type="radio" name="er-q11" value="a"> A) Die Anzahl der Attribute einer Entität<br>
+    <input type="radio" name="er-q11" value="b"> B) Die Anzahl der Entitäten in der Datenbank<br>
+    <input type="radio" name="er-q11" value="c"> C) Die Anzahl der Beziehungen zwischen Entitäten<br>
+    <input type="radio" name="er-q11" value="d"> D) Die Anzahl der möglichen Beziehungen zwischen Entitätstypen<br>
+    <button onclick="checkMC('er-q11', 'd')">Überprüfen</button>
+    <span id="result-er-q11" class="result"></span>
+</div>
+
+<!-- Frage 12 -->
+<div class="question">
+    <p><strong>Frage 12:</strong> Eine ________ Beziehung verbindet drei Entitätstypen.</p>
+    <p>Optionen: <strong>Ternäre</strong>, <strong>Binäre</strong>, <strong>Unäre</strong>, <strong>Quaternäre</strong>, <strong>Rekursive</strong></p>
+    <input type="text" id="er-q12-answer">
+    <button onclick="checkFillBlank('er-q12-answer', ['Ternäre'])">Überprüfen</button>
+    <span id="result-er-q12-answer" class="result"></span>
+</div>
+
+<!-- Frage 13 -->
+<div class="question">
+    <p><strong>Frage 13:</strong> Eine Beziehung, die eine Entität mit sich selbst verbindet, wird als ________ Beziehung bezeichnet.</p>
+    <input type="radio" name="er-q13" value="a"> A) Ternäre<br>
+    <input type="radio" name="er-q13" value="b"> B) Rekursive<br>
+    <input type="radio" name="er-q13" value="c"> C) Binäre<br>
+    <input type="radio" name="er-q13" value="d"> D) Reflexive<br>
+    <button onclick="checkMC('er-q13', 'b')">Überprüfen</button>
+    <span id="result-er-q13" class="result"></span>
+</div>
+
+<!-- Frage 14 -->
+<div class="question">
+    <p><strong>Frage 14:</strong> Die Gesamtheit der Attribute, die eine Entität eindeutig identifizieren, nennt man ________.</p>
+    <p>Optionen: <strong>Primärschlüssel</strong>, <strong>Fremdschlüssel</strong>, <strong>Attributsatz</strong>, <strong>Kardinalität</strong>, <strong>Beziehung</strong></p>
+    <input type="text" id="er-q14-answer">
+    <button onclick="checkFillBlank('er-q14-answer', ['Primärschlüssel'])">Überprüfen</button>
+    <span id="result-er-q14-answer" class="result"></span>
+</div>
+
+<!-- Frage 15 -->
+<div class="question">
+    <p><strong>Frage 15:</strong> In einem ER-Diagramm wird eine schwache Entität durch ein ________ Rechteck dargestellt.</p>
+    <input type="radio" name="er-q15" value="a"> A) Doppelt gestricheltes<br>
+    <input type="radio" name="er-q15" value="b"> B) Einfaches<br>
+    <input type="radio" name="er-q15" value="c"> C) Doppeltes<br>
+    <input type="radio" name="er-q15" value="d"> D) Gestricheltes<br>
+    <button onclick="checkMC('er-q15', 'c')">Überprüfen</button>
+    <span id="result-er-q15" class="result"></span>
+</div>
+
+<!-- Frage 16 -->
+<div class="question">
+    <p><strong>Frage 16:</strong> Der Prozess des Erstellens eines ER-Modells zur Datenbankmodellierung wird als ________ bezeichnet.</p>
+    <p>Optionen: <strong>Normalisierung</strong>, <strong>Datenbankentwurf</strong>, <strong>ER-Modellierung</strong>, <strong>Datenmodellierung</strong>, <strong>Abstraktion</strong></p>
+    <input type="text" id="er-q16-answer">
+    <button onclick="checkFillBlank('er-q16-answer', ['Datenmodellierung'])">Überprüfen</button>
+    <span id="result-er-q16-answer" class="result"></span>
+</div>
+
+<!-- Frage 17 -->
+<div class="question">
+    <p><strong>Frage 17:</strong> Welche der folgenden Aussagen trifft auf eine schwache Entität zu?</p>
+    <input type="radio" name="er-q17" value="a"> A) Sie hat immer einen eigenen Primärschlüssel<br>
+    <input type="radio" name="er-q17" value="b"> B) Sie existiert unabhängig von anderen Entitäten<br>
+    <input type="radio" name="er-q17" value="c"> C) Ihr Primärschlüssel enthält einen Fremdschlüssel<br>
+    <input type="radio" name="er-q17" value="d"> D) Sie hat keine Attribute<br>
+    <button onclick="checkMC('er-q17', 'c')">Überprüfen</button>
+    <span id="result-er-q17" class="result"></span>
+</div>
+
+<!-- Frage 18 -->
+<div class="question">
+    <p><strong>Frage 18:</strong> Die minimale und maximale Anzahl von Entitäten, die an einer Beziehung teilnehmen können, wird als ________ bezeichnet.</p>
+    <p>Optionen: <strong>Kardinalität</strong>, <strong>Teilnahmebedingung</strong>, <strong>Attribut</strong>, <strong>Grad</strong>, <strong>Rolle</strong></p>
+    <input type="text" id="er-q18-answer">
+    <button onclick="checkFillBlank('er-q18-answer', ['Kardinalität'])">Überprüfen</button>
+    <span id="result-er-q18-answer" class="result"></span>
+</div>
+
+<!-- Frage 19 -->
+<div class="question">
+    <p><strong>Frage 19:</strong> Was versteht man unter dem Begriff "Assoziative Entität"?</p>
+    <input type="radio" name="er-q19" value="a"> A) Eine Entität, die Attribute von mehreren Entitäten erbt<br>
+    <input type="radio" name="er-q19" value="b"> B) Eine Entität, die eine Beziehung in eine Entität umwandelt<br>
+    <input type="radio" name="er-q19" value="c"> C) Eine Beziehung zwischen mehr als zwei Entitäten<br>
+    <input type="radio" name="er-q19" value="d"> D) Eine Entität, die keinen Primärschlüssel besitzt<br>
+    <button onclick="checkMC('er-q19', 'b')">Überprüfen</button>
+    <span id="result-er-q19" class="result"></span>
+</div>
+
+<!-- Frage 20 -->
+<div class="question">
+    <p><strong>Frage 20:</strong> Eine Beziehung zwischen zwei Entitätstypen wird als ________ Beziehung bezeichnet.</p>
+    <p>Optionen: <strong>Binäre</strong>, <strong>Ternäre</strong>, <strong>Unäre</strong>, <strong>Quaternäre</strong>, <strong>Rekursive</strong></p>
+    <input type="text" id="er-q20-answer">
+    <button onclick="checkFillBlank('er-q20-answer', ['Binäre'])">Überprüfen</button>
+    <span id="result-er-q20-answer" class="result"></span>
+</div>
+
+
+    <!-- Normalisierung -->
+    <div class="section">
+        <h2>Normalisierung</h2>
+       <!-- Frage 1 -->
+<div class="question">
+    <p><strong>Frage 1:</strong> Welche Normalform eliminiert partielle Abhängigkeiten?</p>
+    <input type="radio" name="norm-q1" value="a"> A) Erste Normalform<br>
+    <input type="radio" name="norm-q1" value="b"> B) Zweite Normalform<br>
+    <input type="radio" name="norm-q1" value="c"> C) Dritte Normalform<br>
+    <input type="radio" name="norm-q1" value="d"> D) Boyce-Codd-Normalform<br>
+    <button onclick="checkMC('norm-q1', 'b')">Überprüfen</button>
+    <span id="result-norm-q1" class="result"></span>
+</div>
+
+<!-- Frage 2 -->
+<div class="question">
+    <p><strong>Frage 2:</strong> Eine Tabelle befindet sich in der ersten Normalform, wenn keine ________ Werte vorhanden sind.</p>
+    <p>Optionen: <strong>Atomare</strong>, <strong>Mehrwertige</strong>, <strong>Schlüssel</strong>, <strong>Abhängige</strong>, <strong>Transitive</strong></p>
+    <input type="text" id="norm-q2-answer">
+    <button onclick="checkFillBlank('norm-q2-answer', ['Mehrwertige'])">Überprüfen</button>
+    <span id="result-norm-q2-answer" class="result"></span>
+</div>
+
+<!-- Frage 3 -->
+<div class="question">
+    <p><strong>Frage 3:</strong> Die dritte Normalform eliminiert ________ Abhängigkeiten.</p>
+    <input type="radio" name="norm-q3" value="a"> A) Funktionale<br>
+    <input type="radio" name="norm-q3" value="b"> B) Partielle<br>
+    <input type="radio" name="norm-q3" value="c"> C) Transitive<br>
+    <input type="radio" name="norm-q3" value="d"> D) Mehrwertige<br>
+    <button onclick="checkMC('norm-q3', 'c')">Überprüfen</button>
+    <span id="result-norm-q3" class="result"></span>
+</div>
+
+<!-- Frage 4 -->
+<div class="question">
+    <p><strong>Frage 4:</strong> Eine Relation ist in der zweiten Normalform, wenn sie in der ersten Normalform ist und keine ________ Abhängigkeiten enthält.</p>
+    <p>Optionen: <strong>Funktionale</strong>, <strong>Partielle</strong>, <strong>Transitive</strong>, <strong>Mehrwertige</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="norm-q4-answer">
+    <button onclick="checkFillBlank('norm-q4-answer', ['Partielle'])">Überprüfen</button>
+    <span id="result-norm-q4-answer" class="result"></span>
+</div>
+
+<!-- Frage 5 -->
+<div class="question">
+    <p><strong>Frage 5:</strong> Was ist das Ziel der Normalisierung?</p>
+    <input type="radio" name="norm-q5" value="a"> A) Erhöhung der Redundanz<br>
+    <input type="radio" name="norm-q5" value="b"> B) Minimierung von Anomalien<br>
+    <input type="radio" name="norm-q5" value="c"> C) Verbesserung der Abfragegeschwindigkeit<br>
+    <input type="radio" name="norm-q5" value="d"> D) Erstellen von mehr Tabellen<br>
+    <button onclick="checkMC('norm-q5', 'b')">Überprüfen</button>
+    <span id="result-norm-q5" class="result"></span>
+</div>
+
+<!-- Frage 6 -->
+<div class="question">
+    <p><strong>Frage 6:</strong> Eine ________ Abhängigkeit tritt auf, wenn ein Nicht-Schlüsselattribut von einem anderen Nicht-Schlüsselattribut abhängt.</p>
+    <p>Optionen: <strong>Partielle</strong>, <strong>Transitive</strong>, <strong>Funktionale</strong>, <strong>Mehrwertige</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="norm-q6-answer">
+    <button onclick="checkFillBlank('norm-q6-answer', ['Transitive'])">Überprüfen</button>
+    <span id="result-norm-q6-answer" class="result"></span>
+</div>
+
+<!-- Frage 7 -->
+<div class="question">
+    <p><strong>Frage 7:</strong> Welche Normalform ist strenger als die dritte Normalform?</p>
+    <input type="radio" name="norm-q7" value="a"> A) Boyce-Codd-Normalform<br>
+    <input type="radio" name="norm-q7" value="b"> B) Zweite Normalform<br>
+    <input type="radio" name="norm-q7" value="c"> C) Vierte Normalform<br>
+    <input type="radio" name="norm-q7" value="d"> D) Fünfte Normalform<br>
+    <button onclick="checkMC('norm-q7', 'a')">Überprüfen</button>
+    <span id="result-norm-q7" class="result"></span>
+</div>
+
+<!-- Frage 8 -->
+<div class="question">
+    <p><strong>Frage 8:</strong> Die Boyce-Codd-Normalform (BCNF) ist eine Erweiterung welcher Normalform?</p>
+    <p>Optionen: <strong>Erste</strong>, <strong>Zweite</strong>, <strong>Dritte</strong>, <strong>Vierte</strong>, <strong>Fünfte</strong></p>
+    <input type="text" id="norm-q8-answer">
+    <button onclick="checkFillBlank('norm-q8-answer', ['Dritte'])">Überprüfen</button>
+    <span id="result-norm-q8-answer" class="result"></span>
+</div>
+
+<!-- Frage 9 -->
+<div class="question">
+    <p><strong>Frage 9:</strong> Welche Art von Anomalie tritt auf, wenn Datenverlust bei der Löschung von Daten auftritt?</p>
+    <input type="radio" name="norm-q9" value="a"> A) Einfügeanomalie<br>
+    <input type="radio" name="norm-q9" value="b"> B) Änderungsanomalie<br>
+    <input type="radio" name="norm-q9" value="c"> C) Löschanomalie<br>
+    <input type="radio" name="norm-q9" value="d"> D) Aktualisierungsanomalie<br>
+    <button onclick="checkMC('norm-q9', 'c')">Überprüfen</button>
+    <span id="result-norm-q9" class="result"></span>
+</div>
+
+<!-- Frage 10 -->
+<div class="question">
+    <p><strong>Frage 10:</strong> Eine Relation in der vierten Normalform eliminiert ________ Abhängigkeiten.</p>
+    <p>Optionen: <strong>Funktionale</strong>, <strong>Transitive</strong>, <strong>Partielle</strong>, <strong>Mehrwertige</strong>, <strong>Schlüssel</strong></p>
+    <input type="text" id="norm-q10-answer">
+    <button onclick="checkFillBlank('norm-q10-answer', ['Mehrwertige'])">Überprüfen</button>
+    <span id="result-norm-q10-answer" class="result"></span>
+</div>
+
+<!-- Frage 11 -->
+<div class="question">
+    <p><strong>Frage 11:</strong> Welche Normalform befasst sich mit Join-Abhängigkeiten?</p>
+    <input type="radio" name="norm-q11" value="a"> A) Zweite Normalform<br>
+    <input type="radio" name="norm-q11" value="b"> B) Dritte Normalform<br>
+    <input type="radio" name="norm-q11" value="c"> C) Vierte Normalform<br>
+    <input type="radio" name="norm-q11" value="d"> D) Fünfte Normalform<br>
+    <button onclick="checkMC('norm-q11', 'd')">Überprüfen</button>
+    <span id="result-norm-q11" class="result"></span>
+</div>
+
+<!-- Frage 12 -->
+<div class="question">
+    <p><strong>Frage 12:</strong> Eine funktionale Abhängigkeit wird durch ein ________ beschrieben.</p>
+    <p>Optionen: <strong>Schlüssel</strong>, <strong>Determinante</strong>, <strong>Attribut</strong>, <strong>Relation</strong>, <strong>Tabelle</strong></p>
+    <input type="text" id="norm-q12-answer">
+    <button onclick="checkFillBlank('norm-q12-answer', ['Determinante'])">Überprüfen</button>
+    <span id="result-norm-q12-answer" class="result"></span>
+</div>
+
+<!-- Frage 13 -->
+<div class="question">
+    <p><strong>Frage 13:</strong> Eine Tabelle, die wiederholte Gruppen enthält, ist nicht in der ________ Normalform.</p>
+    <input type="radio" name="norm-q13" value="a"> A) Ersten<br>
+    <input type="radio" name="norm-q13" value="b"> B) Zweiten<br>
+    <input type="radio" name="norm-q13" value="c"> C) Dritten<br>
+    <input type="radio" name="norm-q13" value="d"> D) Boyce-Codd<br>
+    <button onclick="checkMC('norm-q13', 'a')">Überprüfen</button>
+    <span id="result-norm-q13" class="result"></span>
+</div>
+
+<!-- Frage 14 -->
+<div class="question">
+    <p><strong>Frage 14:</strong> Die ________ Normalform stellt sicher, dass keine mehrwertigen Abhängigkeiten existieren.</p>
+    <p>Optionen: <strong>Erste</strong>, <strong>Zweite</strong>, <strong>Dritte</strong>, <strong>Vierte</strong>, <strong>Fünfte</strong></p>
+    <input type="text" id="norm-q14-answer">
+    <button onclick="checkFillBlank('norm-q14-answer', ['Vierte'])">Überprüfen</button>
+    <span id="result-norm-q14-answer" class="result"></span>
+</div>
+
+<!-- Frage 15 -->
+<div class="question">
+    <p><strong>Frage 15:</strong> Was ist eine transitive Abhängigkeit?</p>
+    <input type="radio" name="norm-q15" value="a"> A) Wenn ein Schlüsselattribut von einem Nicht-Schlüsselattribut abhängt<br>
+    <input type="radio" name="norm-q15" value="b"> B) Wenn ein Nicht-Schlüsselattribut von einem anderen Nicht-Schlüsselattribut abhängt<br>
+    <input type="radio" name="norm-q15" value="c"> C) Wenn ein Attribut von einem zusammengesetzten Schlüssel abhängt<br>
+    <input type="radio" name="norm-q15" value="d"> D) Wenn ein Attribut mehrere Werte hat<br>
+    <button onclick="checkMC('norm-q15', 'b')">Überprüfen</button>
+    <span id="result-norm-q15" class="result"></span>
+</div>
+
+<!-- Frage 16 -->
+<div class="question">
+    <p><strong>Frage 16:</strong> Welche der folgenden ist KEIN Ziel der Normalisierung?</p>
+    <p>Optionen: <strong>Redundanz reduzieren</strong>, <strong>Datenkonsistenz erhöhen</strong>, <strong>Abfrageleistung verschlechtern</strong>, <strong>Anomalien vermeiden</strong>, <strong>Datenintegrität verbessern</strong></p>
+    <input type="text" id="norm-q16-answer">
+    <button onclick="checkFillBlank('norm-q16-answer', ['Abfrageleistung verschlechtern'])">Überprüfen</button>
+    <span id="result-norm-q16-answer" class="result"></span>
+</div>
+
+<!-- Frage 17 -->
+<div class="question">
+    <p><strong>Frage 17:</strong> Was versteht man unter einer partiellen Abhängigkeit?</p>
+    <input type="radio" name="norm-q17" value="a"> A) Ein Nicht-Schlüsselattribut hängt vom gesamten Primärschlüssel ab<br>
+    <input type="radio" name="norm-q17" value="b"> B) Ein Nicht-Schlüsselattribut hängt von einem Teil des zusammengesetzten Primärschlüssels ab<br>
+    <input type="radio" name="norm-q17" value="c"> C) Ein Schlüsselattribut hängt von einem Nicht-Schlüsselattribut ab<br>
+    <input type="radio" name="norm-q17" value="d"> D) Ein Attribut hängt von mehreren Schlüsseln ab<br>
+    <button onclick="checkMC('norm-q17', 'b')">Überprüfen</button>
+    <span id="result-norm-q17" class="result"></span>
+</div>
+
+<!-- Frage 18 -->
+<div class="question">
+    <p><strong>Frage 18:</strong> Die fünfte Normalform befasst sich mit ________ Abhängigkeiten.</p>
+    <p>Optionen: <strong>Mehrwertigen</strong>, <strong>Transitiv</strong>, <strong>Join</strong>, <strong>Funktionalen</strong>, <strong>Partiellen</strong></p>
+    <input type="text" id="norm-q18-answer">
+    <button onclick="checkFillBlank('norm-q18-answer', ['Join'])">Überprüfen</button>
+    <span id="result-norm-q18-answer" class="result"></span>
+</div>
+
+<!-- Frage 19 -->
+<div class="question">
+    <p><strong>Frage 19:</strong> Welche Anomalie tritt auf, wenn gleiche Daten mehrmals geändert werden müssen?</p>
+    <input type="radio" name="norm-q19" value="a"> A) Einfügeanomalie<br>
+    <input type="radio" name="norm-q19" value="b"> B) Änderungsanomalie<br>
+    <input type="radio" name="norm-q19" value="c"> C) Löschanomalie<br>
+    <input type="radio" name="norm-q19" value="d"> D) Inkonsistenzanomalie<br>
+    <button onclick="checkMC('norm-q19', 'b')">Überprüfen</button>
+    <span id="result-norm-q19" class="result"></span>
+</div>
+
+<!-- Frage 20 -->
+<div class="question">
+    <p><strong>Frage 20:</strong> In welcher Normalform müssen alle Determinanten Kandidatenschlüssel sein?</p>
+    <p>Optionen: <strong>Erste</strong>, <strong>Zweite</strong>, <strong>Dritte</strong>, <strong>Boyce-Codd</strong>, <strong>Vierte</strong></p>
+    <input type="text" id="norm-q20-answer">
+    <button onclick="checkFillBlank('norm-q20-answer', ['Boyce-Codd'])">Überprüfen</button>
+    <span id="result-norm-q20-answer" class="result"></span>
+</div>
+
+
+    </div>
+
+    <!-- SQL -->
+    <div class="section">
+        <h2>SQL</h2>
+        <!-- Fragen zu SQL -->
+        <!-- Frage 1 bis 20 -->
+       <!-- Frage 1 -->
+<div class="question">
+    <p><strong>Frage 1:</strong> Welche SQL-Anweisung wird verwendet, um Daten in eine Tabelle einzufügen?</p>
+    <input type="radio" name="sql-q1" value="a"> A) SELECT<br>
+    <input type="radio" name="sql-q1" value="b"> B) INSERT INTO<br>
+    <input type="radio" name="sql-q1" value="c"> C) UPDATE<br>
+    <input type="radio" name="sql-q1" value="d"> D) DELETE<br>
+    <button onclick="checkMC('sql-q1', 'b')">Überprüfen</button>
+    <span id="result-sql-q1" class="result"></span>
+</div>
+
+<!-- Frage 2 -->
+<div class="question">
+    <p><strong>Frage 2:</strong> Mit welcher SQL-Anweisung können Daten aus einer Tabelle abgerufen werden?</p>
+    <p>Optionen: <strong>SELECT</strong>, <strong>INSERT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>, <strong>CREATE</strong></p>
+    <input type="text" id="sql-q2-answer">
+    <button onclick="checkFillBlank('sql-q2-answer', ['SELECT'])">Überprüfen</button>
+    <span id="result-sql-q2-answer" class="result"></span>
+</div>
+
+<!-- Frage 3 -->
+<div class="question">
+    <p><strong>Frage 3:</strong> Welche SQL-Anweisung wird verwendet, um eine neue Tabelle zu erstellen?</p>
+    <input type="radio" name="sql-q3" value="a"> A) ALTER TABLE<br>
+    <input type="radio" name="sql-q3" value="b"> B) CREATE TABLE<br>
+    <input type="radio" name="sql-q3" value="c"> C) DROP TABLE<br>
+    <input type="radio" name="sql-q3" value="d"> D) INSERT INTO<br>
+    <button onclick="checkMC('sql-q3', 'b')">Überprüfen</button>
+    <span id="result-sql-q3" class="result"></span>
+</div>
+
+<!-- Frage 4 -->
+<div class="question">
+    <p><strong>Frage 4:</strong> Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu ändern?</p>
+    <p>Optionen: <strong>SELECT</strong>, <strong>INSERT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>, <strong>DROP</strong></p>
+    <input type="text" id="sql-q4-answer">
+    <button onclick="checkFillBlank('sql-q4-answer', ['UPDATE'])">Überprüfen</button>
+    <span id="result-sql-q4-answer" class="result"></span>
+</div>
+
+<!-- Frage 5 -->
+<div class="question">
+    <p><strong>Frage 5:</strong> Welche Klausel wird verwendet, um die Anzahl der zurückgegebenen Datensätze zu reduzieren?</p>
+    <input type="radio" name="sql-q5" value="a"> A) ORDER BY<br>
+    <input type="radio" name="sql-q5" value="b"> B) GROUP BY<br>
+    <input type="radio" name="sql-q5" value="c"> C) WHERE<br>
+    <input type="radio" name="sql-q5" value="d"> D) HAVING<br>
+    <button onclick="checkMC('sql-q5', 'c')">Überprüfen</button>
+    <span id="result-sql-q5" class="result"></span>
+</div>
+
+<!-- Frage 6 -->
+<div class="question">
+    <p><strong>Frage 6:</strong> Mit welchem Befehl löscht man eine Tabelle in SQL?</p>
+    <p>Optionen: <strong>DELETE TABLE</strong>, <strong>REMOVE TABLE</strong>, <strong>DROP TABLE</strong>, <strong>TRUNCATE TABLE</strong>, <strong>ALTER TABLE</strong></p>
+    <input type="text" id="sql-q6-answer">
+    <button onclick="checkFillBlank('sql-q6-answer', ['DROP TABLE'])">Überprüfen</button>
+    <span id="result-sql-q6-answer" class="result"></span>
+</div>
+
+<!-- Frage 7 -->
+<div class="question">
+    <p><strong>Frage 7:</strong> Welche SQL-Funktion wird verwendet, um die Anzahl der Datensätze zu zählen?</p>
+    <input type="radio" name="sql-q7" value="a"> A) SUM()<br>
+    <input type="radio" name="sql-q7" value="b"> B) COUNT()<br>
+    <input type="radio" name="sql-q7" value="c"> C) AVG()<br>
+    <input type="radio" name="sql-q7" value="d"> D) MAX()<br>
+    <button onclick="checkMC('sql-q7', 'b')">Überprüfen</button>
+    <span id="result-sql-q7" class="result"></span>
+</div>
+
+<!-- Frage 8 -->
+<div class="question">
+    <p><strong>Frage 8:</strong> Welche Klausel wird verwendet, um Datensätze in einer bestimmten Reihenfolge zu sortieren?</p>
+    <p>Optionen: <strong>ORDER BY</strong>, <strong>GROUP BY</strong>, <strong>WHERE</strong>, <strong>HAVING</strong>, <strong>SELECT</strong></p>
+    <input type="text" id="sql-q8-answer">
+    <button onclick="checkFillBlank('sql-q8-answer', ['ORDER BY'])">Überprüfen</button>
+    <span id="result-sql-q8-answer" class="result"></span>
+</div>
+
+<!-- Frage 9 -->
+<div class="question">
+    <p><strong>Frage 9:</strong> Welche SQL-Anweisung wird verwendet, um eine Tabelle zu ändern (z.B. eine Spalte hinzufügen)?</p>
+    <input type="radio" name="sql-q9" value="a"> A) ALTER TABLE<br>
+    <input type="radio" name="sql-q9" value="b"> B) MODIFY TABLE<br>
+    <input type="radio" name="sql-q9" value="c"> C) CHANGE TABLE<br>
+    <input type="radio" name="sql-q9" value="d"> D) UPDATE TABLE<br>
+    <button onclick="checkMC('sql-q9', 'a')">Überprüfen</button>
+    <span id="result-sql-q9" class="result"></span>
+</div>
+
+<!-- Frage 10 -->
+<div class="question">
+    <p><strong>Frage 10:</strong> Welche SQL-Funktion gibt den größten Wert einer Spalte zurück?</p>
+    <p>Optionen: <strong>MIN()</strong>, <strong>MAX()</strong>, <strong>SUM()</strong>, <strong>AVG()</strong>, <strong>COUNT()</strong></p>
+    <input type="text" id="sql-q10-answer">
+    <button onclick="checkFillBlank('sql-q10-answer', ['MAX()'])">Überprüfen</button>
+    <span id="result-sql-q10-answer" class="result"></span>
+</div>
+
+<!-- Frage 11 -->
+<div class="question">
+    <p><strong>Frage 11:</strong> Welche Klausel wird verwendet, um Datensätze mit gleichen Werten in Gruppen zu ordnen?</p>
+    <input type="radio" name="sql-q11" value="a"> A) ORDER BY<br>
+    <input type="radio" name="sql-q11" value="b"> B) GROUP BY<br>
+    <input type="radio" name="sql-q11" value="c"> C) WHERE<br>
+    <input type="radio" name="sql-q11" value="d"> D) HAVING<br>
+    <button onclick="checkMC('sql-q11', 'b')">Überprüfen</button>
+    <span id="result-sql-q11" class="result"></span>
+</div>
+
+<!-- Frage 12 -->
+<div class="question">
+    <p><strong>Frage 12:</strong> Welche SQL-Anweisung wird verwendet, um eine vorhandene Datenbank zu löschen?</p>
+    <p>Optionen: <strong>DROP DATABASE</strong>, <strong>DELETE DATABASE</strong>, <strong>REMOVE DATABASE</strong>, <strong>TRUNCATE DATABASE</strong>, <strong>ALTER DATABASE</strong></p>
+    <input type="text" id="sql-q12-answer">
+    <button onclick="checkFillBlank('sql-q12-answer', ['DROP DATABASE'])">Überprüfen</button>
+    <span id="result-sql-q12-answer" class="result"></span>
+</div>
+
+<!-- Frage 13 -->
+<div class="question">
+    <p><strong>Frage 13:</strong> Mit welcher SQL-Funktion kann man den Durchschnittswert einer numerischen Spalte ermitteln?</p>
+    <input type="radio" name="sql-q13" value="a"> A) SUM()<br>
+    <input type="radio" name="sql-q13" value="b"> B) COUNT()<br>
+    <input type="radio" name="sql-q13" value="c"> C) AVG()<br>
+    <input type="radio" name="sql-q13" value="d"> D) MAX()<br>
+    <button onclick="checkMC('sql-q13', 'c')">Überprüfen</button>
+    <span id="result-sql-q13" class="result"></span>
+</div>
+
+<!-- Frage 14 -->
+<div class="question">
+    <p><strong>Frage 14:</strong> Welche Klausel wird verwendet, um Bedingungen für Gruppen zu definieren?</p>
+    <p>Optionen: <strong>WHERE</strong>, <strong>HAVING</strong>, <strong>GROUP BY</strong>, <strong>ORDER BY</strong>, <strong>SELECT</strong></p>
+    <input type="text" id="sql-q14-answer">
+    <button onclick="checkFillBlank('sql-q14-answer', ['HAVING'])">Überprüfen</button>
+    <span id="result-sql-q14-answer" class="result"></span>
+</div>
+
+<!-- Frage 15 -->
+<div class="question">
+    <p><strong>Frage 15:</strong> Welche SQL-Anweisung wird verwendet, um doppelte Datensätze zu vermeiden?</p>
+    <input type="radio" name="sql-q15" value="a"> A) SELECT DISTINCT<br>
+    <input type="radio" name="sql-q15" value="b"> B) SELECT UNIQUE<br>
+    <input type="radio" name="sql-q15" value="c"> C) SELECT DIFFERENT<br>
+    <input type="radio" name="sql-q15" value="d"> D) SELECT SINGLE<br>
+    <button onclick="checkMC('sql-q15', 'a')">Überprüfen</button>
+    <span id="result-sql-q15" class="result"></span>
+</div>
+
+<!-- Frage 16 -->
+<div class="question">
+    <p><strong>Frage 16:</strong> Welche SQL-Klausel wird verwendet, um eine Bedingung aufzustellen?</p>
+    <p>Optionen: <strong>FROM</strong>, <strong>WHERE</strong>, <strong>GROUP BY</strong>, <strong>ORDER BY</strong>, <strong>HAVING</strong></p>
+    <input type="text" id="sql-q16-answer">
+    <button onclick="checkFillBlank('sql-q16-answer', ['WHERE'])">Überprüfen</button>
+    <span id="result-sql-q16-answer" class="result"></span>
+</div>
+
+<!-- Frage 17 -->
+<div class="question">
+    <p><strong>Frage 17:</strong> Welche SQL-Anweisung löscht Daten aus einer Datenbank?</p>
+    <input type="radio" name="sql-q17" value="a"> A) REMOVE<br>
+    <input type="radio" name="sql-q17" value="b"> B) DELETE<br>
+    <input type="radio" name="sql-q17" value="c"> C) DROP<br>
+    <input type="radio" name="sql-q17" value="d"> D) TRUNCATE<br>
+    <button onclick="checkMC('sql-q17', 'b')">Überprüfen</button>
+    <span id="result-sql-q17" class="result"></span>
+</div>
+
+<!-- Frage 18 -->
+<div class="question">
+    <p><strong>Frage 18:</strong> Welche JOIN-Art gibt alle Datensätze aus, bei denen es einen Match in beiden Tabellen gibt?</p>
+    <p>Optionen: <strong>INNER JOIN</strong>, <strong>LEFT JOIN</strong>, <strong>RIGHT JOIN</strong>, <strong>FULL OUTER JOIN</strong>, <strong>CROSS JOIN</strong></p>
+    <input type="text" id="sql-q18-answer">
+    <button onclick="checkFillBlank('sql-q18-answer', ['INNER JOIN'])">Überprüfen</button>
+    <span id="result-sql-q18-answer" class="result"></span>
+</div>
+
+<!-- Frage 19 -->
+<div class="question">
+    <p><strong>Frage 19:</strong> Mit welcher SQL-Funktion kann man den kleinsten Wert einer Spalte ermitteln?</p>
+    <input type="radio" name="sql-q19" value="a"> A) MIN()<br>
+    <input type="radio" name="sql-q19" value="b"> B) MAX()<br>
+    <input type="radio" name="sql-q19" value="c"> C) SUM()<br>
+    <input type="radio" name="sql-q19" value="d"> D) AVG()<br>
+    <button onclick="checkMC('sql-q19', 'a')">Überprüfen</button>
+    <span id="result-sql-q19" class="result"></span>
+</div>
+
+<!-- Frage 20 -->
+<div class="question">
+    <p><strong>Frage 20:</strong> Welche SQL-Anweisung wird verwendet, um eine Datenbank zu erstellen?</p>
+    <p>Optionen: <strong>CREATE DATABASE</strong>, <strong>CREATE TABLE</strong>, <strong>NEW DATABASE</strong>, <strong>MAKE DATABASE</strong>, <strong>ADD DATABASE</strong></p>
+    <input type="text" id="sql-q20-answer">
+    <button onclick="checkFillBlank('sql-q20-answer', ['CREATE DATABASE'])">Überprüfen</button>
+    <span id="result-sql-q20-answer" class="result"></span>
+</div>
+
+    </div>
+
+    <script>
+        function checkMC(questionName, correctAnswer) {
+            var options = document.getElementsByName(questionName);
+            var resultSpan = document.getElementById('result-' + questionName);
+            var selected = null;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    selected = options[i].value;
+                    break;
+                }
+            }
+            if (selected === correctAnswer) {
+                resultSpan.textContent = "Richtig!";
+                resultSpan.className = "result correct";
+            } else {
+                resultSpan.textContent = "Falsch!";
+                resultSpan.className = "result incorrect";
+            }
+        }
+
+        function checkFillBlank(inputId, correctAnswers) {
+            var userInput = document.getElementById(inputId).value.trim().toLowerCase();
+            var resultSpan = document.getElementById('result-' + inputId);
+            var isCorrect = correctAnswers.some(function(answer) {
+                return userInput === answer.toLowerCase();
+            });
+            if (isCorrect) {
+                resultSpan.textContent = "Richtig!";
+                resultSpan.className = "result correct";
+            } else {
+                resultSpan.textContent = "Falsch!";
+                resultSpan.className = "result incorrect";
+            }
+        }
+    </script>
+
+</body>
+</html>
