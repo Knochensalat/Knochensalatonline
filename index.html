@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FSND31 Übungsplattform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         /* Reset CSS */
         * {
@@ -28,13 +28,14 @@
 
         /* Header */
         .hero {
-            background: url('https://images.unsplash.com/photo-1581093588401-72f63a9f3d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1581093588401-72f63a9f3d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
             position: relative;
             color: #fff;
+            padding: 20px;
         }
 
         .hero::after {
@@ -44,29 +45,101 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* Hintergrund abgedunkelt für edleren Look */
             background: rgba(0, 0, 0, 0.5);
         }
 
-        .hero-content {
-            position: relative;
-            text-align: center;
+        .header-left {
+            flex: 1;
             z-index: 1;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .header-right {
+            flex: 1;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero-content p {
             font-size: 1.5rem;
+            font-weight: 300;
         }
 
         .countdown {
             font-size: 1.5rem;
-            text-align: center;
             margin-top: 20px;
-            color: #333;
+            color: #fff;
+        }
+
+        /* Datum und Kalenderwoche */
+        #date-week, #holiday-message {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        /* Klausurtermine */
+        #exam-dates {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        /* Stundenplan Styles */
+        #timetable {
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+        }
+
+        #timetable th, #timetable td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #timetable th {
+            background-color: #f2f2f2;
+        }
+
+        /* Aktuelles Fach hervorheben */
+        .current-class {
+            background-color: red; /* Rot */
+            color: #fff;
+        }
+
+        /* Aktueller Tag hervorheben */
+        .current-day {
+            background-color: #ffd700; /* Gold */
+        }
+
+        /* Bilder in ursprünglicher Größe */
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
         }
 
         /* Hauptinhalt */
@@ -110,14 +183,6 @@
             box-shadow: 0 10px 15px rgba(0,0,0,0.2);
         }
 
-        .card img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
         .card h3 {
             margin-bottom: 10px;
             font-size: 1.2rem;
@@ -139,6 +204,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -151,6 +220,11 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            #timetable {
+                font-size: 0.8rem;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -158,35 +232,283 @@
 
     <!-- Header / Hero -->
     <header class="hero">
-        <div class="hero-content">
-            <h1>FSND31 Übungsplattform</h1>
-            <p>Deine Lernfelder und Fächer auf einen Blick</p>
-            <div class="countdown" id="countdown"></div>
+        <div class="header-left">
+            <div class="hero-content">
+                <h1>FSND31 Übungsplattform</h1>
+                <p>Deine Lernfelder und Fächer auf einen Blick</p>
+                <div class="countdown" id="countdown"></div>
+
+                <!-- Aktuelles Datum und Kalenderwoche -->
+                <div id="date-week"></div>
+                <!-- Ferienhinweis -->
+                <div id="holiday-message"></div>
+                <!-- Klausurtermine -->
+                <div id="exam-dates"></div>
+            </div>
+        </div>
+        <div class="header-right">
+            <!-- Stundenplan -->
+            <table id="timetable">
+                <thead>
+                    <tr>
+                        <th>Zeit</th>
+                        <th>Montag</th>
+                        <th>Dienstag</th>
+                        <th>Mittwoch</th>
+                        <th>Donnerstag</th>
+                        <th>Freitag</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+                    <!-- Inhalte werden dynamisch generiert -->
+                </tbody>
+            </table>
         </div>
     </header>
 
-    <!-- JavaScript für Countdown -->
+    <!-- JavaScript für Countdown und Stundenplan -->
     <script>
-        function countWeekdaysUntil(targetDate) {
-            let today = new Date();
-            let weekdaysCount = 0;
-
-            while (today < targetDate) {
-                today.setDate(today.getDate() + 1);
-                let day = today.getDay();
-                if (day !== 0 && day !== 6) {
-                    weekdaysCount++;
-                }
-            }
-            return weekdaysCount;
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
+            // Countdown
+            function countWeekdaysUntil(targetDate) {
+                let today = new Date();
+                let weekdaysCount = 0;
+
+                while (today < targetDate) {
+                    today.setDate(today.getDate() + 1);
+                    let day = today.getDay();
+                    if (day !== 0 && day !== 6) {
+                        weekdaysCount++;
+                    }
+                }
+                return weekdaysCount;
+            }
+
             const targetDate = new Date("2024-12-20");
             const countdownElement = document.getElementById("countdown");
             const weekdaysLeft = countWeekdaysUntil(targetDate);
 
             countdownElement.textContent = `Nur noch ${weekdaysLeft} Schultage bis zu den Weihnachtsferien`;
+
+            // Aktuelles Datum und Kalenderwoche
+            const today = new Date();
+            // Setze die Zeit auf Mitternacht für genaue Datumsvergleiche
+            today.setHours(0,0,0,0);
+
+            function getWeekNumber(d) {
+                d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+                const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1)/7);
+                return weekNo;
+            }
+
+            const weekNumber = getWeekNumber(today);
+            const isEvenWeek = weekNumber % 2 === 0;
+
+            const dateWeekElement = document.getElementById("date-week");
+            dateWeekElement.textContent = `Heute ist ${today.toLocaleDateString('de-DE')} - Kalenderwoche ${weekNumber}`;
+
+            // Ferienhinweis bis einschließlich 21.11.2024
+            const holidayMessageElement = document.getElementById("holiday-message");
+            const holidayDate = new Date("2024-11-21");
+            if (today <= holidayDate) {
+                holidayMessageElement.textContent = "21.11.2024 ist Schulfrei!";
+            }
+
+            // Klausurtermine
+            const exams = [
+                { date: "2024-11-07", text: "Lernfeld 10 Klausur" },
+                { date: "2024-11-12", text: "Englisch Vokabeltest" },
+                { date: "2024-11-13", text: "Projektabgabe Lernfeld 09" },
+                { date: "2024-11-14", text: "Lernfeld 05 Projektabgabe" },
+                { date: "2024-11-15", text: "Lernfeld 02 Klausur" },
+                { date: "2024-12-03", text: "Lernfeld 06 Klausur" },
+                { date: "2024-12-09", text: "Lernfeld Klausur" },
+                { date: "2024-12-17", text: "Mathe Klausur" }
+            ];
+
+            // Funktion zum Formatieren des Datums mit führenden Nullen
+            function formatDate(date) {
+                let day = date.getDate();
+                let month = date.getMonth() + 1; // Monate sind nullbasiert
+                let year = date.getFullYear();
+
+                // Führende Nullen hinzufügen
+                if (day < 10) {
+                    day = '0' + day;
+                }
+                if (month < 10) {
+                    month = '0' + month;
+                }
+
+                return `${day}.${month}.${year}`;
+            }
+
+            // Filtere nur zukünftige Termine (bis einschließlich Klausurdatum)
+            const upcomingExams = exams.filter(exam => {
+                const examDate = new Date(exam.date);
+                examDate.setHours(0,0,0,0);
+                return examDate >= today;
+            });
+
+            // Sortiere nach Datum
+            upcomingExams.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            // Zeige alle anstehenden Termine an
+            const examDatesElement = document.getElementById("exam-dates");
+            if (upcomingExams.length > 0) {
+                examDatesElement.innerHTML = "<h3>Klausur- und Projekttermine:</h3>" + upcomingExams.map(exam => {
+                    const examDate = new Date(exam.date);
+                    return `<div>${formatDate(examDate)}: ${exam.text}</div>`;
+                }).join("");
+            } else {
+                examDatesElement.innerHTML = "<h3>Keine anstehenden Termine.</h3>";
+            }
+
+            // Stundenplan
+            const timetableBody = document.getElementById("timetable-body");
+
+            // Stundenplan Daten
+            let timetableData = [
+                {
+                    time: "07:45 - 09:15",
+                    monday: "Lernfeld 10",
+                    tuesday: "Lernfeld 03",
+                    wednesday: "Lernfeld 09",
+                    thursday: "Lernfeld 10",
+                    friday: "Lernfeld 02"
+                },
+                {
+                    time: "09:15 - 09:30",
+                    monday: "Pause",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "Pause",
+                    friday: "Pause"
+                },
+                {
+                    time: "09:30 - 11:00",
+                    monday: "Lernfeld 09",
+                    tuesday: "Mathe",
+                    wednesday: "Lernfeld 05",
+                    thursday: "Projekt",
+                    friday: "Lernfeld 07"
+                },
+                {
+                    time: "11:00 - 11:15",
+                    monday: "Pause",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "Pause",
+                    friday: "Pause"
+                },
+                {
+                    time: "11:15 - 12:45",
+                    monday: "Lernfeld 01",
+                    tuesday: "Lernfeld 07",
+                    wednesday: "Lernfeld 03",
+                    thursday: "Lernfeld 08",
+                    friday: "Lernfeld 08"
+                },
+                {
+                    time: "12:45 - 13:00",
+                    monday: "",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "",
+                    friday: ""
+                },
+                {
+                    time: "13:00 - 14:30",
+                    monday: "",
+                    tuesday: "",
+                    wednesday: "",
+                    thursday: "",
+                    friday: ""
+                }
+            ];
+
+            // Setze das Fach für 13:00 - 14:30 Uhr je nach gerader oder ungerader Woche
+            if (isEvenWeek) {
+                timetableData[6].tuesday = "Englisch";
+            } else {
+                timetableData[6].wednesday = "Deutsch";
+            }
+
+            // Entferne die Pause, wenn kein Fach stattfindet
+            if (!timetableData[6].tuesday && !timetableData[6].wednesday) {
+                // Entferne die Pause um 12:45 - 13:00
+                timetableData.splice(5, 1);
+            }
+
+            // Dynamisch den Stundenplan erstellen
+            timetableData.forEach((row, rowIndex) => {
+                const tr = document.createElement('tr');
+
+                const tdTime = document.createElement('td');
+                tdTime.textContent = row.time;
+                tr.appendChild(tdTime);
+
+                ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach((day, dayIndex) => {
+                    const td = document.createElement('td');
+                    td.textContent = row[day];
+
+                    // Aktuellen Tag hervorheben
+                    let currentDayIndex = today.getDay(); // Sonntag - 0, Montag - 1, ..., Samstag - 6
+                    if (currentDayIndex >= 1 && currentDayIndex <= 5 && dayIndex === currentDayIndex - 1) {
+                        td.classList.add('current-day');
+                    }
+
+                    tr.appendChild(td);
+                });
+
+                timetableBody.appendChild(tr);
+            });
+
+            // Aktuelles Fach hervorheben
+            function highlightCurrentClass() {
+                const timeSlots = timetableData.map((row, index) => {
+                    const [start, end] = row.time.split(' - ');
+                    return { start, end, rowIndex: index };
+                });
+
+                const now = new Date();
+                const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+
+                let currentSlot = null;
+
+                for (const slot of timeSlots) {
+                    const [startHour, startMinute] = slot.start.split(':').map(Number);
+                    const [endHour, endMinute] = slot.end.split(':').map(Number);
+                    const slotStartInMinutes = startHour * 60 + startMinute;
+                    const slotEndInMinutes = endHour * 60 + endMinute;
+
+                    if (currentTimeInMinutes >= slotStartInMinutes && currentTimeInMinutes < slotEndInMinutes) {
+                        currentSlot = slot;
+                        break;
+                    }
+                }
+
+                if (currentSlot) {
+                    const rows = timetableBody.getElementsByTagName('tr');
+                    const row = rows[currentSlot.rowIndex];
+                    if (row) {
+                        const cells = row.getElementsByTagName('td');
+                        let dayIndex = now.getDay(); // Sonntag - 0, Montag - 1, ..., Samstag - 6
+                        if (dayIndex >=1 && dayIndex <=5) {
+                            const cell = cells[dayIndex];
+                            if (cell) {
+                                cell.classList.add('current-class');
+                            }
+                        }
+                    }
+                }
+            }
+
+            highlightCurrentClass();
+            // Aktualisiert die Hervorhebung jede Minute
+            setInterval(highlightCurrentClass, 60000);
         });
     </script>
 
