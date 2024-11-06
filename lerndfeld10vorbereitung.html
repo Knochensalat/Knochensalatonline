@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernfeld 10 - FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518309373780-d5f743c82b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section::before {
+            content: "Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%) rotate(-45deg);
+            white-space: nowrap;
+            z-index: -1;
+            width: 200%;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Übungen */
+        .exercises {
+            margin-top: 30px;
+        }
+
+        .exercises h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .exercise {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #007BFF;
+            border-radius: 5px;
+        }
+
+        .exercise p {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section::before {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Lernfeld 10 Klassenarbeit Vorbereitung</h1>
+            <p>Alles, was du für deine Lernfeld 10 -Klassenarbeit wissen musst</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Transitive und Funktionale Abhängigkeiten -->
+        <section class="section">
+            <h2>Transitive und Funktionale Abhängigkeiten</h2>
+            <div class="content">
+                <h3>Funktionale Abhängigkeit</h3>
+                <p>
+                    Eine funktionale Abhängigkeit beschreibt eine Beziehung zwischen zwei Attributen in einer Datenbanktabelle, bei der ein Attribut eindeutig ein anderes bestimmt. Wenn ein Attribut A ein Attribut B funktional bestimmt, bedeutet dies, dass jeder Wert von A nur einem Wert von B zugeordnet ist.
+                </p>
+                <p><strong>Beispiel:</strong> In einer Tabelle „Studenten“ bestimmt die Matrikelnummer (A) den Namen (B). Das heißt, jede Matrikelnummer ist eindeutig einem Namen zugeordnet.</p>
+
+                <h3>Transitive Abhängigkeit</h3>
+                <p>
+                    Eine transitive Abhängigkeit liegt vor, wenn ein Nicht-Schlüsselattribut von einem anderen Nicht-Schlüsselattribut abhängig ist, das wiederum von einem Schlüsselattribut abhängt. Dies führt zu Redundanzen und Anomalien in der Datenbank.
+                </p>
+                <p><strong>Beispiel:</strong> In einer Tabelle „Bestellungen“ bestimmt die Bestellnummer (A) das Kunden-ID (B), und die Kunden-ID bestimmt die Kundenadresse (C). Somit ist die Kundenadresse transitiv von der Bestellnummer abhängig.</p>
+
+                <!-- Eingebettetes Video -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/eCpM7DCzDKk" title="Transitive und Funktionale Abhängigkeit" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Entity-Relationship-Modell (ERM) -->
+        <section class="section">
+            <h2>Entity-Relationship-Modell (ERM)</h2>
+            <div class="content">
+                <h3>Kardinalitäten: Min-Max-Notation</h3>
+                <p>
+                    Kardinalitäten geben an, wie viele Entitäten einer Menge mit Entitäten einer anderen Menge in Beziehung stehen können. Die Min-Max-Notation spezifiziert die minimalen und maximalen Anzahl von Beziehungen.
+                </p>
+                <p><strong>Beispiel:</strong> Eine Person kann mindestens 0 und maximal viele Autos besitzen (0..*).</p>
+
+                <h3>Chen-Notation und Crow's Foot-Notation</h3>
+                <p>
+                    Die Chen-Notation verwendet Rauten für Beziehungstypen und Ellipsen für Attribute. Die Kardinalitäten werden durch Linien mit Symbolen dargestellt. Die Crow's Foot-Notation ist eine populäre Alternative, die eine weniger symbolische und klarere Darstellung bietet.
+                </p>
+                <p><strong>Beispiel:</strong> In der Crow's Foot-Notation zeigt ein "Fledermausfuß" (Crow's Foot) eine "viele" Beziehung an, während eine Linie ohne Symbol eine "eins" Beziehung darstellt.</p>
+
+                <!-- Eingebettete Videos -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/IAj_rnT3Z-k" title="ERM: Chen und Crow's Foot Notation" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/GzwZCh9NJuw" title="ERM: Chen Notation" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Normalisierung von Datenbanken -->
+        <section class="section">
+            <h2>Normalisierung von Datenbanken</h2>
+            <div class="content">
+                <h3>Erste Normalform (1NF)</h3>
+                <p>
+                    Eine Tabelle befindet sich in der ersten Normalform, wenn alle Attribute atomar sind, d.h., sie enthalten keine mehrfachen oder zusammengesetzten Werte. Jeder Wert in einem Attribut muss unteilbar sein und es dürfen keine Wiederholungsgruppen in den Zeilen vorhanden sein.
+                </p>
+                <p><strong>Tabelle nicht in 1NF:</strong></p>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>BestNr</th>
+                        <th>Datum</th>
+                        <th>ArtNr</th>
+                        <th>Beschreibung</th>
+                        <th>Anz</th>
+                        <th>Preis</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>01.10.2024</td>
+                        <td>{1, 2}</td>
+                        <td>{Fowler - NoSQL Distilled, Adams - Hitchhiker‘s Guide}</td>
+                        <td>{1, 42}</td>
+                        <td>61,90</td>
+                    </tr>
+                    <!-- Weitere Zeilen -->
+                </table>
+                <p><strong>Tabelle in 1NF:</strong></p>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>BestNr</th>
+                        <th>Datum</th>
+                        <th>ArtNr</th>
+                        <th>Autor</th>
+                        <th>Titel</th>
+                        <th>Anz</th>
+                        <th>Preis</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>01.10.2024</td>
+                        <td>1</td>
+                        <td>Fowler</td>
+                        <td>NoSQL Distilled</td>
+                        <td>1</td>
+                        <td>19,90</td>
+                    </tr>
+                    <!-- Weitere Zeilen -->
+                </table>
+                <p><strong>Schwächen von 1NF:</strong></p>
+                <ul>
+                    <li>Redundanz aufgrund wiederholter Datenanteile</li>
+                    <li>Update-Anomalien</li>
+                    <li>Inkonsistente Attributwerte</li>
+                    <li>Unvollständiges Einfügen</li>
+                    <li>Löschen mit Informationsverlust</li>
+                </ul>
+
+                <h3>Zweite Normalform (2NF)</h3>
+                <p>
+                    Eine Tabelle befindet sich in der zweiten Normalform, wenn sie sich in der ersten Normalform befindet und alle nicht-schlüssel Attribute vollständig funktional vom gesamten Schlüssel abhängen. Das bedeutet, es darf keine partiellen Abhängigkeiten geben: jedes nicht-schlüssel Attribut muss von der gesamten Kombination von Schlüsseln abhängen und nicht nur von einem Teil davon.
+                </p>
+                <p><strong>Umwandlung von 1NF in 2NF:</strong></p>
+                <ol>
+                    <li>Bilde alle nicht-leeren Teilmengen des Primärschlüssels.</li>
+                    <li>Definiere für jede dieser Teilmengen eine neue Relation mit der Teilmenge als Primärschlüssel.</li>
+                    <li>Füge jedes Nicht-Schlüsselattribut der ursprünglichen Relation zu derjenigen Relation hinzu, von deren gesamtem Primärschlüssel es abhängt.</li>
+                    <li>Lösche die alte Relation sowie alle Relationen, die keine Nicht-Schlüsselattribute besitzen.</li>
+                </ol>
+                <p><strong>Tabelle in 2NF:</strong></p>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>BestNr</th>
+                        <th>Datum</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>01.10.2024</td>
+                    </tr>
+                    <!-- Weitere Zeilen -->
+                </table>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>ArtNr</th>
+                        <th>Autor</th>
+                        <th>Titel</th>
+                        <th>Preis</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Fowler</td>
+                        <td>NoSQL Distilled</td>
+                        <td>19,90</td>
+                    </tr>
+                    <!-- Weitere Zeilen -->
+                </table>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>BestNr</th>
+                        <th>ArtNr</th>
+                        <th>Anz</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <!-- Weitere Zeilen -->
+                </table>
+                <p>
+                    <strong>Beispiel:</strong> Die Artikel-Tabelle wurde getrennt von der Bestellungen-Tabelle, um Redundanzen zu vermeiden und partielle Abhängigkeiten zu eliminieren.
+                </p>
+
+                <!-- Eingebettetes Video -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/caMVrHP-SIs" title="Normalisierung von Datenbanken" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Übungen zu Normalisierung -->
+        <section class="section exercises">
+            <h2>Übungen zur Normalisierung</h2>
+            <div class="content">
+                <div class="exercise">
+                    <h3>Übung 1: Identifizieren der Normalform</h3>
+                    <p>
+                        Gegeben ist die folgende Tabelle:
+                    </p>
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <th>StudentID</th>
+                            <th>Name</th>
+                            <th>Kurs</th>
+                            <th>Dozent</th>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Anna Müller</td>
+                            <td>Mathe</td>
+                            <td>Dr. Schmidt</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Peter Lange</td>
+                            <td>Physik</td>
+                            <td>Dr. Becker</td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Anna Müller</td>
+                            <td>Physik</td>
+                            <td>Dr. Becker</td>
+                        </tr>
+                    </table>
+                    <p>
+                        Bestimmen Sie, in welcher Normalform sich diese Tabelle befindet und erläutern Sie, welche Änderungen zur nächsten Normalform erforderlich wären.
+                    </p>
+                </div>
+
+                <div class="exercise">
+                    <h3>Übung 2: Umwandlung in 3NF</h3>
+                    <p>
+                        Transformieren Sie die folgende Tabelle in die dritte Normalform:
+                    </p>
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <th>BestNr</th>
+                            <th>Datum</th>
+                            <th>ArtNr</th>
+                            <th>Autor</th>
+                            <th>Titel</th>
+                            <th>Preis</th>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>01.10.2024</td>
+                            <td>1</td>
+                            <td>Fowler</td>
+                            <td>NoSQL Distilled</td>
+                            <td>19,90</td>
+                        </tr>
+                        <!-- Weitere Zeilen -->
+                    </table>
+                </div>
+
+                <!-- Weitere Übungen können hier hinzugefügt werden -->
+            </div>
+        </section>
+
+        <!-- SQL-Erklärungen und Übungen -->
+        <section class="section">
+            <h2>SQL-Erklärungen und Übungen</h2>
+            <div class="content">
+                <h3>Grundlegende SQL-Statements</h3>
+                <p>
+                    SQL (Structured Query Language) ist eine standardisierte Sprache zur Verwaltung und Manipulation von relationalen Datenbanken. Hier sind einige grundlegende SQL-Statements:
+                </p>
+
+                <h4>Projektion</h4>
+                <p>
+                    Die Projektion selektiert bestimmte Spalten aus einer Tabelle.
+                </p>
+                <p><strong>Beispiel:</strong> Ermittle Vor- und Nachnamen sowie die E-Mail-Adressen aller Kunden:
+                </p>
+                <pre><code>SELECT Vorname, Nachname, Email
+FROM Kunden;</code></pre>
+
+                <h4>Selektion</h4>
+                <p>
+                    Die Selektion filtert Zeilen basierend auf bestimmten Bedingungen.
+                </p>
+                <p><strong>Beispiel:</strong> Ermittle alle Adressdaten aus dem Distrikt "Ohio":
+                </p>
+                <pre><code>SELECT *
+FROM Adressen
+WHERE Distrikt = 'Ohio';</code></pre>
+
+                <!-- Eingebettetes Video -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/eCpM7DCzDKk" title="SQL Basics" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <h3>Einfaches Verbinden von Tabellen</h3>
+                <p>
+                    Durch das Verbinden von Tabellen (JOIN) können Daten aus mehreren Tabellen basierend auf verwandten Spalten kombiniert werden.
+                </p>
+                <p><strong>Beispiel:</strong> Verbinde die Tabellen Kunden und Bestellungen über die Kunden-ID:
+                </p>
+                <pre><code>SELECT Kunden.Vorname, Kunden.Nachname, Bestellungen.BestNr, Bestellungen.Datum
+FROM Kunden
+JOIN Bestellungen ON Kunden.KundenID = Bestellungen.KundenID;</code></pre>
+
+                <!-- Eingebettetes Video -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/IAj_rnT3Z-k" title="SQL Joins" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Übungen zu SQL -->
+        <section class="section exercises">
+            <h2>Übungen zu SQL</h2>
+            <div class="content">
+                <div class="exercise">
+                    <h3>Übung 1: Projektion</h3>
+                    <p>
+                        Ermittle die Vor- und Nachnamen sowie die E-Mail-Adressen aller Kunden aus der Tabelle <code>Kunden</code>.
+                    </p>
+                    <pre><code>-- Deine SQL-Abfrage hier</code></pre>
+                </div>
+
+                <div class="exercise">
+                    <h3>Übung 2: Selektion</h3>
+                    <p>
+                        Zeige alle Distrikte aus der Tabelle <code>Adressen</code>, eliminiere dabei Duplikate.
+                    </p>
+                    <pre><code>-- Deine SQL-Abfrage hier</code></pre>
+                </div>
+
+                <div class="exercise">
+                    <h3>Übung 3: Join</h3>
+                    <p>
+                        Verbinde die Tabellen <code>Kunden</code> und <code>Bestellungen</code>, um die Vor- und Nachnamen der Kunden sowie deren Bestellnummern und -daten anzuzeigen.
+                    </p>
+                    <pre><code>-- Deine SQL-Abfrage hier</code></pre>
+                </div>
+
+                <!-- Weitere Übungen können hier hinzugefügt werden -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
