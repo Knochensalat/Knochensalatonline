@@ -369,6 +369,22 @@
             // Stundenplan
             const timetableBody = document.getElementById("timetable-body");
 
+            // Mapping der Fächer zu URLs
+            const subjectLinks = {
+                "Lernfeld 01": "lernfeld01",
+                "Lernfeld 02": "lernfeld02",
+                "Lernfeld 03": "lernfeld03",
+                "Lernfeld 05": "lernfeld05",
+                "Lernfeld 07": "lernfeld07",
+                "Lernfeld 08": "lernfeld08",
+                "Lernfeld 09": "lernfeld09",
+                "Lernfeld 10": "lernfeld10",
+                "Mathe": "https://knochensalat.de/mathe",
+                "Englisch": "englisch",
+                "Deutsch": "#deutsch",
+                "Projekt": "projekt"
+            };
+
             // Stundenplan Daten
             let timetableData = [
                 {
@@ -452,7 +468,17 @@
 
                 ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach((day, dayIndex) => {
                     const td = document.createElement('td');
-                    td.textContent = row[day];
+                    const subjectName = row[day];
+
+                    if (subjectName && subjectName !== "Pause") {
+                        if (subjectLinks[subjectName]) {
+                            td.innerHTML = `<a href="${subjectLinks[subjectName]}">${subjectName}</a>`;
+                        } else {
+                            td.textContent = subjectName;
+                        }
+                    } else {
+                        td.textContent = subjectName;
+                    }
 
                     // Aktuellen Tag hervorheben
                     let currentDayIndex = today.getDay(); // Sonntag - 0, Montag - 1, ..., Samstag - 6
@@ -544,7 +570,7 @@
                     </div>
                 </a>
                 <!-- Lernfeld 4 -->
-                <a href="https://img.freepik.com/vektoren-premium/ein-roter-stempel-mit-dem-wort-abgeschlossen_545399-4127.jpg">
+                <a href="lernfeld04">
                     <div class="card">
                         <img src="https://www.elektro-hohn.de/images/leistungen/elektrotechnik01.jpg" alt="Lernfeld 4">
                         <h3>Lernfeld 4</h3>
