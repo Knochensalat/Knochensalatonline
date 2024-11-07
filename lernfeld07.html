@@ -212,18 +212,25 @@
 
         <!-- Reiter -->
         <section class="section">
-            <h2> Übungen und Unterrichtsmaterial </h2>
+            <h2>Übungen und Unterrichtsmaterial</h2>
             <div class="cards">
-                <!-- Reiter 1 -->
+                <!-- Statische Datumskachel -->
                 <a href="lernfeld07241105.html">
                     <div class="card">
                         <img src="https://via.placeholder.com/100" alt="Reiter 1">
                         <h3>05.11.2024</h3>
-                        <p>IP Adressen </p>
+                        <p>IP Adressen</p>
                     </div>
                 </a>
-                <!-- Reiter 2 bis Reiter 10 (Platzhalter) -->
-                <!-- Wiederhole diesen Abschnitt für die weiteren Reiter wie im vorherigen Beispiel -->
+                
+                <!-- Dynamische Datumskachel -->
+                <a href="lernfeld07241107.html">
+                    <div class="card" id="date-card">
+                        <img src="https://via.placeholder.com/100" alt="Aktuelles Datum">
+                        <h3 id="current-date">Datum wird geladen...</h3>
+                        <p>Aktuelles Thema</p>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -250,6 +257,15 @@
     <footer>
         <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <!-- JavaScript zur Anzeige des aktuellen Datums -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date();
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            document.getElementById("current-date").textContent = today.toLocaleDateString('de-DE', options);
+        });
+    </script>
 
 </body>
 </html>
