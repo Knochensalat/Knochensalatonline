@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netzwerkgrundlagen und Subnetting - FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section::before {
+            content: "Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%) rotate(-45deg);
+            white-space: nowrap;
+            z-index: -1;
+            width: 200%;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Tabellen */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section::before {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Netzwerkgrundlagen und Subnetting</h1>
+            <p>Grundlagen zum Netzwerk- und Hostanteil, IP-Bereichen und Subnetting</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Netz- und Hostanteil -->
+        <section class="section">
+            <h2>Was ist der Netz- und Hostanteil?</h2>
+            <div class="content">
+                <p>
+                    In einem IP-Adressbereich wird zwischen dem Netz- und dem Hostanteil unterschieden:
+                </p>
+                <ul>
+                    <li><strong>Netzanteil:</strong> Identifiziert das Netzwerk und bleibt innerhalb eines Subnetzes gleich.</li>
+                    <li><strong>Hostanteil:</strong> Identifiziert die spezifischen Geräte oder Hosts innerhalb des Netzwerks. Jeder Host benötigt eine eigene eindeutige IP-Adresse.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- IP-Bereich Beispiel -->
+        <section class="section">
+            <h2>IP-Bereich: Beispiel</h2>
+            <div class="content">
+                <p>
+                    Für die IP-Adresse <strong>212.16.133.0</strong> mit der Subnetzmaske <strong>255.255.255.0</strong> gilt:
+                </p>
+                <ul>
+                    <li>Der Bereich reicht von <strong>212.16.133.0</strong> bis <strong>212.16.133.255</strong>.</li>
+                    <li>Es gibt insgesamt <strong>256 IP-Adressen</strong> in diesem Bereich.</li>
+                </ul>
+                <p>
+                    Hierbei wird das Netzwerk durch die Maske definiert, und der Hostanteil variiert innerhalb des Bereichs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Subnetting -->
+        <section class="section">
+            <h2>Subnetting: Ein Netzwerk in Teilnetze aufteilen</h2>
+            <div class="content">
+                <h3>Der Vorgang des Subnettings</h3>
+                <p>
+                    Beim Subnetting wird der Hostanteil in kleinere Teilnetze (Subnets) aufgeteilt, indem Bits aus dem Hostanteil ausgeliehen werden, um die Subnetze zu kennzeichnen.
+                </p>
+
+                <h3>Beispiel für Subnetting mit verschiedenen Masken</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subnetzmaske</th>
+                            <th>Anzahl der Subnetze</th>
+                            <th>IP-Bereich</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>/24</td>
+                            <td>1 Bereich (Grundnetz)</td>
+                            <td>212.16.133.0 bis 212.16.133.255</td>
+                        </tr>
+                        <tr>
+                            <td>/25</td>
+                            <td>2 Subnetze</td>
+                            <td>212.16.133.0 bis 212.16.133.127 und 212.16.133.128 bis 212.16.133.255</td>
+                        </tr>
+                        <tr>
+                            <td>/26</td>
+                            <td>4 Subnetze</td>
+                            <td>212.16.133.0 bis 212.16.133.63, 212.16.133.64 bis 212.16.133.127, usw.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    In diesem Beispiel benötigen wir 3 Subnetze. Durch Subnetting können wir den /24-Bereich in kleinere
