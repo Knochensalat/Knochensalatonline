@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notenrechner nach KMK-Notenschlüssel</title>
+    <title>Notenrechner nach Punktesystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Grundlegende Stile */
@@ -74,13 +74,13 @@
 
     <div class="container">
         <h1>Notenrechner</h1>
-        <p>Berechne deine Note nach dem KMK-Notenschlüssel</p>
+        <p>Berechne deine Note basierend auf der erreichten Punktzahl</p>
 
         <label for="totalPoints">Maximale Punktzahl</label>
-        <input type="number" id="totalPoints" placeholder="z.B. 50" min="1">
+        <input type="number" id="totalPoints" placeholder="z.B. 100" min="1">
 
         <label for="scoredPoints">Erhaltene Punkte</label>
-        <input type="number" id="scoredPoints" placeholder="z.B. 35" min="0">
+        <input type="number" id="scoredPoints" placeholder="z.B. 80" min="0">
 
         <button onclick="calculateGrade()">Berechne Note</button>
 
@@ -102,46 +102,61 @@
             // Prozentualen Wert berechnen
             const percentage = (scoredPoints / totalPoints) * 100;
 
-            // Noten nach KMK-Notenschlüssel bestimmen
-            let grade, tendency;
+            // Noten basierend auf dem Prozentsatz bestimmen
+            let grade, description;
 
             if (percentage >= 95) {
-                grade = 1;
-                tendency = "Sehr gut (+)";
+                grade = "15 Punkte";
+                description = "Sehr gut (1+)";
             } else if (percentage >= 90) {
-                grade = 1;
-                tendency = "Sehr gut (-)";
+                grade = "14 Punkte";
+                description = "Sehr gut (1)";
             } else if (percentage >= 85) {
-                grade = 2;
-                tendency = "Gut (+)";
+                grade = "13 Punkte";
+                description = "Sehr gut (1-)";
             } else if (percentage >= 80) {
-                grade = 2;
-                tendency = "Gut (-)";
+                grade = "12 Punkte";
+                description = "Gut (2+)";
             } else if (percentage >= 75) {
-                grade = 3;
-                tendency = "Befriedigend (+)";
+                grade = "11 Punkte";
+                description = "Gut (2)";
             } else if (percentage >= 70) {
-                grade = 3;
-                tendency = "Befriedigend (-)";
+                grade = "10 Punkte";
+                description = "Gut (2-)";
             } else if (percentage >= 65) {
-                grade = 4;
-                tendency = "Ausreichend (+)";
+                grade = "9 Punkte";
+                description = "Befriedigend (3+)";
             } else if (percentage >= 60) {
-                grade = 4;
-                tendency = "Ausreichend (-)";
+                grade = "8 Punkte";
+                description = "Befriedigend (3)";
+            } else if (percentage >= 55) {
+                grade = "7 Punkte";
+                description = "Befriedigend (3-)";
             } else if (percentage >= 50) {
-                grade = 5;
-                tendency = "Mangelhaft (+)";
+                grade = "6 Punkte";
+                description = "Ausreichend (4+)";
             } else if (percentage >= 45) {
-                grade = 5;
-                tendency = "Mangelhaft (-)";
+                grade = "5 Punkte";
+                description = "Ausreichend (4)";
+            } else if (percentage >= 40) {
+                grade = "4 Punkte";
+                description = "Ausreichend (4-)";
+            } else if (percentage >= 33) {
+                grade = "3 Punkte";
+                description = "Mangelhaft (5+)";
+            } else if (percentage >= 27) {
+                grade = "2 Punkte";
+                description = "Mangelhaft (5)";
+            } else if (percentage >= 20) {
+                grade = "1 Punkt";
+                description = "Mangelhaft (5-)";
             } else {
-                grade = 6;
-                tendency = "Ungenügend";
+                grade = "0 Punkte";
+                description = "Ungenügend (6)";
             }
 
-            // Ergebnis anzeigen
-            document.getElementById('result').textContent = `Note: ${grade} (${tendency}) - ${percentage.toFixed(2)}%`;
+            // Ergebnis anzeigen (Minuszeichen entfernt)
+            document.getElementById('result').textContent = `Note: ${grade} ${description} (${percentage.toFixed(2)}%)`;
         }
     </script>
 
