@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notenrechner nach KMK-Notenschlüssel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Notenrechner</h1>
+        <p>Berechne deine Note nach dem KMK-Notenschlüssel</p>
+
+        <label for="totalPoints">Maximale Punktzahl</label>
+        <input type="number" id="totalPoints" placeholder="z.B. 50" min="1">
+
+        <label for="scoredPoints">Erhaltene Punkte</label>
+        <input type="number" id="scoredPoints" placeholder="z.B. 35" min="0">
+
+        <button onclick="calculateGrade()">Berechne Note</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            // Eingaben abrufen
+            const totalPoints = parseFloat(document.getElementById('totalPoints').value);
+            const scoredPoints = parseFloat(document.getElementById('scoredPoints').value);
+
+            // Überprüfen, ob Eingaben gültig sind
+            if (isNaN(totalPoints) || isNaN(scoredPoints) || totalPoints <= 0 || scoredPoints < 0) {
+                document.getElementById('result').textContent = "Bitte geben Sie gültige Punktzahlen ein.";
+                return;
+            }
+
+            // Prozentualen Wert berechnen
+            const percentage = (scoredPoints / totalPoints) * 100;
+
+            // Noten nach KMK-Notenschlüssel bestimmen
+            let grade, tendency;
+
+            if (percentage >= 95) {
+                grade = 1;
+                tendency = "Sehr gut (+)";
+            } else if (percentage >= 90) {
+                grade = 1;
+                tendency = "Sehr gut (-)";
+            } else if (percentage >= 85) {
+                grade = 2;
+                tendency = "Gut (+)";
+            } else if (percentage >= 80) {
+                grade = 2;
+                tendency = "Gut (-)";
+            } else if (percentage >= 75) {
+                grade = 3;
+                tendency = "Befriedigend (+)";
+            } else if (percentage >= 70) {
+                grade = 3;
+                tendency = "Befriedigend (-)";
+            } else if (percentage >= 65) {
+                grade = 4;
+                tendency = "Ausreichend (+)";
+            } else if (percentage >= 60) {
+                grade = 4;
+                tendency = "Ausreichend (-)";
+            } else if (percentage >= 50) {
+                grade = 5;
+                tendency = "Mangelhaft (+)";
+            } else if (percentage >= 45) {
+                grade = 5;
+                tendency = "Mangelhaft (-)";
+            } else {
+                grade = 6;
+                tendency = "Ungenügend";
+            }
+
+            // Ergebnis anzeigen
+            document.getElementById('result').textContent = `Note: ${grade} (${tendency}) - ${percentage.toFixed(2)}%`;
+        }
+    </script>
+
+</body>
+</html>
