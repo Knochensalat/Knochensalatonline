@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projektmanagement - FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Tabellen */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Übungen */
+        .exercises {
+            margin-top: 30px;
+        }
+
+        .exercises h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .exercise {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #007BFF;
+            border-radius: 5px;
+        }
+
+        .exercise p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Projektmanagement - Grundlagen und Methoden</h1>
+            <p>Lernen Sie die Grundzüge des Projektmanagements und wichtige Techniken kennen.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Projektmanagement-Merkmale -->
+        <section class="section">
+            <h2>Projektmerkmale</h2>
+            <div class="content">
+                <h3>Einzigartigkeit, Zeit, Budget und Zielsetzung</h3>
+                <p>Projekte zeichnen sich durch folgende Merkmale aus:</p>
+                <ul>
+                    <li><strong>Einzigartigkeit:</strong> Jede Bedingung und Anforderung ist einmalig.</li>
+                    <li><strong>Zeitlich begrenzt:</strong> Projekte haben feste Start- und Endzeiten.</li>
+                    <li><strong>Begrenztes Budget:</strong> Es stehen nur bestimmte finanzielle Ressourcen zur Verfügung.</li>
+                    <li><strong>Definiertes Ziel:</strong> Das Projekt verfolgt klare und messbare Ziele.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projektziele und SMART-Kriterien -->
+        <section class="section">
+            <h2>Projektziele und SMART-Kriterien</h2>
+            <div class="content">
+                <h3>Was bedeutet SMART?</h3>
+                <p>Projektziele sollten SMART sein:</p>
+                <ul>
+                    <li><strong>Spezifisch:</strong> Das Ziel ist klar definiert.</li>
+                    <li><strong>Messbar:</strong> Der Fortschritt und Erfolg sind messbar.</li>
+                    <li><strong>Attraktiv:</strong> Das Ziel ist motivierend und erstrebenswert.</li>
+                    <li><strong>Realistisch:</strong> Das Ziel ist erreichbar.</li>
+                    <li><strong>Terminiert:</strong> Es gibt eine klare Deadline.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projektphasen -->
+        <section class="section">
+            <h2>Projektphasen</h2>
+            <div class="content">
+                <p>Ein Projekt gliedert sich in mehrere Phasen:</p>
+                <ul>
+                    <li><strong>Definition:</strong> Projektziele und Rahmenbedingungen werden festgelegt.</li>
+                    <li><strong>Planung:</strong> Ressourcen, Zeit und Aufgaben werden detailliert geplant.</li>
+                    <li><strong>Durchführung:</strong> Das Projekt wird ausgeführt und kontrolliert.</li>
+                    <li><strong>Abschluss:</strong> Projekt wird offiziell abgeschlossen und Ergebnisse dokumentiert.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Risikomanagement -->
+        <section class="section">
+            <h2>Risikomanagement</h2>
+            <div class="content">
+                <p>Risikomanagement dient der Erkennung, Bewertung und Minimierung von Projektrisiken.</p>
+                <ul>
+                    <li><strong>Identifikation:</strong> Mögliche Risiken frühzeitig erkennen.</li>
+                    <li><strong>Bewertung:</strong> Risiken nach Wahrscheinlichkeit und Auswirkung bewerten.</li>
+                    <li><strong>Gegenmaßnahmen:</strong> Strategien zur Risikovermeidung entwickeln.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Qualitätsmanagement -->
+        <section class="section">
+            <h2>Qualitätsmanagement</h2>
+            <div class="content">
+                <p>Qualitätsmanagement stellt sicher, dass die Projektziele nach festgelegten Standards erreicht werden.</p>
+            </div>
+        </section>
+
+        <!-- Agile Methoden: Kanban und User Stories -->
+        <section class="section">
+            <h2>Agiles Projektmanagement</h2>
+            <div class="content">
+                <h3>Kanban-Board</h3>
+                <p>Ein Kanban-Board ist ein visuelles Werkzeug zur Planung und Steuerung von Aufgaben.</p>
+                
+                <h3>User Stories</h3>
+                <p>User Stories beschreiben Anforderungen aus Sicht des Endbenutzers, besonders nützlich bei Softwareprojekten.</p>
+            </div>
+        </section>
+
+        <!-- Übungen -->
+        <section class="section exercises">
+            <h2>Übungen</h2>
+            <div class="content">
+                <div class="exercise">
+                    <h3>Übung 1: Projektmerkmale</h3>
+                    <p>Welche der folgenden Merkmale beschreiben ein Projekt? Wähle alle zutreffenden Antworten.</p>
+                    <ul>
+                        <li><input type="checkbox"> Zeitlich unbegrenzt</li>
+                        <li><input type="checkbox"> Einzigartig</li>
+                        <li><input type="checkbox"> Begrenztes Budget</li>
+                        <li><input type="checkbox"> Definiertes Ziel</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <h3>Übung 2: SMART-Kriterien</h3>
+                    <p>Beschreibe ein SMART-Ziel für ein Projekt deiner Wahl.</p>
+                    <textarea rows="4" cols="50" placeholder="Zielbeschreibung..."></textarea>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
