@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UML und Klassen in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>UML und Klassen in Python</h1>
+        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Klassendiagramm Beispiel">
+
+        <h2>Was ist UML?</h2>
+        <p>Die Unified Modeling Language (UML) ist eine grafische Sprache zur Beschreibung von Software-Systemen. Sie stellt Klassen, Objekte, Methoden und deren Beziehungen dar.</p>
+
+        <h3>Beispiel: Klasse "Flasche"</h3>
+        <ul>
+            <li><strong>Klasse:</strong> Flasche</li>
+            <li><strong>Attribute:</strong>
+                <ul>
+                    <li><code>inhalt</code> – Inhalt der Flasche</li>
+                    <li><code>max_inhalt</code> – Maximale Kapazität</li>
+                    <li><code>geöffnet</code> – Zustand der Flasche (offen/geschlossen)</li>
+                </ul>
+            </li>
+            <li><strong>Methoden:</strong>
+                <ul>
+                    <li><code>öffnen()</code> – Flasche öffnen</li>
+                    <li><code>schließen()</code> – Flasche schließen</li>
+                    <li><code>füllen()</code> – Flasche auffüllen</li>
+                    <li><code>leeren()</code> – Flasche entleeren</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="important">
+            <strong>Hinweis:</strong> Das UML-Diagramm zeigt Attribute und Methoden auf einen Blick, um die Struktur einer Klasse zu verstehen.
+        </div>
+
+        <h2>Klassen in Python</h2>
+        <p>In Python werden Klassen mit dem Schlüsselwort <code>class</code> definiert. Methoden verwenden das erste Argument <code>self</code>, um auf Attribute und Methoden der Klasse zuzugreifen.</p>
+
+        <h3>Definition einer Klasse</h3>
+        <pre>
+class Klassenname:
+    def __init__(self, ...):
+        # Initialisierung der Attribute
+        pass
+
+    def method_name(self, ...):
+        # Definition der Methode
+        pass
+        </pre>
+
+        <p><strong>Beispiel:</strong> Definition der Klasse "Flasche".</p>
+        <pre>
+class Flasche:
+    def __init__(self):
+        self.inhalt = 0
+        self.max_inhalt = 1000
+        self.geöffnet = False
+
+    def öffnen(self):
+        self.geöffnet = True
+
+    def schließen(self):
+        self.geöffnet = False
+
+    def füllen(self, volumen):
+        if self.geöffnet and (self.inhalt + volumen <= self.max_inhalt):
+            self.inhalt += volumen
+
+    def leeren(self):
+        if self.geöffnet:
+            self.inhalt = 0
+        </pre>
+
+        <h3>Objekte erzeugen</h3>
+        <p>Instanziierung bedeutet, eine Instanz (ein Objekt) der Klasse zu erstellen. Beispiel:</p>
+        <pre>
+a = Flasche()
+a.öffnen()
+a.füllen(500)
+print(a.inhalt)  # Ausgabe: 500
+        </pre>
+
+        <h3>Visualisierung des Objekts</h3>
+        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Objektdiagramm Beispiel">
+    </div>
+
+    <footer>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+    </footer>
+
+</body>
+</html>
