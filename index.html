@@ -3,186 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UML und Klassen in Python</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         /* Grundlegende Stile */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1581093588401-72f63a9f3d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Hintergrund abgedunkelt für edleren Look */
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-left {
+            flex: 1;
+            z-index: 1;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .header-right {
+            flex: 1;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
         }
 
-        .container {
-            max-width: 800px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .hero-content {
+            text-align: left;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        /* Datum und Kalenderwoche */
+        #date-week, #holiday-message {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        /* Klausurtermine */
+        #exam-dates {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        /* Stundenplan Styles */
+        #timetable {
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+        }
+
+        #timetable th, #timetable td {
+            border: 1px solid #ccc;
+            padding: 5px;
             text-align: center;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #555;
+        #timetable th {
+            background-color: #f2f2f2;
         }
 
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
+        /* Aktuelles Fach hervorheben */
+        .current-class {
+            background-color: red; /* Rot */
+            color: #fff;
         }
 
-        p {
+        /* Aktueller Tag hervorheben */
+        .current-day {
+            background-color: #ffd700; /* Gold */
+        }
+
+        /* Bilder in ursprünglicher Größe */
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
             margin-bottom: 15px;
         }
 
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: monospace;
-            font-size: 1rem;
+        .section {
+            margin-bottom: 40px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .important {
-            background-color: #e7f3ff;
-            border-left: 4px solid #007BFF;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            margin-top: 20px;
+        .section h2 {
             text-align: center;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-size: 2rem;
             color: #555;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 200px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #timetable {
+                font-size: 0.8rem;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>UML und Klassen in Python</h1>
-        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Klassendiagramm Beispiel">
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="header-left">
+            <div class="hero-content">
+                <h1>FSND31 Übungsplattform</h1>
+                <p>Deine Lernfelder und Fächer auf einen Blick</p>
+                <div class="countdown" id="countdown"></div>
 
-        <h2>Was ist UML?</h2>
-        <p>Die Unified Modeling Language (UML) ist eine grafische Sprache zur Beschreibung von Software-Systemen. Sie stellt Klassen, Objekte, Methoden und deren Beziehungen dar.</p>
-
-        <h3>Beispiel: Klasse "Flasche"</h3>
-        <ul>
-            <li><strong>Klasse:</strong> Flasche</li>
-            <li><strong>Attribute:</strong>
-                <ul>
-                    <li><code>inhalt</code> – Inhalt der Flasche</li>
-                    <li><code>max_inhalt</code> – Maximale Kapazität</li>
-                    <li><code>geöffnet</code> – Zustand der Flasche (offen/geschlossen)</li>
-                </ul>
-            </li>
-            <li><strong>Methoden:</strong>
-                <ul>
-                    <li><code>öffnen()</code> – Flasche öffnen</li>
-                    <li><code>schließen()</code> – Flasche schließen</li>
-                    <li><code>füllen()</code> – Flasche auffüllen</li>
-                    <li><code>leeren()</code> – Flasche entleeren</li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="important">
-            <strong>Hinweis:</strong> Das UML-Diagramm zeigt Attribute und Methoden auf einen Blick, um die Struktur einer Klasse zu verstehen.
+                <!-- Aktuelles Datum und Kalenderwoche -->
+                <div id="date-week"></div>
+                <!-- Ferienhinweis -->
+                <div id="holiday-message"></div>
+                <!-- Klausurtermine -->
+                <div id="exam-dates"></div>
+            </div>
         </div>
+        <div class="header-right">
+            <!-- Stundenplan -->
+            <table id="timetable">
+                <thead>
+                    <tr>
+                        <th>Zeit</th>
+                        <th>Montag</th>
+                        <th>Dienstag</th>
+                        <th>Mittwoch</th>
+                        <th>Donnerstag</th>
+                        <th>Freitag</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+                    <!-- Inhalte werden dynamisch generiert -->
+                </tbody>
+            </table>
+        </div>
+    </header>
 
-        <h2>Klassen in Python</h2>
-        <p>In Python werden Klassen mit dem Schlüsselwort <code>class</code> definiert. Methoden verwenden das erste Argument <code>self</code>, um auf Attribute und Methoden der Klasse zuzugreifen.</p>
+    <!-- JavaScript für Countdown und Stundenplan -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Countdown
+            function countWeekdaysUntil(targetDate) {
+                let today = new Date();
+                let weekdaysCount = 0;
 
-        <h3>Definition einer Klasse</h3>
-        <pre>
-class Klassenname:
-    def __init__(self, ...):
-        # Initialisierung der Attribute
-        pass
+                while (today < targetDate) {
+                    today.setDate(today.getDate() + 1);
+                    let day = today.getDay();
+                    if (day !== 0 && day !== 6) {
+                        weekdaysCount++;
+                    }
+                }
+                return weekdaysCount;
+            }
 
-    def method_name(self, ...):
-        # Definition der Methode
-        pass
-        </pre>
+            const targetDate = new Date("2024-12-20");
+            const countdownElement = document.getElementById("countdown");
+            const weekdaysLeft = countWeekdaysUntil(targetDate);
 
-        <p><strong>Beispiel:</strong> Definition der Klasse "Flasche".</p>
-        <pre>
-class Flasche:
-    def __init__(self):
-        self.inhalt = 0
-        self.max_inhalt = 1000
-        self.geöffnet = False
+            countdownElement.textContent = `Nur noch ${weekdaysLeft} Schultage bis zu den Weihnachtsferien`;
 
-    def öffnen(self):
-        self.geöffnet = True
+            // Aktuelles Datum und Kalenderwoche
+            const today = new Date();
+            // Setze die Zeit auf Mitternacht für genaue Datumsvergleiche
+            today.setHours(0,0,0,0);
 
-    def schließen(self):
-        self.geöffnet = False
+            function getWeekNumber(d) {
+                d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+                const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1)/7);
+                return weekNo;
+            }
 
-    def füllen(self, volumen):
-        if self.geöffnet and (self.inhalt + volumen <= self.max_inhalt):
-            self.inhalt += volumen
+            const weekNumber = getWeekNumber(today);
+            const isEvenWeek = weekNumber % 2 === 0;
 
-    def leeren(self):
-        if self.geöffnet:
-            self.inhalt = 0
-        </pre>
+            const dateWeekElement = document.getElementById("date-week");
+            dateWeekElement.textContent = `Heute ist ${today.toLocaleDateString('de-DE')} - Kalenderwoche ${weekNumber}`;
 
-        <h3>Objekte erzeugen</h3>
-        <p>Instanziierung bedeutet, eine Instanz (ein Objekt) der Klasse zu erstellen. Beispiel:</p>
-        <pre>
-a = Flasche()
-a.öffnen()
-a.füllen(500)
-print(a.inhalt)  # Ausgabe: 500
-        </pre>
+            // Ferienhinweis bis einschließlich 21.11.2024
+            const holidayMessageElement = document.getElementById("holiday-message");
+            const holidayDate = new Date("2024-11-21");
+            if (today <= holidayDate) {
+                holidayMessageElement.textContent = "21.11.2024 ist Schulfrei!";
+            }
 
-        <h3>Visualisierung des Objekts</h3>
-        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Objektdiagramm Beispiel">
+            // Klausurtermine
+            const exams = [
+                { date: "2024-11-07", text: "Lernfeld 10 Klausur" },
+                { date: "2024-11-12", text: "Englisch Vokabeltest" },
+                { date: "2024-11-15", text: "Projektabgabe Lernfeld 09" },
+                { date: "2024-11-14", text: "Lernfeld 05 Projektabgabe" },
+                { date: "2024-11-15", text: "Lernfeld 02 Klausur" },
+                { date: "2024-12-03", text: "Lernfeld 06 Klausur" },
+                { date: "2024-12-09", text: "Lernfeld Klausur" },
+                { date: "2024-12-17", text: "Mathe Klausur" }
+            ];
+
+            // Funktion zum Formatieren des Datums mit führenden Nullen
+            function formatDate(date) {
+                let day = date.getDate();
+                let month = date.getMonth() + 1; // Monate sind nullbasiert
+                let year = date.getFullYear();
+
+                // Führende Nullen hinzufügen
+                if (day < 10) {
+                    day = '0' + day;
+                }
+                if (month < 10) {
+                    month = '0' + month;
+                }
+
+                return `${day}.${month}.${year}`;
+            }
+
+            // Filtere nur zukünftige Termine (bis einschließlich Klausurdatum)
+            const upcomingExams = exams.filter(exam => {
+                const examDate = new Date(exam.date);
+                examDate.setHours(0,0,0,0);
+                return examDate >= today;
+            });
+
+            // Sortiere nach Datum
+            upcomingExams.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            // Zeige alle anstehenden Termine an
+            const examDatesElement = document.getElementById("exam-dates");
+            if (upcomingExams.length > 0) {
+                examDatesElement.innerHTML = "<h3>Klausur- und Projekttermine:</h3>" + upcomingExams.map(exam => {
+                    const examDate = new Date(exam.date);
+                    return `<div>${formatDate(examDate)}: ${exam.text}</div>`;
+                }).join("");
+            } else {
+                examDatesElement.innerHTML = "<h3>Keine anstehenden Termine.</h3>";
+            }
+
+            // Stundenplan
+            const timetableBody = document.getElementById("timetable-body");
+
+            // Mapping der Fächer zu URLs
+            const subjectLinks = {
+                "Lernfeld 01": "lernfeld01",
+                "Lernfeld 02": "lernfeld02",
+                "Lernfeld 03": "lernfeld03",
+                "Lernfeld 05": "lernfeld05",
+                "Lernfeld 07": "lernfeld07",
+                "Lernfeld 08": "lernfeld08",
+                "Lernfeld 09": "lernfeld09",
+                "Lernfeld 10": "lernfeld10",
+                "Mathe": "https://knochensalat.de/mathe",
+                "Englisch": "englisch",
+                "Deutsch": "#deutsch",
+                "Projekt": "projekt"
+            };
+
+            // Stundenplan Daten
+            let timetableData = [
+                {
+                    time: "07:45 - 09:15",
+                    monday: "Lernfeld 10",
+                    tuesday: "Lernfeld 03",
+                    wednesday: "Lernfeld 09",
+                    thursday: "Lernfeld 10",
+                    friday: "Lernfeld 02"
+                },
+                {
+                    time: "09:15 - 09:30",
+                    monday: "Pause",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "Pause",
+                    friday: "Pause"
+                },
+                {
+                    time: "09:30 - 11:00",
+                    monday: "Lernfeld 09",
+                    tuesday: "Mathe",
+                    wednesday: "Lernfeld 05",
+                    thursday: "Projekt",
+                    friday: "Lernfeld 07"
+                },
+                {
+                    time: "11:00 - 11:15",
+                    monday: "Pause",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "Pause",
+                    friday: "Pause"
+                },
+                {
+                    time: "11:15 - 12:45",
+                    monday: "Lernfeld 01",
+                    tuesday: "Lernfeld 07",
+                    wednesday: "Lernfeld 03",
+                    thursday: "Lernfeld 08",
+                    friday: "Lernfeld 08"
+                },
+                {
+                    time: "12:45 - 13:00",
+                    monday: "",
+                    tuesday: "Pause",
+                    wednesday: "Pause",
+                    thursday: "",
+                    friday: ""
+                },
+                {
+                    time: "13:00 - 14:30",
+                    monday: "",
+                    tuesday: "",
+                    wednesday: "",
+                    thursday: "",
+                    friday: ""
+                }
+            ];
+
+            // Setze das Fach für 13:00 - 14:30 Uhr je nach gerader oder ungerader Woche
+            if (isEvenWeek) {
+                timetableData[6].tuesday = "Englisch";
+            } else {
+                timetableData[6].wednesday = "Deutsch";
+            }
+
+            // Entferne die Pause, wenn kein Fach stattfindet
+            if (!timetableData[6].tuesday && !timetableData[6].wednesday) {
+                // Entferne die Pause um 12:45 - 13:00
+                timetableData.splice(5, 1);
+            }
+
+            // Dynamisch den Stundenplan erstellen
+            timetableData.forEach((row, rowIndex) => {
+                const tr = document.createElement('tr');
+
+                const tdTime = document.createElement('td');
+                tdTime.textContent = row.time;
+                tr.appendChild(tdTime);
+
+                ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach((day, dayIndex) => {
+                    const td = document.createElement('td');
+                    const subjectName = row[day];
+
+                    if (subjectName && subjectName !== "Pause") {
+                        if (subjectLinks[subjectName]) {
+                            td.innerHTML = `<a href="${subjectLinks[subjectName]}">${subjectName}</a>`;
+                        } else {
+                            td.textContent = subjectName;
+                        }
+                    } else {
+                        td.textContent = subjectName;
+                    }
+
+                    // Aktuellen Tag hervorheben
+                    let currentDayIndex = today.getDay(); // Sonntag - 0, Montag - 1, ..., Samstag - 6
+                    if (currentDayIndex >= 1 && currentDayIndex <= 5 && dayIndex === currentDayIndex - 1) {
+                        td.classList.add('current-day');
+                    }
+
+                    tr.appendChild(td);
+                });
+
+                timetableBody.appendChild(tr);
+            });
+
+            // Aktuelles Fach hervorheben
+            function highlightCurrentClass() {
+                const timeSlots = timetableData.map((row, index) => {
+                    const [start, end] = row.time.split(' - ');
+                    return { start, end, rowIndex: index };
+                });
+
+                const now = new Date();
+                const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+
+                let currentSlot = null;
+
+                for (const slot of timeSlots) {
+                    const [startHour, startMinute] = slot.start.split(':').map(Number);
+                    const [endHour, endMinute] = slot.end.split(':').map(Number);
+                    const slotStartInMinutes = startHour * 60 + startMinute;
+                    const slotEndInMinutes = endHour * 60 + endMinute;
+
+                    if (currentTimeInMinutes >= slotStartInMinutes && currentTimeInMinutes < slotEndInMinutes) {
+                        currentSlot = slot;
+                        break;
+                    }
+                }
+
+                if (currentSlot) {
+                    const rows = timetableBody.getElementsByTagName('tr');
+                    const row = rows[currentSlot.rowIndex];
+                    if (row) {
+                        const cells = row.getElementsByTagName('td');
+                        let dayIndex = now.getDay(); // Sonntag - 0, Montag - 1, ..., Samstag - 6
+                        if (dayIndex >=1 && dayIndex <=5) {
+                            const cell = cells[dayIndex];
+                            if (cell) {
+                                cell.classList.add('current-class');
+                            }
+                        }
+                    }
+                }
+            }
+
+            highlightCurrentClass();
+            // Aktualisiert die Hervorhebung jede Minute
+            setInterval(highlightCurrentClass, 60000);
+        });
+    </script>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Lernfelder -->
+        <section class="section">
+            <h2>Lernfelder 1-10</h2>
+            <div class="cards">
+                <!-- Lernfeld 1 -->
+                <a href="lernfeld01">
+                    <div class="card">
+                        <img src="https://www.bwl24.net/wp-content/uploads/2018/03/bwl-spezialisierung.jpg" alt="Lernfeld 1">
+                        <h3>Lernfeld 1</h3>
+                        <p>BWL</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 2 -->
+                <a href="lernfeld02">
+                    <div class="card">
+                        <img src="https://www.optipack.de/fileadmin/_processed_/3/d/csm_startseite-qm-01_928686cef1.jpg" alt="Lernfeld 2">
+                        <h3>Lernfeld 2</h3>
+                        <p>QM</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 3 -->
+                <a href="lernfeld03">
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJyAfAd2luyt40TzSM2Xnp3xJToOgFCmRXoA&s" alt="Lernfeld 3">
+                        <h3>Lernfeld 3</h3>
+                        <p>Nachhaltigkeit</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 4 -->
+                <a href="lernfeld04">
+                    <div class="card">
+                        <img src="https://www.elektro-hohn.de/images/leistungen/elektrotechnik01.jpg" alt="Lernfeld 4">
+                        <h3>Lernfeld 4</h3>
+                        <p>Abgeschlossen!</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 5 -->
+                <a href="lernfeld05">
+                    <div class="card">
+                        <img src="https://www.dietz-sensortechnik.de/images/sensortechnik-beitraege-produktgruppen/optische-sensoren/optische-sensoren-sensortechnik-dietz01.jpg" alt="Lernfeld 5">
+                        <h3>Lernfeld 5</h3>
+                        <p>Sensoren und Aktoren</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 6 -->
+                <a href="lernfeld06">
+                    <div class="card">
+                        <img src="https://blog.it-planet.com/wp-content/uploads/2023/06/netzwerkserver-herzstueck-infrastruktur.jpg" alt="Lernfeld 6">
+                        <h3>Lernfeld 6</h3>
+                        <p>Server</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 7 -->
+                <a href="lernfeld07">
+                    <div class="card">
+                        <img src="https://www.bochum.de/C125830C0042AB74/CurrentBaseLink/W2CKQGFB124BOCMDE/$FILE/Kachel_InternationaleNetzwerke_Fullscreen_16x9.jpg" alt="Lernfeld 7">
+                        <h3>Lernfeld 7</h3>
+                        <p>Netzwerke</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 8 -->
+                <a href="lernfeld08">
+                    <div class="card">
+                        <img src="https://www.igz.com/fileadmin/_processed_/f/1/csm_igz-siemens-tia-portal_0f936060fa.jpg" alt="Lernfeld 8">
+                        <h3>Lernfeld 8</h3>
+                        <p>TIA Portal</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 9 -->
+                <a href="lernfeld09">
+                    <div class="card">
+                        <img src="https://cdn.pixabay.com/photo/2017/03/23/12/32/arduino-2168193_1280.png" alt="Lernfeld 9">
+                        <h3>Lernfeld 9</h3>
+                        <p>CPS</p>
+                    </div>
+                </a>
+                <!-- Lernfeld 10 -->
+                <a href="lernfeld10">
+                    <div class="card">
+                        <img src="https://thevolteragroup.com/wp-content/uploads/2024/09/Python-Symbol.png" alt="Lernfeld 10">
+                        <h3>Lernfeld 10</h3>
+                        <p>Programmieren</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Fächer und Notenrechner -->
+        <section class="section">
+            <h2>Fächer & Notenrechner</h2>
+            <div class="cards">
+                <!-- Mathe -->
+                <a href="https://knochensalat.de/mathe">
+                    <div class="card">
+                        <img src="https://ohm-professional-school.de/fileadmin/_processed_/1/6/csm_Brueckenkurs-Mathe_AdobeStock_200345229_rgb_29f8208664.jpg" alt="Mathe">
+                        <h3>Mathe</h3>
+                        <p>Mathematik Übungen</p>
+                    </div>
+                </a>
+                <!-- Deutsch -->
+                <a href="#deutsch">
+                    <div class="card">
+                        <img src="https://sla-basel.ch/wp-content/uploads/2020/06/SLA_Deutsch-lernen-1.png" alt="Deutsch">
+                        <h3>Deutsch</h3>
+                        <p>Deutsch Übungen</p>
+                    </div>
+                </a>
+                <!-- Englisch -->
+                <a href="englisch">
+                    <div class="card">
+                        <img src="https://goethe-gymnasium.berlin/wp-content/uploads/2021/10/Englisch.png" alt="Englisch">
+                        <h3>Englisch</h3>
+                        <p>Englisch Übungen</p>
+                    </div>
+                     </a>
+                <!-- Notenrechner -->
+                <a href="notenrechner.html">
+                    <div class="card">
+                        <img src="https://m.media-amazon.com/images/I/51aopXIHGHL.png" alt="Deutsch">
+                        <h3>Notenrechner</h3>
+                        <p>Welche Note habe ich?</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
     </div>
 
+    <!-- Footer -->
     <footer>
-        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
     </footer>
 
 </body>
