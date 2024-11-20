@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT - Grundlagen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MQTT - Grundlagen</h1>
+
+        <h2>1. Was ist MQTT?</h2>
+        <p>
+            MQTT (Message Queue Telemetry Transport) ist ein leichtgewichtiges Messaging-Protokoll, das speziell für das Internet of Things (IoT) entwickelt wurde. 
+            Es eignet sich ideal für Umgebungen mit geringer Bandbreite und eingeschränkten Ressourcen.
+        </p>
+        <div class="important">
+            <strong>Merksatz:</strong> MQTT ist ein Binärprotokoll, das schnelle und ressourcenschonende Kommunikation ermöglicht.
+        </div>
+
+        <h2>2. Publisher/Subscriber-Prinzip</h2>
+        <p>
+            MQTT verwendet das Publish/Subscribe-Muster. Ein Publisher sendet Nachrichten an einen Broker, der diese an abonnierte Clients (Subscriber) verteilt.
+        </p>
+        <ul>
+            <li>Der Broker entkoppelt Sender und Empfänger.</li>
+            <li>Empfänger können Topics abonnieren, um nur relevante Nachrichten zu erhalten.</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> Beim Publish/Subscribe-Prinzip kommunizieren Sender und Empfänger nie direkt.
+        </div>
+
+        <h2>3. Begriffe des MQTT-Protokolls</h2>
+        <ul>
+            <li><strong>MQTT-Broker:</strong> Vermittelt Nachrichten zwischen Publisher und Subscriber.</li>
+            <li><strong>MQTT-Client:</strong> Kann sowohl Nachrichten senden (Publisher) als auch empfangen (Subscriber).</li>
+            <li><strong>MQTT-Topic:</strong> Filtert Nachrichten nach Themen; wird vom Broker genutzt.</li>
+        </ul>
+
+        <h2>4. Quality of Service (QoS)</h2>
+        <p>MQTT definiert drei Stufen für die Zuverlässigkeit der Nachrichtenübermittlung:</p>
+        <ul>
+            <li><strong>QoS 0:</strong> "At most once" – Nachrichten werden höchstens einmal zugestellt (Fire and Forget).</li>
+            <li><strong>QoS 1:</strong> "At least once" – Nachrichten werden mindestens einmal zugestellt (kann zu Duplikaten führen).</li>
+            <li><strong>QoS 2:</strong> "Exactly once" – Nachrichten werden genau einmal zugestellt (höchste Zuverlässigkeit).</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> QoS 2 ist die zuverlässigste, aber auch ressourcenintensivste Stufe.
+        </div>
+
+        <h2>5. Eigenschaften von MQTT</h2>
+        <ul>
+            <li><strong>Performance:</strong> Effizient bei kleinen Nachrichten und geringem Ressourcenverbrauch.</li>
+            <li><strong>Skalierbarkeit:</strong> Kann tausende Geräte mit einem einzigen Server verbinden.</li>
+            <li><strong>Sicherheit:</strong> Unterstützt SSL/TLS für verschlüsselte Verbindungen.</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> MQTT ist ideal für IoT-Umgebungen mit vielen kleinen Geräten.
+        </div>
+
+        <h2>6. Übungsaufgaben</h2>
+        <p>
+            Testen Sie Ihr Wissen über MQTT:
+        </p>
+        <ul>
+            <li>Beschreiben Sie das Publish/Subscribe-Prinzip in eigenen Worten.</li>
+            <li>Diskutieren Sie die verschiedenen QoS-Level und ihre Einsatzfelder.</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+    </footer>
+
+</body>
+</html>
