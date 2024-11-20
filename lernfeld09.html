@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathe - FSND31 Übungsplattform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518309373780-d5f743c82b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 220px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Lernfelder Links */
+        .lernfelder {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .lernfeld-link {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lernfeld-link:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Lernfeld 09 Übungen</h1>
+            <p>Verbessere deine CPS Fähigkeiten</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Reiter -->
+        <section class="section">
+            <h2>Übungen und Unterrichtsmaterial</h2>
+            <div class="cards">
+                <!-- Statische Datumskachel -->
+                <a href="mqtt.html">
+                    <div class="card">
+                        <img src="data:image/png;base64,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" alt="Reiter 1">
+                        <h3>20.11.2024</h3>
+                        <p>MQTT</p>
+                    </div>
+                </a>
+                
+             
+            </div>
+        </section>
+
+        <!-- Links zu den Lernfeldern -->
+        <section class="section">
+            <h2>Lernfelder 1-10</h2>
+            <div class="lernfelder">
+                <a href="lernfeld01.html" class="lernfeld-link">Lernfeld 1</a>
+                <a href="lernfeld02.html" class="lernfeld-link">Lernfeld 2</a>
+                <a href="lernfeld03.html" class="lernfeld-link">Lernfeld 3</a>
+                <a href="lernfeld04.html" class="lernfeld-link">Lernfeld 4</a>
+                <a href="lernfeld05.html" class="lernfeld-link">Lernfeld 5</a>
+                <a href="lernfeld06.html" class="lernfeld-link">Lernfeld 6</a>
+                <a href="lernfeld07.html" class="lernfeld-link">Lernfeld 7</a>
+                <a href="lernfeld08.html" class="lernfeld-link">Lernfeld 8</a>
+                <a href="lernfeld09.html" class="lernfeld-link">Lernfeld 9</a>
+                <a href="lernfeld10.html" class="lernfeld-link">Lernfeld 10</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- JavaScript zur Anzeige des aktuellen Datums -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date();
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            document.getElementById("current-date").textContent = today.toLocaleDateString('de-DE', options);
+        });
+    </script>
+
+</body>
+</html>
