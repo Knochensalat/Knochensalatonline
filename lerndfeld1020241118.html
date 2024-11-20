@@ -3,309 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projektmanagement - FSND31 Übungsplattform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>UML und Klassen in Python</title>
+    <link href="https://lh6.googleusercontent.com/proxy/l2JgXJXId7qubjIqqwn62VDPSc9cQwqlJtqTGLb8_PbnN2CXNERFF6_m7J49TCDV2Oxc1fSBRBVQ4pKh7nLdgV6Rbd1ODAsLsBE9vMlf" rel="stylesheet">
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         /* Grundlegende Stile */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
-            position: relative;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Header */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            height: 40vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            position: relative;
-            color: #fff;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-        }
-
-        /* Navigation */
-        .navbar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: #fff;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hauptinhalt */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-            background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
             padding: 20px;
-            border-radius: 10px;
         }
 
-        .section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            color: #555;
-        }
-
-        .content {
+        .container {
             max-width: 800px;
-            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .content h3 {
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
             margin-bottom: 10px;
-            color: #333;
-        }
-
-        .content p {
-            margin-bottom: 15px;
             color: #555;
         }
 
-        /* Tabellen */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        /* Übungen */
-        .exercises {
-            margin-top: 30px;
-        }
-
-        .exercises h3 {
-            margin-bottom: 15px;
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             color: #333;
         }
 
-        .exercise {
-            background-color: #fff;
-            padding: 15px;
+        p {
             margin-bottom: 15px;
-            border-left: 5px solid #007BFF;
-            border-radius: 5px;
         }
 
-        .exercise p {
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
             margin-bottom: 10px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
 
-            .hero-content p {
-                font-size: 1rem;
-            }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Hero -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Projektmanagement - Grundlagen und Methoden</h1>
-            <p>Lernen Sie die Grundzüge des Projektmanagements und wichtige Techniken kennen.</p>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="mathe.html">Mathe</a>
-        <a href="deutsch.html">Deutsch</a>
-        <a href="englisch.html">Englisch</a>
-    </nav>
-
-    <!-- Hauptinhalt -->
     <div class="container">
+        <h1>UML und Klassen in Python</h1>
+        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Klassendiagramm Beispiel">
 
-        <!-- Projektmanagement-Merkmale -->
-        <section class="section">
-            <h2>Projektmerkmale</h2>
-            <div class="content">
-                <h3>Einzigartigkeit, Zeit, Budget und Zielsetzung</h3>
-                <p>Projekte zeichnen sich durch folgende Merkmale aus:</p>
+        <h2>Was ist UML?</h2>
+        <p>Die Unified Modeling Language (UML) ist eine grafische Sprache zur Beschreibung von Software-Systemen. Sie stellt Klassen, Objekte, Methoden und deren Beziehungen dar.</p>
+
+        <h3>Beispiel: Klasse "Flasche"</h3>
+        <ul>
+            <li><strong>Klasse:</strong> Flasche</li>
+            <li><strong>Attribute:</strong>
                 <ul>
-                    <li><strong>Einzigartigkeit:</strong> Jede Bedingung und Anforderung ist einmalig.</li>
-                    <li><strong>Zeitlich begrenzt:</strong> Projekte haben feste Start- und Endzeiten.</li>
-                    <li><strong>Begrenztes Budget:</strong> Es stehen nur bestimmte finanzielle Ressourcen zur Verfügung.</li>
-                    <li><strong>Definiertes Ziel:</strong> Das Projekt verfolgt klare und messbare Ziele.</li>
+                    <li><code>inhalt</code> – Inhalt der Flasche</li>
+                    <li><code>max_inhalt</code> – Maximale Kapazität</li>
+                    <li><code>geöffnet</code> – Zustand der Flasche (offen/geschlossen)</li>
                 </ul>
-            </div>
-        </section>
-
-        <!-- Projektziele und SMART-Kriterien -->
-        <section class="section">
-            <h2>Projektziele und SMART-Kriterien</h2>
-            <div class="content">
-                <h3>Was bedeutet SMART?</h3>
-                <p>Projektziele sollten SMART sein:</p>
+            </li>
+            <li><strong>Methoden:</strong>
                 <ul>
-                    <li><strong>Spezifisch:</strong> Das Ziel ist klar definiert.</li>
-                    <li><strong>Messbar:</strong> Der Fortschritt und Erfolg sind messbar.</li>
-                    <li><strong>Attraktiv:</strong> Das Ziel ist motivierend und erstrebenswert.</li>
-                    <li><strong>Realistisch:</strong> Das Ziel ist erreichbar.</li>
-                    <li><strong>Terminiert:</strong> Es gibt eine klare Deadline.</li>
+                    <li><code>öffnen()</code> – Flasche öffnen</li>
+                    <li><code>schließen()</code> – Flasche schließen</li>
+                    <li><code>füllen()</code> – Flasche auffüllen</li>
+                    <li><code>leeren()</code> – Flasche entleeren</li>
                 </ul>
-            </div>
-        </section>
+            </li>
+        </ul>
 
-        <!-- Projektphasen -->
-        <section class="section">
-            <h2>Projektphasen</h2>
-            <div class="content">
-                <p>Ein Projekt gliedert sich in mehrere Phasen:</p>
-                <ul>
-                    <li><strong>Definition:</strong> Projektziele und Rahmenbedingungen werden festgelegt.</li>
-                    <li><strong>Planung:</strong> Ressourcen, Zeit und Aufgaben werden detailliert geplant.</li>
-                    <li><strong>Durchführung:</strong> Das Projekt wird ausgeführt und kontrolliert.</li>
-                    <li><strong>Abschluss:</strong> Projekt wird offiziell abgeschlossen und Ergebnisse dokumentiert.</li>
-                </ul>
-            </div>
-        </section>
+        <div class="important">
+            <strong>Hinweis:</strong> Das UML-Diagramm zeigt Attribute und Methoden auf einen Blick, um die Struktur einer Klasse zu verstehen.
+        </div>
 
-        <!-- Risikomanagement -->
-        <section class="section">
-            <h2>Risikomanagement</h2>
-            <div class="content">
-                <p>Risikomanagement dient der Erkennung, Bewertung und Minimierung von Projektrisiken.</p>
-                <ul>
-                    <li><strong>Identifikation:</strong> Mögliche Risiken frühzeitig erkennen.</li>
-                    <li><strong>Bewertung:</strong> Risiken nach Wahrscheinlichkeit und Auswirkung bewerten.</li>
-                    <li><strong>Gegenmaßnahmen:</strong> Strategien zur Risikovermeidung entwickeln.</li>
-                </ul>
-            </div>
-        </section>
+        <h2>Klassen in Python</h2>
+        <p>In Python werden Klassen mit dem Schlüsselwort <code>class</code> definiert. Methoden verwenden das erste Argument <code>self</code>, um auf Attribute und Methoden der Klasse zuzugreifen.</p>
 
-        <!-- Qualitätsmanagement -->
-        <section class="section">
-            <h2>Qualitätsmanagement</h2>
-            <div class="content">
-                <p>Qualitätsmanagement stellt sicher, dass die Projektziele nach festgelegten Standards erreicht werden.</p>
-            </div>
-        </section>
+        <h3>Definition einer Klasse</h3>
+        <pre>
+class Klassenname:
+    def __init__(self, ...):
+        # Initialisierung der Attribute
+        pass
 
-        <!-- Agile Methoden: Kanban und User Stories -->
-        <section class="section">
-            <h2>Agiles Projektmanagement</h2>
-            <div class="content">
-                <h3>Kanban-Board</h3>
-                <p>Ein Kanban-Board ist ein visuelles Werkzeug zur Planung und Steuerung von Aufgaben.</p>
-                
-                <h3>User Stories</h3>
-                <p>User Stories beschreiben Anforderungen aus Sicht des Endbenutzers, besonders nützlich bei Softwareprojekten.</p>
-            </div>
-        </section>
+    def method_name(self, ...):
+        # Definition der Methode
+        pass
+        </pre>
 
-        <!-- Übungen -->
-        <section class="section exercises">
-            <h2>Übungen</h2>
-            <div class="content">
-                <div class="exercise">
-                    <h3>Übung 1: Projektmerkmale</h3>
-                    <p>Welche der folgenden Merkmale beschreiben ein Projekt? Wähle alle zutreffenden Antworten.</p>
-                    <ul>
-                        <li><input type="checkbox"> Zeitlich unbegrenzt</li>
-                        <li><input type="checkbox"> Einzigartig</li>
-                        <li><input type="checkbox"> Begrenztes Budget</li>
-                        <li><input type="checkbox"> Definiertes Ziel</li>
-                    </ul>
-                </div>
+        <p><strong>Beispiel:</strong> Definition der Klasse "Flasche".</p>
+        <pre>
+class Flasche:
+    def __init__(self):
+        self.inhalt = 0
+        self.max_inhalt = 1000
+        self.geöffnet = False
 
-                <div class="exercise">
-                    <h3>Übung 2: SMART-Kriterien</h3>
-                    <p>Beschreibe ein SMART-Ziel für ein Projekt deiner Wahl.</p>
-                    <textarea rows="4" cols="50" placeholder="Zielbeschreibung..."></textarea>
-                </div>
-            </div>
-        </section>
+    def öffnen(self):
+        self.geöffnet = True
 
+    def schließen(self):
+        self.geöffnet = False
+
+    def füllen(self, volumen):
+        if self.geöffnet and (self.inhalt + volumen <= self.max_inhalt):
+            self.inhalt += volumen
+
+    def leeren(self):
+        if self.geöffnet:
+            self.inhalt = 0
+        </pre>
+
+        <h3>Objekte erzeugen</h3>
+        <p>Instanziierung bedeutet, eine Instanz (ein Objekt) der Klasse zu erstellen. Beispiel:</p>
+        <pre>
+a = Flasche()
+a.öffnen()
+a.füllen(500)
+print(a.inhalt)  # Ausgabe: 500
+        </pre>
+
+        <h3>Visualisierung des Objekts</h3>
+        <img src="https://creately.com/diagram/example/ikg1g3d1/class-diagram-example" alt="UML Objektdiagramm Beispiel">
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
     </footer>
 
 </body>
