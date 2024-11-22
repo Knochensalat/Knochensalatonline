@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Betriebssysteme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Windows Betriebssysteme</h1>
+        <p><strong>Datum:</strong> Freitag, 8. November 2024 | <strong>Uhrzeit:</strong> 10:44</p>
+
+        <h2>Clients und Server</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Clients</th>
+                    <th>Edition</th>
+                    <th>Server</th>
+                    <th>Editionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Windows XP</td>
+                    <td>Home</td>
+                    <td>Windows Server 2008/R2</td>
+                    <td>Foundation</td>
+                </tr>
+                <tr>
+                    <td>Windows 7</td>
+                    <td>Professional</td>
+                    <td>Windows Server 2012</td>
+                    <td>Essentials</td>
+                </tr>
+                <tr>
+                    <td>Windows 8/8.1</td>
+                    <td>Enterprise</td>
+                    <td>Windows Server 2016</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Windows 10</td>
+                    <td>Education</td>
+                    <td>Windows Server 2019</td>
+                    <td>Datacenter</td>
+                </tr>
+                <tr>
+                    <td>Windows 11</td>
+                    <td>-</td>
+                    <td>Windows Server 2022</td>
+                    <td>Azure</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Windows Server 2025</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Hypervisor</h2>
+        <p>
+            Ein <strong>Hypervisor</strong>, auch als Virtual Machine Monitor (VMM) bekannt, ist eine Software, die es ermöglicht, mehrere virtuelle Maschinen (VMs) auf einer einzigen physischen Hardware auszuführen.
+            Jede dieser VMs kann ein eigenes Betriebssystem und eigene Anwendungen betreiben, unabhängig von den anderen.
+        </p>
+        <ul>
+            <li><strong>Typ 1:</strong> Bare-Metal Hypervisor</li>
+            <li><strong>Typ 2:</strong> Hosted Hypervisor</li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Hypervisor.svg/1920px-Hypervisor.svg.png" alt="Hypervisor Typ 1 und Typ 2">
+
+        <div class="important">
+            <strong>Merksatz:</strong> Ein Hypervisor verwaltet Ressourcen wie CPU, Arbeitsspeicher und Speicherplatz für virtuelle Maschinen (VMs) und sorgt für deren Isolation.
+        </div>
+
+        <h2>NIC (Network Interface Controller)</h2>
+        <p>NIC steht für Network Interface Controller und stellt die Verbindung zwischen virtuellen Maschinen und dem Netzwerk her.</p>
+    </div>
+
+    <footer>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+    </footer>
+
+</body>
+</html>
