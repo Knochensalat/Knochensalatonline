@@ -2,140 +2,556 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Themen für die Klassenarbeit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themen für die Klassenarbeit - Netzwerktechnik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        h2 { color: #555; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin-bottom: 10px; }
-        .term { font-weight: bold; }
-        .example { color: #777; }
-        .question { margin-top: 20px; }
-        .question h3 { margin-bottom: 10px; }
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518309373780-d5f743c82b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section::before {
+            content: "Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste Stefan ist der beste ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%) rotate(-45deg);
+            white-space: nowrap;
+            z-index: -1;
+            width: 200%;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .term {
+            font-weight: bold;
+        }
+
+        .example {
+            color: #777;
+        }
+
+        /* Multiple-Choice-Fragen */
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question h3 {
+            margin-bottom: 15px;
+        }
+
+        .question ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+
+        .question li {
+            margin-bottom: 10px;
+        }
+
+        .answers {
+            list-style-type: upper-alpha;
+            margin-left: 40px;
+        }
+
+        .answers li {
+            margin-bottom: 5px;
+        }
+
+        .answers li button {
+            background-color: #fff;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+
+        .answers li button:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section::before {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Themen für die Klassenarbeit</h1>
 
-    <h2>Abkürzungen in der Netzwerktechnik</h2>
-    <ul>
-        <li><span class="term">IEEE</span> - Institute of Electrical and Electronics Engineers: Ein Berufsverband für Ingenieure, der Standards in der Elektrotechnik entwickelt. <br><span class="example">Beispiel: Der IEEE 802.11-Standard definiert WLAN-Technologien.</span></li>
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Klassenarbeit Vorbereitung - Netzwerktechnik</h1>
+            <p>Alles, was du für deine Prüfung wissen musst</p>
+        </div>
+    </header>
 
-        <li><span class="term">IETF</span> - Internet Engineering Task Force: Eine Organisation, die Internetstandards wie TCP/IP entwickelt. <br><span class="example">Beispiel: Die IETF arbeitet an Protokollen für das Internet der Dinge.</span></li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#abkuerzungen">Abkürzungen</a>
+        <a href="#koppelgeraete">Koppelgeräte</a>
+        <a href="#iso-osi">ISO/OSI-Modell</a>
+        <a href="#verkabelung">Verkabelung</a>
+        <a href="#topologien">Netztopologien</a>
+        <a href="#ethernet-frame">Ethernet-Frame</a>
+        <a href="#stp">STP</a>
+        <a href="#uebertragungsarten">Übertragungsarten</a>
+    </nav>
 
-        <li><span class="term">RFC</span> - Request for Comments: Dokumente, die neue Forschungsergebnisse, Innovationen oder Methoden in Bezug auf das Internet beschreiben. <br><span class="example">Beispiel: RFC 791 definiert das Internet Protocol Version 4 (IPv4).</span></li>
+    <!-- Hauptinhalt -->
+    <div class="container">
 
-        <li><span class="term">ISO</span> - International Organization for Standardization: Eine internationale Normungsorganisation, die weltweit technische Standards entwickelt. <br><span class="example">Beispiel: Das ISO/OSI-Modell ist ein Referenzmodell für Netzwerkprotokolle.</span></li>
+        <!-- Abkürzungen in der Netzwerktechnik -->
+        <section class="section" id="abkuerzungen">
+            <h2>Abkürzungen in der Netzwerktechnik</h2>
+            <div class="content">
+                <ul>
+                    <li><span class="term">IEEE</span> - Institute of Electrical and Electronics Engineers: Ein Berufsverband für Ingenieure, der Standards in der Elektrotechnik und Informationstechnik entwickelt. <br><span class="example">Beispiel: IEEE 802.11 definiert WLAN-Standards.</span></li><br>
 
-        <li><span class="term">OSI</span> - Open Systems Interconnection: Ein Schichtenmodell zur Beschreibung von Netzwerkkommunikation. <br><span class="example">Beispiel: Das OSI-Modell besteht aus sieben Schichten von der physikalischen bis zur Anwendungsschicht.</span></li>
+                    <li><span class="term">IETF</span> - Internet Engineering Task Force: Eine Organisation, die Internetstandards wie TCP/IP entwickelt und fördert. <br><span class="example">Beispiel: IETF arbeitet an Protokollen für IPv6.</span></li><br>
 
-        <!-- Weitere Abkürzungen folgen im gleichen Format -->
-    </ul>
+                    <li><span class="term">RFC</span> - Request for Comments: Dokumente, die neue Forschungsergebnisse oder Innovationen im Internet beschreiben und zur Diskussion stellen. <br><span class="example">Beispiel: RFC 791 beschreibt das IPv4-Protokoll.</span></li><br>
 
-    <h2>Kopplungsgeräte</h2>
-    <ul>
-        <li><span class="term">Repeater</span>: Ein Gerät, das Signale verstärkt, um größere Distanzen zu überbrücken. <br><span class="example">Beispiel: Ein Repeater wird verwendet, um ein schwaches WLAN-Signal zu verstärken.</span></li>
+                    <li><span class="term">ISO</span> - International Organization for Standardization: Eine internationale Normungsorganisation, die weltweit gültige Standards entwickelt. <br><span class="example">Beispiel: ISO 27001 für Informationssicherheits-Management.</span></li><br>
 
-        <li><span class="term">Hub</span>: Ein einfaches Netzwerkgerät, das Daten an alle angeschlossenen Geräte sendet. <br><span class="example">Beispiel: Ein Hub verbindet mehrere Computer in einem LAN, ohne den Datenverkehr zu filtern.</span></li>
+                    <li><span class="term">OSI</span> - Open Systems Interconnection: Ein Referenzmodell zur Beschreibung der Kommunikation in Netzwerken über sieben Schichten. <br><span class="example">Beispiel: OSI-Modell hilft beim Verständnis von Netzwerkprotokollen.</span></li><br>
 
-        <li><span class="term">Bridge</span>: Verbindet zwei Netzwerksegmente auf Datenverbindungsebene und filtert den Verkehr. <br><span class="example">Beispiel: Eine Bridge kann zwei Ethernet-Netzwerke verbinden und Daten basierend auf MAC-Adressen weiterleiten.</span></li>
+                    <li><span class="term">DIN</span> - Deutsches Institut für Normung: Nationale Normungsorganisation Deutschlands. <br><span class="example">Beispiel: DIN A4 ist eine Standardpapiergröße.</span></li><br>
 
-        <li><span class="term">Switch</span>: Ein Gerät, das den Datenverkehr effizient an das richtige Ziel im Netzwerk leitet. <br><span class="example">Beispiel: Ein Switch leitet Daten nur an den Port weiter, an dem das Zielgerät angeschlossen ist.</span></li>
+                    <li><span class="term">IANA</span> - Internet Assigned Numbers Authority: Verantwortlich für die Verwaltung globaler IP-Adressen und DNS-Root-Zonen. <br><span class="example">Beispiel: IANA koordiniert die Zuweisung von IP-Adressen.</span></li><br>
 
-        <li><span class="term">Router</span>: Leitet Datenpakete zwischen verschiedenen Netzwerken auf Basis von IP-Adressen weiter. <br><span class="example">Beispiel: Ein Router verbindet ein Heimnetzwerk mit dem Internet.</span></li>
+                    <li><span class="term">RJ</span> - Registered Jack: Standardisierte physische Netzwerkschnittstellen. <br><span class="example">Beispiel: RJ45-Stecker werden für Ethernet-Kabel verwendet.</span></li><br>
 
-        <li><span class="term">Layer 3 Switch</span>: Kombiniert die Funktionen eines Switches und Routers, arbeitet sowohl auf der Datenverbindungs- als auch auf der Netzwerkschicht. <br><span class="example">Beispiel: Ein L3-Switch kann VLANs routen und somit interne Netzwerksegmentierung ermöglichen.</span></li>
-    </ul>
+                    <li><span class="term">EIA</span> - Electronic Industries Alliance: Ein Verband der Elektronikindustrie, der Standards entwickelt hat (heute nicht mehr aktiv). <br><span class="example">Beispiel: EIA-Standards für serielle Kommunikation.</span></li><br>
 
-    <h2>ISO/OSI-Schichtenmodell</h2>
-    <p>Das ISO/OSI-Modell ist ein Referenzmodell mit sieben Schichten, das die Kommunikation in Netzwerken beschreibt:</p>
-    <ol>
-        <li><span class="term">Bitübertragungsschicht</span> (Physikalische Schicht): Überträgt Bits über physische Medien. <br><span class="example">Beispiel: Ethernet-Kabel übertragen elektrische Signale.</span></li>
+                    <li><span class="term">TIA</span> - Telecommunications Industry Association: Entwickelt Standards für Telekommunikationstechnologien. <br><span class="example">Beispiel: TIA/EIA-568 definiert Verkabelungsstandards.</span></li><br>
 
-        <li><span class="term">Sicherungsschicht</span> (Datenverbindungsschicht): Sichert die Datenübertragung und steuert den Zugriff auf das Medium. <br><span class="example">Beispiel: MAC-Adressen werden auf dieser Schicht verwendet.</span></li>
+                    <li><span class="term">MAC</span> - Media Access Control: Unverwechselbare Hardware-Adresse eines Netzwerkgeräts auf der Sicherungsschicht. <br><span class="example">Beispiel: Jeder Netzwerkadapter hat eine eindeutige MAC-Adresse.</span></li><br>
 
-        <!-- Weitere Schichten folgen im gleichen Format -->
-    </ol>
+                    <li><span class="term">DNS</span> - Domain Name System: Ein System zur Umwandlung von Domainnamen in IP-Adressen. <br><span class="example">Beispiel: www.beispiel.de wird in eine IP-Adresse aufgelöst.</span></li><br>
 
-    <h2>Strukturierte Verkabelung</h2>
-    <p>Eine standardisierte Methode zur Verkabelung von Gebäuden und Rechenzentren, die Flexibilität und Skalierbarkeit ermöglicht. Sie wird in Unternehmensnetzwerken eingesetzt, um effiziente und organisierte Verbindungen zu gewährleisten.</p>
-    <span class="example">Beispiel: In einem Bürogebäude werden alle Netzwerkdosen nach einem einheitlichen Plan verkabelt.</span>
+                    <li><span class="term">NAT</span> - Network Address Translation: Verfahren zur Übersetzung von privaten IP-Adressen in öffentliche IP-Adressen. <br><span class="example">Beispiel: Ein Router nutzt NAT, um mehrere Geräte mit dem Internet zu verbinden.</span></li><br>
 
-    <h2>Netztopologien</h2>
-    <p>Die physische oder logische Anordnung von Netzwerken:</p>
-    <ul>
-        <li><span class="term">Stern-Topologie</span>: Alle Geräte sind an einen zentralen Knoten angeschlossen. <br><span class="example">Beispiel: Ein Switch in der Mitte verbindet mehrere Computer.</span></li>
+                    <li><span class="term">ARP</span> - Address Resolution Protocol: Protokoll zur Zuordnung von IP-Adressen zu MAC-Adressen im lokalen Netzwerk. <br><span class="example">Beispiel: ARP-Anfragen ermitteln die MAC-Adresse eines Zielhosts.</span></li><br>
 
-        <li><span class="term">Bus-Topologie</span>: Alle Geräte teilen sich ein gemeinsames Übertragungsmedium. <br><span class="example">Beispiel: Ältere Ethernet-Netzwerke mit Koaxialkabel.</span></li>
+                    <li><span class="term">STP</span> - Spanning Tree Protocol: Protokoll zur Vermeidung von Schleifen in redundanten Netzwerkstrukturen. <br><span class="example">Beispiel: STP deaktiviert bestimmte Ports, um Netzwerkloops zu verhindern.</span></li><br>
 
-        <!-- Weitere Topologien folgen im gleichen Format -->
-    </ul>
+                    <li><span class="term">RSTP</span> - Rapid Spanning Tree Protocol: Eine schnellere Version von STP, die schnellere Konvergenzzeiten bietet. <br><span class="example">Beispiel: RSTP reduziert die Umschaltzeiten bei Netzwerkausfällen.</span></li><br>
 
-    <h2>Ethernet-Frame</h2>
-    <p>Ein Datenpaket auf der Sicherungsschicht mit folgenden Feldern:</p>
-    <ul>
-        <li><span class="term">Präambel</span>: Synchronisation für den Empfänger.</li>
-        <li><span class="term">Ziel-MAC-Adresse</span></li>
-        <li><span class="term">Quell-MAC-Adresse</span></li>
-        <li><span class="term">Typ/Length</span></li>
-        <li><span class="term">Daten</span></li>
-        <li><span class="term">Frame Check Sequence (FCS)</span>: Fehlerprüfung.</li>
-    </ul>
+                    <li><span class="term">DDNS</span> - Dynamic Domain Name System: Ermöglicht die automatische Aktualisierung eines DNS-Namens bei wechselnder IP-Adresse. <br><span class="example">Beispiel: Heimnetzwerke mit dynamischer IP nutzen DDNS für Fernzugriff.</span></li><br>
 
-    <h2>Spanning Tree Protocol (STP)</h2>
-    <p>Ein Protokoll zur Vermeidung von Schleifen in redundanten Netzwerkstrukturen.</p>
-    <ul>
-        <li><span class="term">Root Port</span>: Port mit dem kürzesten Pfad zur Root Bridge.</li>
-        <li><span class="term">Designated Port</span>: Port, der als Ausgangspunkt zu einem Netzwerksegment dient.</li>
-        <li><span class="term">Blocked Port</span>: Port, der deaktiviert ist, um Schleifen zu verhindern.</li>
-    </ul>
-    <p><span class="term">Bridge Protocol Data Unit (BPDU)</span>: Nachrichten, die zum Austausch von Informationen zwischen Switches verwendet werden.</p>
+                    <li><span class="term">WAN</span> - Wide Area Network: Ein Weitverkehrsnetzwerk, das große geografische Bereiche abdeckt. <br><span class="example">Beispiel: Das Internet ist das größte WAN.</span></li><br>
 
-    <h2>Übertragungsarten</h2>
-    <ul>
-        <li><span class="term">Broadcast</span>: Nachricht an alle Geräte im Netzwerk. <br><span class="example">Beispiel: ARP-Anfragen werden als Broadcast gesendet.</span></li>
+                    <li><span class="term">ISP</span> - Internet Service Provider: Ein Anbieter, der Zugang zum Internet bereitstellt. <br><span class="example">Beispiel: Telekom oder Vodafone als ISP für Heimanschlüsse.</span></li><br>
 
-        <li><span class="term">Multicast</span>: Nachricht an eine Gruppe von Geräten. <br><span class="example">Beispiel: Video-Streaming an mehrere Empfänger.</span></li>
+                    <li><span class="term">LAN</span> - Local Area Network: Ein lokales Netzwerk, das Geräte in einem begrenzten Bereich verbindet. <br><span class="example">Beispiel: Das Netzwerk in einem Bürogebäude.</span></li><br>
 
-        <li><span class="term">Unicast</span>: Nachricht an ein einzelnes Gerät. <br><span class="example">Beispiel: Eine E-Mail an einen einzelnen Empfänger.</span></li>
+                    <li><span class="term">VLAN</span> - Virtual Local Area Network: Logische Gruppierung von Netzwerkgeräten unabhängig von ihrer physischen Position. <br><span class="example">Beispiel: Trennung von Gast- und Firmennetzwerk über VLANs.</span></li><br>
+                </ul>
+            </div>
+        </section>
 
-        <li><span class="term">Anycast</span>: Nachricht an das nächstgelegene Gerät aus einer Gruppe. <br><span class="example">Beispiel: DNS-Anfragen nutzen Anycast-Adressen.</span></li>
-    </ul>
+        <!-- Multiple-Choice-Fragen zu Abkürzungen -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Abkürzungen</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Wofür steht die Abkürzung DNS?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">A) Dynamic Network System</button></li>
+                        <li><button onclick="alert('Richtig! DNS steht für Domain Name System.')">B) Domain Name System</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">C) Digital Number Sequence</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Data Network Service</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
 
-    <h2>Multiple-Choice-Fragen</h2>
+        <!-- Koppelgeräte -->
+        <section class="section" id="koppelgeraete">
+            <h2>Koppelgeräte</h2>
+            <div class="content">
+                <ul>
+                    <li><span class="term">Repeater</span>: Ein Gerät, das Signale verstärkt oder regeneriert, um größere Distanzen zu überbrücken. <br><span class="example">Beispiel: WLAN-Repeater erweitern die Reichweite eines drahtlosen Netzwerks.</span></li><br>
 
-    <div class="question">
-        <h3>Abkürzungen in der Netzwerktechnik</h3>
-        <ol>
-            <li>Wofür steht die Abkürzung IEEE?
-                <ol type="A">
-                    <li>International Electrical Energy Enterprise</li>
-                    <li>Institute of Electrical and Electronics Engineers</li>
-                    <li>Internet Engineering and Evaluation Entity</li>
-                    <li>Integrated Electronics and Engineering Experts</li>
+                    <li><span class="term">Hub</span>: Ein Netzwerkgerät, das Datenpakete an alle angeschlossenen Ports sendet. <br><span class="example">Beispiel: Ein Hub verteilt eingehende Daten an alle Geräte im Netzwerk.</span></li><br>
+
+                    <li><span class="term">Bridge</span>: Verbindet zwei Netzwerksegmente auf der Sicherungsschicht und filtert Datenverkehr basierend auf MAC-Adressen. <br><span class="example">Beispiel: Eine Bridge kann zwei Ethernet-Segmente miteinander verbinden.</span></li><br>
+
+                    <li><span class="term">Switch</span>: Leitet Datenpakete gezielt an den richtigen Port basierend auf MAC-Adressen. <br><span class="example">Beispiel: Ein Switch verbindet mehrere Geräte effizient in einem LAN.</span></li><br>
+
+                    <li><span class="term">Router</span>: Leitet Datenpakete zwischen verschiedenen Netzwerken basierend auf IP-Adressen weiter. <br><span class="example">Beispiel: Ein Router verbindet das Heimnetzwerk mit dem Internet.</span></li><br>
+
+                    <li><span class="term">Layer 3 Switch</span>: Kombiniert die Funktionen eines Switches und Routers, arbeitet auf Schicht 2 und 3 des OSI-Modells. <br><span class="example">Beispiel: L3-Switches ermöglichen VLAN-Routing innerhalb eines Netzwerks.</span></li><br>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zu Koppelgeräten -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Koppelgeräte</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welches Gerät arbeitet hauptsächlich auf der Netzwerkschicht (Layer 3)?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">A) Switch</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Hub</button></li>
+                        <li><button onclick="alert('Richtig! Ein Router arbeitet auf Layer 3.')">C) Router</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Repeater</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- ISO/OSI-Schichtenmodell -->
+        <section class="section" id="iso-osi">
+            <h2>ISO/OSI-Schichtenmodell</h2>
+            <div class="content">
+                <p>Das ISO/OSI-Modell ist ein Referenzmodell mit sieben Schichten, das die Kommunikation in Netzwerken beschreibt:</p>
+                <ol>
+                    <li><span class="term">Bitübertragungsschicht</span> (Physikalische Schicht): Überträgt Bits über physische Medien. <br><span class="example">Beispiel: Elektrische Signale über ein Ethernet-Kabel.</span></li><br>
+
+                    <li><span class="term">Sicherungsschicht</span> (Data Link Layer): Sichert die Datenübertragung und regelt den Zugriff auf das Übertragungsmedium. <br><span class="example">Beispiel: MAC-Adressen und Ethernet-Frames.</span></li><br>
+
+                    <li><span class="term">Vermittlungsschicht</span> (Network Layer): Verantwortlich für die Wegfindung und Weiterleitung von Datenpaketen. <br><span class="example">Beispiel: IP-Adressen und Routing-Protokolle.</span></li><br>
+
+                    <li><span class="term">Transportschicht</span> (Transport Layer): Gewährleistet den zuverlässigen Datentransfer zwischen Endgeräten. <br><span class="example">Beispiel: TCP und UDP Protokolle.</span></li><br>
+
+                    <li><span class="term">Sitzungsschicht</span> (Session Layer): Steuerung von Verbindungen und Sitzungen zwischen Anwendungen. <br><span class="example">Beispiel: Verwaltung von Sitzungen in Webanwendungen.</span></li><br>
+
+                    <li><span class="term">Darstellungsschicht</span> (Presentation Layer): Übersetzt Datenformate und verschlüsselt Daten. <br><span class="example">Beispiel: Konvertierung von Datenformaten wie JPEG oder ASCII.</span></li><br>
+
+                    <li><span class="term">Anwendungsschicht</span> (Application Layer): Schnittstelle für Anwendungen zur Kommunikation über das Netzwerk. <br><span class="example">Beispiel: HTTP für den Zugriff auf Webseiten.</span></li><br>
                 </ol>
-            </li>
-            <!-- Weitere Fragen folgen im gleichen Format -->
-        </ol>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zum ISO/OSI-Modell -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - ISO/OSI-Modell</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Auf welcher Schicht des OSI-Modells arbeitet das IP-Protokoll?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">A) Anwendungsschicht</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Transportschicht</button></li>
+                        <li><button onclick="alert('Richtig! Das IP-Protokoll arbeitet auf der Vermittlungsschicht.')">C) Vermittlungsschicht</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Sicherungsschicht</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- Strukturierte Verkabelung -->
+        <section class="section" id="verkabelung">
+            <h2>Strukturierte Verkabelung</h2>
+            <div class="content">
+                <p>Strukturierte Verkabelung ist ein standardisiertes Konzept für die Verkabelung von Gebäuden und Rechenzentren. Es ermöglicht eine flexible, skalierbare und organisierte Netzwerkumgebung.</p>
+                <p><span class="example">Beispiel: In einem Bürogebäude sind alle Arbeitsplätze nach einem einheitlichen Schema verkabelt, was einfache Änderungen und Erweiterungen ermöglicht.</span></p>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zur strukturierten Verkabelung -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Strukturierte Verkabelung</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welcher Vorteil wird durch strukturierte Verkabelung erreicht?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">A) Höhere Datenübertragungsraten</button></li>
+                        <li><button onclick="alert('Richtig! Sie ermöglicht Flexibilität und Skalierbarkeit.')">B) Flexibilität und Skalierbarkeit</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">C) Geringere Hardwarekosten</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Verringerte Stromkosten</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- Netztopologien -->
+        <section class="section" id="topologien">
+            <h2>Netztopologien</h2>
+            <div class="content">
+                <p>Netztopologien beschreiben die physische oder logische Anordnung von Netzwerken:</p>
+                <ul>
+                    <li><span class="term">Stern-Topologie</span>: Alle Geräte sind an einen zentralen Knoten (z.B. Switch) angeschlossen. <br><span class="example">Beispiel: Modernes Ethernet-Netzwerk.</span></li><br>
+
+                    <li><span class="term">Bus-Topologie</span>: Alle Geräte teilen sich ein gemeinsames Übertragungsmedium. <br><span class="example">Beispiel: Ältere Ethernet-Netzwerke mit Koaxialkabel.</span></li><br>
+
+                    <li><span class="term">Ring-Topologie</span>: Geräte sind in einem geschlossenen Kreis verbunden, Daten werden in eine Richtung übertragen. <br><span class="example">Beispiel: FDDI-Netzwerke.</span></li><br>
+
+                    <li><span class="term">Baum-Topologie</span>: Kombination aus Bus- und Stern-Topologie mit hierarchischer Struktur. <br><span class="example">Beispiel: Große Unternehmensnetzwerke.</span></li><br>
+
+                    <li><span class="term">Maschen-Topologie</span>: Jedes Gerät ist mit mehreren anderen Geräten verbunden, hohe Redundanz. <br><span class="example">Beispiel: Internet-Backbone-Struktur.</span></li><br>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zu Netztopologien -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Netztopologien</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welche Topologie bietet die höchste Ausfallsicherheit?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">A) Bus-Topologie</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Stern-Topologie</button></li>
+                        <li><button onclick="alert('Richtig! Die Maschen-Topologie bietet hohe Redundanz.')">C) Maschen-Topologie</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Ring-Topologie</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- Ethernet-Frame -->
+        <section class="section" id="ethernet-frame">
+            <h2>Ethernet-Frame</h2>
+            <div class="content">
+                <p>Ein Ethernet-Frame ist ein Datenpaket auf der Sicherungsschicht mit folgenden Feldern:</p>
+                <ul>
+                    <li><span class="term">Präambel</span>: Synchronisation für den Empfänger.</li><br>
+                    <li><span class="term">Start Frame Delimiter (SFD)</span>: Markiert den Beginn des Frames.</li><br>
+                    <li><span class="term">Ziel-MAC-Adresse</span>: Empfängeradresse.</li><br>
+                    <li><span class="term">Quell-MAC-Adresse</span>: Absenderadresse.</li><br>
+                    <li><span class="term">Typ/Länge</span>: Identifiziert das Protokoll oder die Länge der Daten.</li><br>
+                    <li><span class="term">Daten</span>: Nutzdaten und ggf. Pad zur Mindestlänge.</li><br>
+                    <li><span class="term">Frame Check Sequence (FCS)</span>: Fehlerprüfung durch CRC.</li><br>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zum Ethernet-Frame -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Ethernet-Frame</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welches Feld des Ethernet-Frames enthält die MAC-Adresse des Empfängers?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Richtig! Die Ziel-MAC-Adresse enthält die Empfängeradresse.')">A) Ziel-MAC-Adresse</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Quell-MAC-Adresse</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">C) Typ/Länge</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Daten</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- Spanning Tree Protocol (STP) -->
+        <section class="section" id="stp">
+            <h2>Spanning Tree Protocol (STP)</h2>
+            <div class="content">
+                <p>STP ist ein Protokoll zur Vermeidung von Schleifen in redundanten Netzwerkstrukturen. Es bestimmt einen einzigen Pfad durch das Netzwerk und deaktiviert redundante Verbindungen.</p>
+                <ul>
+                    <li><span class="term">Root Bridge</span>: Der zentrale Knoten im STP-Baum, von dem aus alle Pfade berechnet werden.</li><br>
+                    <li><span class="term">Root Port</span>: Port eines Switches mit dem kürzesten Pfad zur Root Bridge.</li><br>
+                    <li><span class="term">Designated Port</span>: Port, der für ein Netzwerksegment verantwortlich ist und Daten weiterleitet.</li><br>
+                    <li><span class="term">Blocked Port</span>: Port, der deaktiviert ist, um Schleifen zu verhindern.</li><br>
+                </ul>
+                <p><span class="term">Bridge Protocol Data Unit (BPDU)</span>: Nachrichten, die von Switches zum Austausch von STP-Informationen verwendet werden. Wichtige Felder sind:</p>
+                <ul>
+                    <li><span class="term">Root Identifier</span>: Identifiziert die Root Bridge.</li><br>
+                    <li><span class="term">Cost</span>: Kosten des Pfades zur Root Bridge.</li><br>
+                    <li><span class="term">Bridge Identifier</span>: Identifiziert den sendenden Switch.</li><br>
+                    <li><span class="term">Port Identifier</span>: Identifiziert den Port, über den die BPDU gesendet wurde.</li><br>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zu STP -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - STP</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welcher Port hat den niedrigsten Pfad zur Root Bridge?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Richtig! Der Root Port hat den niedrigsten Pfad zur Root Bridge.')">A) Root Port</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Designated Port</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">C) Blocked Port</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Alternate Port</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
+        <!-- Übertragungsarten -->
+        <section class="section" id="uebertragungsarten">
+            <h2>Übertragungsarten</h2>
+            <div class="content">
+                <ul>
+                    <li><span class="term">Broadcast</span>: Nachricht an alle Geräte im Netzwerksegment. <br><span class="example">Beispiel: ARP-Anfrage an alle Hosts im LAN.</span></li><br>
+
+                    <li><span class="term">Multicast</span>: Nachricht an eine definierte Gruppe von Empfängern. <br><span class="example">Beispiel: Streaming von Live-Videos an Abonnenten.</span></li><br>
+
+                    <li><span class="term">Unicast</span>: Nachricht an einen einzelnen Empfänger. <br><span class="example">Beispiel: E-Mail-Versand an einen Kontakt.</span></li><br>
+
+                    <li><span class="term">Anycast</span>: Nachricht an den nächstgelegenen Empfänger aus einer Gruppe. <br><span class="example">Beispiel: DNS-Anfrage an den nächstgelegenen Server.</span></li><br>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Multiple-Choice-Fragen zu Übertragungsarten -->
+        <section class="section">
+            <h2>Multiple-Choice-Fragen - Übertragungsarten</h2>
+            <div class="content">
+                <div class="question">
+                    <h3>1. Welche Übertragungsart wird verwendet, um eine Nachricht an alle Geräte im Netzwerk zu senden?</h3>
+                    <ul class="answers">
+                        <li><button onclick="alert('Richtig! Broadcast sendet an alle Geräte im Netzwerk.')">A) Broadcast</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">B) Unicast</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">C) Multicast</button></li>
+                        <li><button onclick="alert('Falsch! Versuche es erneut.')">D) Anycast</button></li>
+                    </ul>
+                </div>
+                <!-- Weitere Fragen folgen im gleichen Format -->
+            </div>
+        </section>
+
     </div>
 
-    <div class="question">
-        <h3>Kopplungsgeräte</h3>
-        <ol>
-            <li>Welches Gerät leitet Datenpakete basierend auf IP-Adressen weiter?
-                <ol type="A">
-                    <li>Switch</li>
-                    <li>Hub</li>
-                    <li>Router</li>
-                    <li>Repeater</li>
-                </ol>
-            </li>
-            <!-- Weitere Fragen folgen im gleichen Format -->
-        </ol>
-    </div>
-
-    <!-- Weitere Multiple-Choice-Fragen für die restlichen Themen -->
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Klassenarbeit Vorbereitung. Alle Rechte vorbehalten.</p>
+    </footer>
 
 </body>
 </html>
