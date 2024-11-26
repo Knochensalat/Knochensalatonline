@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Themen für die Klassenarbeit</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        h2 { color: #555; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        .term { font-weight: bold; }
+        .example { color: #777; }
+        .question { margin-top: 20px; }
+        .question h3 { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Themen für die Klassenarbeit</h1>
+
+    <h2>Abkürzungen in der Netzwerktechnik</h2>
+    <ul>
+        <li><span class="term">IEEE</span> - Institute of Electrical and Electronics Engineers: Ein Berufsverband für Ingenieure, der Standards in der Elektrotechnik entwickelt. <br><span class="example">Beispiel: Der IEEE 802.11-Standard definiert WLAN-Technologien.</span></li>
+
+        <li><span class="term">IETF</span> - Internet Engineering Task Force: Eine Organisation, die Internetstandards wie TCP/IP entwickelt. <br><span class="example">Beispiel: Die IETF arbeitet an Protokollen für das Internet der Dinge.</span></li>
+
+        <li><span class="term">RFC</span> - Request for Comments: Dokumente, die neue Forschungsergebnisse, Innovationen oder Methoden in Bezug auf das Internet beschreiben. <br><span class="example">Beispiel: RFC 791 definiert das Internet Protocol Version 4 (IPv4).</span></li>
+
+        <li><span class="term">ISO</span> - International Organization for Standardization: Eine internationale Normungsorganisation, die weltweit technische Standards entwickelt. <br><span class="example">Beispiel: Das ISO/OSI-Modell ist ein Referenzmodell für Netzwerkprotokolle.</span></li>
+
+        <li><span class="term">OSI</span> - Open Systems Interconnection: Ein Schichtenmodell zur Beschreibung von Netzwerkkommunikation. <br><span class="example">Beispiel: Das OSI-Modell besteht aus sieben Schichten von der physikalischen bis zur Anwendungsschicht.</span></li>
+
+        <!-- Weitere Abkürzungen folgen im gleichen Format -->
+    </ul>
+
+    <h2>Kopplungsgeräte</h2>
+    <ul>
+        <li><span class="term">Repeater</span>: Ein Gerät, das Signale verstärkt, um größere Distanzen zu überbrücken. <br><span class="example">Beispiel: Ein Repeater wird verwendet, um ein schwaches WLAN-Signal zu verstärken.</span></li>
+
+        <li><span class="term">Hub</span>: Ein einfaches Netzwerkgerät, das Daten an alle angeschlossenen Geräte sendet. <br><span class="example">Beispiel: Ein Hub verbindet mehrere Computer in einem LAN, ohne den Datenverkehr zu filtern.</span></li>
+
+        <li><span class="term">Bridge</span>: Verbindet zwei Netzwerksegmente auf Datenverbindungsebene und filtert den Verkehr. <br><span class="example">Beispiel: Eine Bridge kann zwei Ethernet-Netzwerke verbinden und Daten basierend auf MAC-Adressen weiterleiten.</span></li>
+
+        <li><span class="term">Switch</span>: Ein Gerät, das den Datenverkehr effizient an das richtige Ziel im Netzwerk leitet. <br><span class="example">Beispiel: Ein Switch leitet Daten nur an den Port weiter, an dem das Zielgerät angeschlossen ist.</span></li>
+
+        <li><span class="term">Router</span>: Leitet Datenpakete zwischen verschiedenen Netzwerken auf Basis von IP-Adressen weiter. <br><span class="example">Beispiel: Ein Router verbindet ein Heimnetzwerk mit dem Internet.</span></li>
+
+        <li><span class="term">Layer 3 Switch</span>: Kombiniert die Funktionen eines Switches und Routers, arbeitet sowohl auf der Datenverbindungs- als auch auf der Netzwerkschicht. <br><span class="example">Beispiel: Ein L3-Switch kann VLANs routen und somit interne Netzwerksegmentierung ermöglichen.</span></li>
+    </ul>
+
+    <h2>ISO/OSI-Schichtenmodell</h2>
+    <p>Das ISO/OSI-Modell ist ein Referenzmodell mit sieben Schichten, das die Kommunikation in Netzwerken beschreibt:</p>
+    <ol>
+        <li><span class="term">Bitübertragungsschicht</span> (Physikalische Schicht): Überträgt Bits über physische Medien. <br><span class="example">Beispiel: Ethernet-Kabel übertragen elektrische Signale.</span></li>
+
+        <li><span class="term">Sicherungsschicht</span> (Datenverbindungsschicht): Sichert die Datenübertragung und steuert den Zugriff auf das Medium. <br><span class="example">Beispiel: MAC-Adressen werden auf dieser Schicht verwendet.</span></li>
+
+        <!-- Weitere Schichten folgen im gleichen Format -->
+    </ol>
+
+    <h2>Strukturierte Verkabelung</h2>
+    <p>Eine standardisierte Methode zur Verkabelung von Gebäuden und Rechenzentren, die Flexibilität und Skalierbarkeit ermöglicht. Sie wird in Unternehmensnetzwerken eingesetzt, um effiziente und organisierte Verbindungen zu gewährleisten.</p>
+    <span class="example">Beispiel: In einem Bürogebäude werden alle Netzwerkdosen nach einem einheitlichen Plan verkabelt.</span>
+
+    <h2>Netztopologien</h2>
+    <p>Die physische oder logische Anordnung von Netzwerken:</p>
+    <ul>
+        <li><span class="term">Stern-Topologie</span>: Alle Geräte sind an einen zentralen Knoten angeschlossen. <br><span class="example">Beispiel: Ein Switch in der Mitte verbindet mehrere Computer.</span></li>
+
+        <li><span class="term">Bus-Topologie</span>: Alle Geräte teilen sich ein gemeinsames Übertragungsmedium. <br><span class="example">Beispiel: Ältere Ethernet-Netzwerke mit Koaxialkabel.</span></li>
+
+        <!-- Weitere Topologien folgen im gleichen Format -->
+    </ul>
+
+    <h2>Ethernet-Frame</h2>
+    <p>Ein Datenpaket auf der Sicherungsschicht mit folgenden Feldern:</p>
+    <ul>
+        <li><span class="term">Präambel</span>: Synchronisation für den Empfänger.</li>
+        <li><span class="term">Ziel-MAC-Adresse</span></li>
+        <li><span class="term">Quell-MAC-Adresse</span></li>
+        <li><span class="term">Typ/Length</span></li>
+        <li><span class="term">Daten</span></li>
+        <li><span class="term">Frame Check Sequence (FCS)</span>: Fehlerprüfung.</li>
+    </ul>
+
+    <h2>Spanning Tree Protocol (STP)</h2>
+    <p>Ein Protokoll zur Vermeidung von Schleifen in redundanten Netzwerkstrukturen.</p>
+    <ul>
+        <li><span class="term">Root Port</span>: Port mit dem kürzesten Pfad zur Root Bridge.</li>
+        <li><span class="term">Designated Port</span>: Port, der als Ausgangspunkt zu einem Netzwerksegment dient.</li>
+        <li><span class="term">Blocked Port</span>: Port, der deaktiviert ist, um Schleifen zu verhindern.</li>
+    </ul>
+    <p><span class="term">Bridge Protocol Data Unit (BPDU)</span>: Nachrichten, die zum Austausch von Informationen zwischen Switches verwendet werden.</p>
+
+    <h2>Übertragungsarten</h2>
+    <ul>
+        <li><span class="term">Broadcast</span>: Nachricht an alle Geräte im Netzwerk. <br><span class="example">Beispiel: ARP-Anfragen werden als Broadcast gesendet.</span></li>
+
+        <li><span class="term">Multicast</span>: Nachricht an eine Gruppe von Geräten. <br><span class="example">Beispiel: Video-Streaming an mehrere Empfänger.</span></li>
+
+        <li><span class="term">Unicast</span>: Nachricht an ein einzelnes Gerät. <br><span class="example">Beispiel: Eine E-Mail an einen einzelnen Empfänger.</span></li>
+
+        <li><span class="term">Anycast</span>: Nachricht an das nächstgelegene Gerät aus einer Gruppe. <br><span class="example">Beispiel: DNS-Anfragen nutzen Anycast-Adressen.</span></li>
+    </ul>
+
+    <h2>Multiple-Choice-Fragen</h2>
+
+    <div class="question">
+        <h3>Abkürzungen in der Netzwerktechnik</h3>
+        <ol>
+            <li>Wofür steht die Abkürzung IEEE?
+                <ol type="A">
+                    <li>International Electrical Energy Enterprise</li>
+                    <li>Institute of Electrical and Electronics Engineers</li>
+                    <li>Internet Engineering and Evaluation Entity</li>
+                    <li>Integrated Electronics and Engineering Experts</li>
+                </ol>
+            </li>
+            <!-- Weitere Fragen folgen im gleichen Format -->
+        </ol>
+    </div>
+
+    <div class="question">
+        <h3>Kopplungsgeräte</h3>
+        <ol>
+            <li>Welches Gerät leitet Datenpakete basierend auf IP-Adressen weiter?
+                <ol type="A">
+                    <li>Switch</li>
+                    <li>Hub</li>
+                    <li>Router</li>
+                    <li>Repeater</li>
+                </ol>
+            </li>
+            <!-- Weitere Fragen folgen im gleichen Format -->
+        </ol>
+    </div>
+
+    <!-- Weitere Multiple-Choice-Fragen für die restlichen Themen -->
+
+</body>
+</html>
