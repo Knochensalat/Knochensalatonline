@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP8266 und Wetterstation Projekt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Grundlegende Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1581440942881-14c8c30e7be9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hauptinhalt */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section::before {
+            content: "Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt Wetterstation Projekt ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%) rotate(-45deg);
+            white-space: nowrap;
+            z-index: -1;
+            width: 200%;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .content ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section::before {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>ESP8266 und Wetterstation Projekt</h1>
+            <p>Einführung und Projektplanung</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#esp8266">ESP8266</a>
+        <a href="#vergleich">Vergleich</a>
+        <a href="#projekt">Projekt</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- ESP8266 Einführung -->
+        <section class="section" id="esp8266">
+            <h2>Was ist der ESP8266?</h2>
+            <div class="content">
+                <p>
+                    Der <strong>ESP8266</strong> ist ein kostengünstiger 32-Bit-Mikrocontroller mit integriertem WLAN, entwickelt von der chinesischen Firma Espressif Systems. Er ermöglicht es, Internetanwendungen auf kleinem Raum und mit geringem Budget zu realisieren, was ihn ideal für IoT-Projekte macht.
+                </p>
+            </div>
+        </section>
+
+        <!-- Unterschiede zum Arduino Uno und Raspberry Pi -->
+        <section class="section" id="vergleich">
+            <h2>Unterschiede zum Arduino Uno und Raspberry Pi</h2>
+            <div class="content">
+
+                <h3>Arduino Uno</h3>
+                <ul>
+                    <li><strong>Typ:</strong> Mikrocontroller-Board</li>
+                    <li><strong>Prozessor:</strong> 8-Bit ATmega328P mit 16 MHz</li>
+                    <li><strong>Speicher:</strong> 32 KB Flash, 2 KB SRAM</li>
+                    <li><strong>Konnektivität:</strong> Keine integrierte Netzwerkverbindung</li>
+                    <li><strong>Einsatzbereich:</strong> Ideal für einfache Steuerungsaufgaben und das Auslesen von Sensoren</li>
+                </ul>
+
+                <h3>Raspberry Pi</h3>
+                <ul>
+                    <li><strong>Typ:</strong> Einplatinencomputer</li>
+                    <li><strong>Prozessor:</strong> ARM-basierter Quad-Core-Prozessor</li>
+                    <li><strong>Speicher:</strong> Bis zu 8 GB RAM</li>
+                    <li><strong>Konnektivität:</strong> Integriertes WLAN, Ethernet und Bluetooth</li>
+                    <li><strong>Einsatzbereich:</strong> Geeignet für komplexe Anwendungen wie Webserver, Medienzentren oder als Desktop-Ersatz</li>
+                </ul>
+
+                <h3>ESP8266</h3>
+                <ul>
+                    <li><strong>Typ:</strong> Mikrocontroller mit integriertem WLAN</li>
+                    <li><strong>Prozessor:</strong> 32-Bit Tensilica L106 mit 80 MHz</li>
+                    <li><strong>Speicher:</strong> Bis zu 4 MB Flash</li>
+                    <li><strong>Konnektivität:</strong> Integriertes WLAN</li>
+                    <li><strong>Einsatzbereich:</strong> Perfekt für IoT-Projekte, die eine WLAN-Verbindung erfordern</li>
+                </ul>
+
+                <p>
+                    Zusammenfassend ist der Arduino Uno ideal für einfache Steuerungsaufgaben, der Raspberry Pi für komplexe Anwendungen, und der ESP8266 bietet eine kostengünstige Lösung für WLAN-fähige IoT-Projekte.
+                </p>
+            </div>
+        </section>
+
+        <!-- Wetterstation Projekt -->
+        <section class="section" id="projekt">
+            <h2>Unser Wetterstation Projekt</h2>
+            <div class="content">
+                <p>
+                    Wir planen ein spannendes Projekt: den Bau einer eigenen Wetterstation basierend auf dem ESP8266. Inspiriert wurden wir von der <a href="https://www.haraldkreuzer.net/aktuelles/bauanleitung-raspberry-pi-wetterstation-mit-wettervorhersage-und-esp32-funksensoren" target="_blank">Bauanleitung von Harald Kreuzer</a>. Unsere Wetterstation wird verschiedene Umweltdaten wie Temperatur, Luftfeuchtigkeit und Luftdruck messen und diese Daten per WLAN übertragen.
+                </p>
+                <p>
+                    Das Projekt soll bis spätestens Ende Januar fertiggestellt und abgegeben werden. Der genaue Umfang und die spezifischen Anforderungen werden in Kürze festgelegt. Wir freuen uns auf die Umsetzung und die spannenden Herausforderungen, die dieses Projekt mit sich bringt.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Wetterstation Projekt. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
