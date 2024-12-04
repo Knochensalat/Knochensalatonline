@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solartechnik - Kennlinien und Füllfaktor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Kennlinien, Temperaturkoeffizienten und Füllfaktor</h1>
+
+        <h2>1. Temperaturabhängigkeit und Verlustvermeidung</h2>
+        <p>
+            Der Wirkungsgrad einer Photodiode oder Solartechnologie ist stark von der Temperatur abhängig:
+        </p>
+        <ul>
+            <li>Temperaturkoeffizient: ca. -0,5% pro Kelvin</li>
+            <li>Passive Kühlung im Bereich von -10°C bis 20°C kann Verluste minimieren</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> Mit steigender Temperatur sinkt die Effizienz von Photodioden oder Solarpanels.
+        </div>
+
+        <h2>2. Begriffe und Kennlinien</h2>
+        <ul>
+            <li><code>U<sub>0</sub></code>: Leerlaufspannung</li>
+            <li><code>I<sub>k</sub></code>: Kurzschlussstrom</li>
+            <li><code>U<sub>mpp</sub></code>: Spannung am Maximum Power Point</li>
+            <li><code>I<sub>mpp</sub></code>: Strom am Maximum Power Point</li>
+            <li>Füllfaktor (<code>FF</code>): Verhältnis der maximalen Leistung zur theoretisch möglichen Leistung</li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/I_V-Kennlinie_Photodiode.svg" alt="Kennlinien einer Photodiode">
+        <p>
+            Die Kennlinien zeigen die Abhängigkeit des Stroms von der Spannung unter verschiedenen Bedingungen:
+        </p>
+        <ul>
+            <li>Abhängigkeit von der Lichtstärke</li>
+            <li>Temperaturabhängigkeit</li>
+        </ul>
+
+        <h2>3. Füllfaktor und Einflussfaktoren</h2>
+        <p>
+            Der Füllfaktor (<code>FF</code>) wird wie folgt berechnet:
+        </p>
+        <p><code>FF = (U<sub>mpp</sub> · I<sub>mpp</sub>) / (U<sub>0</sub> · I<sub>k</sub>)</code></p>
+        <p>
+            Einflussfaktoren auf den Füllfaktor:
+        </p>
+        <ul>
+            <li>Materialqualität der Photodiode oder des Solarpanels</li>
+            <li>Temperatur</li>
+            <li>Serien- und Parallelwiderstände innerhalb der Zelle</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> Ein höherer Füllfaktor bedeutet eine effizientere Energienutzung.
+        </div>
+
+        <h2>4. Allgemeine Zusammenhänge</h2>
+        <p>
+            Der Wirkungsgrad von Photodioden oder Solarpanels wird maßgeblich durch die Kombination von Spannung, Strom und Temperatur beeinflusst. Eine optimale Kühlung und hochwertige Materialien sind entscheidend für eine maximale Leistung.
+        </p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Photodiode_Schaltung.svg" alt="Schaltbild einer Photodiode">
+
+        <h2>5. Übungsaufgaben</h2>
+        <p>Testen Sie Ihr Wissen:</p>
+        <ul>
+            <li>Wie beeinflusst die Temperatur die Leistung einer Photodiode?</li>
+            <li>Berechnen Sie den Füllfaktor für eine Photodiode mit folgenden Werten: <code>U<sub>mpp</sub> = 0,5V</code>, <code>I<sub>mpp</sub> = 3A</code>, <code>U<sub>0</sub> = 0,6V</code>, <code>I<sub>k</sub> = 5A</code>.</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+    </footer>
+
+</body>
+</html>
