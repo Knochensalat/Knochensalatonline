@@ -2,17 +2,17 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Custom Notebooks - Dein einzigartiges, nachhaltiges Notebook</title>
+    <title>Custom Notebooks - Dein einzigartiges, nachhaltiges Notizbuch</title>
     <!-- Google Fonts einbinden -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #008080, #00b3b3);
+            color: #ffffff;
         }
         header, nav, main, footer {
             max-width: 1200px;
@@ -23,9 +23,9 @@
             max-width: 200px;
         }
         nav {
-            background-color: #1f1f1f;
+            background-color: rgba(0, 64, 64, 0.9);
             padding: 10px 20px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #033;
         }
         nav a {
             margin: 0 15px;
@@ -34,20 +34,33 @@
             font-weight: bold;
         }
         nav a:hover {
-            color: #ff4081;
+            color: #00ff7f;
         }
+
+        /* Hauptüberschriften und Highlights in Grün statt Pink */
         main h1, main h2 {
-            color: #ff4081;
+            color: #00ff7f;
         }
+        
+        a {
+            color: #00ff7f;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
         .section {
             margin: 40px 0;
         }
+
         .flyer img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
+
         .contact, .social-media {
             display: flex;
             flex-direction: column;
@@ -58,22 +71,24 @@
             text-decoration: none;
         }
         .social-media a:hover {
-            color: #ff4081;
+            color: #00ff7f;
         }
+
         footer {
-            background-color: #1f1f1f;
+            background-color: rgba(0, 64, 64, 0.9);
             text-align: center;
             padding: 20px;
-            border-top: 1px solid #333;
+            border-top: 1px solid #033;
         }
         footer a {
             color: #ffffff;
             text-decoration: none;
         }
         footer a:hover {
-            color: #ff4081;
+            color: #00ff7f;
         }
-        /* Zusätzliche Stile */
+
+        /* Liste mit Icon */
         ul {
             list-style-type: none;
             padding: 0;
@@ -84,14 +99,8 @@
             padding-left: 30px;
             margin: 10px 0;
         }
-        a {
-            color: #ff4081;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        /* Responsive Design */
+
+        /* Responsives Design */
         @media (max-width: 768px) {
             nav {
                 display: flex;
@@ -102,6 +111,33 @@
                 text-align: center;
                 margin: 10px 0;
             }
+        }
+
+        /* Großer Banner für Kinderfest */
+        .banner {
+            background: rgba(0, 50, 50, 0.5);
+            border: 2px solid #00ff7f;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .banner h2 {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        .banner a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00ff7f;
+            color: #000;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .banner a.button:hover {
+            background: #00b386;
         }
     </style>
 </head>
@@ -121,24 +157,31 @@
     </nav>
 
     <main>
+
+        <!-- Großer Banner, der auf kinderfest.html weiterleitet -->
+        <div class="banner">
+            <h2>Itzehoer Kinderfest</h2>
+            <p>Weitere Infos finden Sie hier</p>
+            <a class="button" href="kinderfest.html">Itzehoer Kinderfest</a>
+        </div>
+
         <section class="section" id="angebote">
             <h1>Willkommen bei Custom Notebooks</h1>
-            <h2>Dein einzigartiges Notebook – nachhaltig und individuell gestaltet</h2>
-            <p>Bei <strong>Custom Notebooks</strong> glauben wir an die Kraft der Individualität und Nachhaltigkeit. Gestalte dein eigenes Notebook und lass deiner Kreativität freien Lauf mit unseren umweltfreundlichen Materialien und Designs.</p>
+            <h2>Dein einzigartiges Notizbuch – nachhaltig und individuell gestaltet</h2>
+            <p>Bei <strong>Custom Notebooks</strong> kannst du deine ganz persönlichen, nachhaltigen Papier-Notizbücher gestalten und bestellen. Keine Massenware, sondern ganz nach deinen Vorstellungen – von der Hülle über das Papier bis hin zu speziellen Extras.</p>
             <ul>
-                <li><strong>Personalisierte Notebooks:</strong> Stelle dein einzigartiges Notebook zusammen – von der Hülle bis zum Papier, alles nach deinen Wünschen.</li>
-                <li><strong>Nachhaltige Materialien:</strong> Wir verwenden ausschließlich ökologische und recycelte Materialien, um unseren Planeten zu schützen.</li>
-                <li><strong>Innovatives Design:</strong> Moderne und ansprechende Designs, die nicht nur funktional, sondern auch stilvoll sind.</li>
+                <li><strong>Personalisierte Notizbücher:</strong> Stelle dein individuelles Buch zusammen – Material, Größe, Farben, Muster und mehr.</li>
+                <li><strong>Nachhaltige Materialien:</strong> Wir verwenden ökologische und recycelte Materialien, um unseren Planeten zu schützen.</li>
+                <li><strong>Innovatives Design:</strong> Moderne und ansprechende Designs, die funktional und stilvoll zugleich sind.</li>
             </ul>
         </section>
 
         <section class="section" id="kinderfest">
             <h2>Itzehoer Kinderfest am 26.07.2025</h2>
-            <!-- Flyer für das Kinderfest einfügen -->
             <div class="flyer">
                 <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/kinder.png" alt="Flyer Itzehoer Kinderfest 2025">
             </div>
-            <p>Wir freuen uns, das jährliche <strong>Itzehoer Kinderfest</strong> zu organisieren! Ein Tag voller Spaß, Spiele und unvergesslicher Momente für die ganze Familie.</p>
+            <p>Freu dich auf das jährliche <strong>Itzehoer Kinderfest</strong>! Ein Tag voller Spaß, Spiele und unvergesslicher Momente für die ganze Familie.</p>
             <ul>
                 <li><strong>Wann:</strong> 26. Juli 2025</li>
                 <li><strong>Wo:</strong> Stadtpark Itzehoe</li>
@@ -148,13 +191,37 @@
 
         <section class="section" id="nachhaltigkeit">
             <h2>Unser Engagement für Nachhaltigkeit</h2>
-            <p>Wir arbeiten derzeit daran, unser Firmendach mit Photovoltaik-Anlagen auszustatten, um unseren ökologischen Fußabdruck weiter zu reduzieren. Nachhaltigkeit ist für uns nicht nur ein Wort, sondern ein Versprechen.</p>
+            <p>Wir arbeiten daran, unser Firmendach mit Photovoltaik-Anlagen auszustatten, um unseren ökologischen Fußabdruck weiter zu reduzieren. Nachhaltigkeit ist für uns nicht nur ein Wort, sondern ein Versprechen.</p>
         </section>
 
         <section class="section" id="ausbildung">
             <h2>Ausbildung mit Zukunft</h2>
-            <p>Die Förderung junger Talente liegt uns am Herzen. Unsere Auszubildenden erhalten eine hochwertige Ausbildung in einem innovativen und nachhaltigen Umfeld.</p>
+            <p>Wir setzen auf Nachwuchsförderung! Unsere Auszubildenden erhalten eine hochwertige Ausbildung in einem innovativen und nachhaltigen Umfeld.</p>
             <ul>
                 <li>Moderne Ausbildungsplätze</li>
                 <li>Individuelle Betreuung</li>
-                <li>Nachhaltige Unternehmen
+                <li>Nachhaltige Unternehmensphilosophie</li>
+            </ul>
+        </section>
+
+        <section class="section" id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Du möchtest mehr erfahren? Schreib uns gerne an oder besuche uns vor Ort.</p>
+            <div class="contact">
+                <p>Email: info@custom-notebooks.de</p>
+                <p>Telefon: +49 123 456789</p>
+            </div>
+            <div class="social-media">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Custom Notebooks. Alle Rechte vorbehalten.</p>
+        <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+    </footer>
+
+</body>
+</html>
