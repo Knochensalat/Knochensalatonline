@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnetting - Grundlagen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+
+        .important {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Subnetting - Grundlagen</h1>
+
+        <h2>1. Was ist Subnetting?</h2>
+        <p>
+            Subnetting ist der Prozess, ein Netzwerk in kleinere, logisch getrennte Teile zu unterteilen. 
+            Dadurch wird die effiziente Nutzung von IP-Adressen ermöglicht und die Netzwerksicherheit verbessert.
+        </p>
+        <div class="important">
+            <strong>Merksatz:</strong> Beim Subnetting wird ein großes Netzwerk in kleinere Subnetze aufgeteilt, um Adressen effizient zu nutzen und den Datenverkehr zu optimieren.
+        </div>
+
+        <h2>2. Subnetzmaske</h2>
+        <p>
+            Die Subnetzmaske (Subnet Mask) definiert, welcher Teil einer IP-Adresse das Netzwerk (Netzwerkanteil) und welcher Teil die Hosts (Hostanteil) beschreibt.
+        </p>
+        <ul>
+            <li>Beispiel einer Subnetzmaske: <code>255.255.255.0</code> (CIDR: <code>/24</code>)</li>
+            <li>Netzwerkanteil: die ersten 24 Bits</li>
+            <li>Hostanteil: die letzten 8 Bits</li>
+        </ul>
+        <p>
+            <strong>Beispiel:</strong> Die IP-Adresse <code>192.168.1.1/24</code> gehört zu einem Netzwerk mit maximal 254 Hosts.
+        </p>
+
+        <h2>3. Berechnung der Subnetze</h2>
+        <p>
+            Um Subnetze zu berechnen, verwenden wir die Subnetzmaske. Sie gibt an, wie viele Netzwerke und Hosts möglich sind:
+        </p>
+        <ul>
+            <li>Eine Subnetzmaske von <code>/25</code> (CIDR) teilt ein <code>/24</code>-Netzwerk in 2 Subnetze mit jeweils 126 Hosts.</li>
+            <li>Eine Subnetzmaske von <code>/26</code> teilt das gleiche Netzwerk in 4 Subnetze mit jeweils 62 Hosts.</li>
+        </ul>
+        <div class="important">
+            <strong>Merksatz:</strong> Je mehr Bits für den Netzwerkanteil verwendet werden, desto mehr Subnetze können erstellt werden – aber es gibt weniger Hosts pro Subnetz.
+        </div>
+
+        <h2>4. Praktisches Beispiel</h2>
+        <p>
+            Nehmen wir das Netzwerk <code>192.168.0.0/24</code> und teilen es in 4 Subnetze:
+        </p>
+        <ul>
+            <li><strong>Subnetz 1:</strong> <code>192.168.0.0/26</code> (64 Adressen, 62 Hosts)</li>
+            <li><strong>Subnetz 2:</strong> <code>192.168.0.64/26</code> (64 Adressen, 62 Hosts)</li>
+            <li><strong>Subnetz 3:</strong> <code>192.168.0.128/26</code> (64 Adressen, 62 Hosts)</li>
+            <li><strong>Subnetz 4:</strong> <code>192.168.0.192/26</code> (64 Adressen, 62 Hosts)</li>
+        </ul>
+
+        <h2>5. Video zum Subnetting</h2>
+        <iframe src="https://www.youtube.com/embed/jgwWFKryrOw" allowfullscreen></iframe>
+
+        <h2>6. Übungsaufgaben</h2>
+        <p>Testen Sie Ihr Wissen:</p>
+        <ul>
+            <li>Wie viele Hosts können in einem <code>/28</code>-Subnetz untergebracht werden?</li>
+            <li>Berechnen Sie die Subnetze für das Netzwerk <code>10.0.0.0/16</code>, wenn Sie es in 8 Subnetze aufteilen möchten.</li>
+            <li>Was ist der Unterschied zwischen den Subnetzmasken <code>/24</code> und <code>/25</code>?</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.
+    </footer>
+
+</body>
+</html>
