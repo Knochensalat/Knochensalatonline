@@ -13,10 +13,21 @@
             background: linear-gradient(135deg, #005f73, #0a9396);
             color: #ffffff;
         }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            object-fit: cover;
+        }
         header {
             background: rgba(0, 50, 50, 0.8);
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         header h1 {
             margin: 0;
@@ -29,6 +40,8 @@
             max-width: 1200px;
             margin: auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
         section {
             margin: 40px 0;
@@ -62,6 +75,8 @@
             text-align: center;
             padding: 20px;
             margin-top: 40px;
+            position: relative;
+            z-index: 1;
         }
         footer a {
             color: #00ff7f;
@@ -73,6 +88,10 @@
     </style>
 </head>
 <body>
+    <video autoplay loop muted playsinline>
+        <source src="Professional_Mode_To_create_a_dynamic_and_family_f.mp4" type="video/mp4">
+        Ihr Browser unterstützt dieses Video-Tag nicht.
+    </video>
     <header>
         <h1>Itzehoer Kinderfest 2025</h1>
         <p>Ein Tag voller Spaß, Spiele und unvergesslicher Momente</p>
