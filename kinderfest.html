@@ -14,10 +14,19 @@
             color: #333333;
         }
         header {
-            background: rgba(255, 165, 0, 0.9);
-            padding: 20px;
+            position: relative;
+            padding: 0;
             text-align: center;
             border-bottom: 5px solid #ff6f61;
+        }
+        header video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
         header h1 {
             margin: 0;
@@ -76,6 +85,10 @@
 </head>
 <body>
     <header>
+        <video autoplay loop muted playsinline>
+            <source src="fotor-ai-20241211115310.mp4" type="video/mp4">
+            Ihr Browser unterstützt dieses Video nicht.
+        </video>
         <h1>Itzehoer Kinderfest 2025</h1>
         <p>Ein Tag voller Spaß, Spiele und unvergesslicher Momente</p>
     </header>
@@ -87,7 +100,6 @@
                Auch für kulinarische Highlights ist gesorgt. Lassen Sie uns gemeinsam unvergessliche Erinnerungen schaffen!</p>
             <div class="flyer">
                 <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/kinder.png" alt="Flyer Kinderfest">
-                <img src="https://t4.ftcdn.net/jpg/02/42/68/55/360_F_242685591_PgCWTkXPr84kVhtwVoICdIsJ15Sqo2Y3.jpg" alt="Kinder malen und basteln">
             </div>
         </section>
 
@@ -111,6 +123,7 @@
                 <li><span class="highlight">Sicherheit:</span> Erste-Hilfe-Stationen und geschultes Personal vor Ort.</li>
                 <li><span class="highlight">Nachhaltigkeit:</span> Mülltrennung und umweltfreundliche Materialien.</li>
             </ul>
+            <img src="https://t4.ftcdn.net/jpg/02/42/68/55/360_F_242685591_PgCWTkXPr84kVhtwVoICdIsJ15Sqo2Y3.jpg" alt="Kinder malen und basteln">
             <img src="https://img.freepik.com/vektoren-kostenlos/glueckliche-kinder-die-spiele-spielen_1308-71638.jpg" alt="Kinder spielen">
         </section>
     </main>
