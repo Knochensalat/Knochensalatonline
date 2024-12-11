@@ -10,77 +10,64 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', Arial, sans-serif;
-            background: linear-gradient(135deg, #005f73, #0a9396);
-            color: #ffffff;
-        }
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            object-fit: cover;
+            background: linear-gradient(135deg, #ffcc00, #ff6f61);
+            color: #333333;
         }
         header {
-            background: rgba(0, 50, 50, 0.8);
+            background: rgba(255, 165, 0, 0.9);
             padding: 20px;
             text-align: center;
-            position: relative;
+            border-bottom: 5px solid #ff6f61;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3em;
+            color: #ffffff;
+            text-shadow: 2px 2px #ff6f61;
         }
         header p {
-            font-size: 1.2em;
+            font-size: 1.5em;
+            color: #ffffff;
         }
         main {
             max-width: 1200px;
             margin: auto;
             padding: 20px;
-            position: relative;
-            z-index: 1;
         }
         section {
             margin: 40px 0;
+            background: #fff5e6;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
-        .highlight {
-            font-weight: bold;
-            color: #00ff7f;
-        }
-        .flyer img {
+        section img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin: 10px 0;
         }
-        .banner {
-            background: rgba(0, 50, 50, 0.5);
-            padding: 20px;
-            border: 2px solid #00ff7f;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+        .highlight {
+            font-weight: bold;
+            color: #ff6f61;
         }
-        .running-order {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li {
+            margin: 10px 0;
         }
         footer {
-            background-color: rgba(0, 50, 50, 0.8);
+            background-color: #ffcc00;
             text-align: center;
             padding: 20px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
+            color: #333333;
         }
         footer a {
-            color: #00ff7f;
+            color: #ff6f61;
             text-decoration: none;
+            font-weight: bold;
         }
         footer a:hover {
             text-decoration: underline;
@@ -88,10 +75,6 @@
     </style>
 </head>
 <body>
-    <video autoplay loop muted playsinline>
-        <source src="Professional_Mode_To_create_a_dynamic_and_family_f.mp4" type="video/mp4">
-        Ihr Browser unterstützt dieses Video-Tag nicht.
-    </video>
     <header>
         <h1>Itzehoer Kinderfest 2025</h1>
         <p>Ein Tag voller Spaß, Spiele und unvergesslicher Momente</p>
@@ -104,6 +87,7 @@
                Auch für kulinarische Highlights ist gesorgt. Lassen Sie uns gemeinsam unvergessliche Erinnerungen schaffen!</p>
             <div class="flyer">
                 <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/kinder.png" alt="Flyer Kinderfest">
+                <img src="https://t4.ftcdn.net/jpg/02/42/68/55/360_F_242685591_PgCWTkXPr84kVhtwVoICdIsJ15Sqo2Y3.jpg" alt="Kinder malen und basteln">
             </div>
         </section>
 
@@ -116,18 +100,7 @@
                 <li><span class="highlight">Giveaways:</span> Erhalten Sie ein personalisiertes Notizbuch als Erinnerung.</li>
                 <li><span class="highlight">Gewinnspiele:</span> Attraktive Preise warten auf Sie!</li>
             </ul>
-        </section>
-
-        <section>
-            <h2>Running Order</h2>
-            <div class="running-order">
-                <p><strong>10:00 Uhr:</strong> Eröffnung und Begrüßung</p>
-                <p><strong>11:00 Uhr:</strong> Kreativworkshops beginnen</p>
-                <p><strong>13:00 Uhr:</strong> Live-Musik mit Band XYZ</p>
-                <p><strong>15:00 Uhr:</strong> Hauptgewinnspiel</p>
-                <p><strong>17:00 Uhr:</strong> Kinder-Disco</p>
-                <p><strong>18:00 Uhr:</strong> Abschluss und Dankesworte</p>
-            </div>
+            <img src="https://img.freepik.com/vektoren-premium/niedliche-kinder-die-cartoon-vektor-malen_723224-2691.jpg" alt="Kinder malen">
         </section>
 
         <section>
@@ -138,6 +111,7 @@
                 <li><span class="highlight">Sicherheit:</span> Erste-Hilfe-Stationen und geschultes Personal vor Ort.</li>
                 <li><span class="highlight">Nachhaltigkeit:</span> Mülltrennung und umweltfreundliche Materialien.</li>
             </ul>
+            <img src="https://img.freepik.com/vektoren-kostenlos/glueckliche-kinder-die-spiele-spielen_1308-71638.jpg" alt="Kinder spielen">
         </section>
     </main>
     <footer>
