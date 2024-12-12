@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Custom Notebooks - Dein einzigartiges, nachhaltiges Notebook </title>
-    <!-- Google Fonts einbinden -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <style>
@@ -11,217 +11,151 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', Arial, sans-serif;
-            background: linear-gradient(135deg, #008080, #00b3b3);
-            color: #ffffff;
+            background: #2c2c2c;
+            color: #f5f5f5;
         }
-        header, nav, main, footer {
+        header {
+            position: relative;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #3d3d3d, #1f1f1f);
+            border-bottom: 5px solid #ff4500;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #ff4500;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        nav {
+            background: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #f5f5f5;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff4500;
+        }
+        main {
             max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
-        header img {
-            max-width: 200px;
-        }
-        nav {
-            background-color: rgba(0, 64, 64, 0.9);
-            padding: 10px 20px;
-            border-bottom: 1px solid #033;
-        }
-        nav a {
-            margin: 0 15px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #00ff7f;
-        }
-
-        /* Hauptüberschriften und Highlights in Grün statt Pink */
-        main h1, main h2 {
-            color: #00ff7f;
-        }
-        
-        a {
-            color: #00ff7f;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .section {
+        section {
             margin: 40px 0;
+            background: #3d3d3d;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 20px;
         }
-
-        .flyer img {
+        section h2 {
+            color: #ff4500;
+        }
+        section img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 20px auto;
         }
-
-        .contact, .social-media {
+        .highlight {
+            font-weight: bold;
+            color: #ff4500;
+        }
+        .flyer {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
         }
-        .social-media a {
-            margin: 5px 0;
-            color: #ffffff;
-            text-decoration: none;
+        .promo {
+            text-align: center;
+            background: #1f1f1f;
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 10px;
         }
-        .social-media a:hover {
-            color: #00ff7f;
+        .promo h2 {
+            font-size: 2.5em;
+            margin: 0 0 10px;
+            color: #ff4500;
         }
-
+        .promo p {
+            font-size: 1.5em;
+            margin: 0;
+        }
         footer {
-            background-color: rgba(0, 64, 64, 0.9);
+            background: #1f1f1f;
             text-align: center;
             padding: 20px;
-            border-top: 1px solid #033;
+            color: #f5f5f5;
         }
         footer a {
-            color: #ffffff;
+            color: #ff4500;
             text-decoration: none;
         }
         footer a:hover {
-            color: #00ff7f;
-        }
-
-        /* Liste mit Icon */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            background: url('https://raw.githubusercontent.com/DeinBenutzername/DeinRepository/main/icon.png') no-repeat left center;
-            background-size: 20px;
-            padding-left: 30px;
-            margin: 10px 0;
-        }
-
-        /* Responsives Design */
-        @media (max-width: 768px) {
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-            }
-            nav a {
-                flex: 1 1 100%;
-                text-align: center;
-                margin: 10px 0;
-            }
-        }
-
-        /* Großer Banner für Kinderfest */
-        .banner {
-            background: rgba(0, 50, 50, 0.5);
-            border: 2px solid #00ff7f;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .banner h2 {
-            margin: 0;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-        .banner a.button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #00ff7f;
-            color: #000;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .banner a.button:hover {
-            background: #00b386;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <!-- Firmenlogo einfügen -->
-        <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/cn.png" alt="Custom Notebooks Logo">
+        <h1>Notebook Designer</h1>
+        <p>Gestalten Sie Ihr individuelles Notebook! Perfekt abgestimmt auf Ihre Wünsche und Anforderungen.</p>
     </header>
 
     <nav>
-        <a href="#angebote">Angebote</a>
-        <a href="#kinderfest">Itzehoer Kinderfest</a>
-        <a href="#nachhaltigkeit">Nachhaltigkeit</a>
-        <a href="#ausbildung">Ausbildung</a>
+        <a href="#gestalten">Notebook gestalten</a>
+        <a href="#sale">Weihnachtssale</a>
         <a href="#kontakt">Kontakt</a>
     </nav>
 
     <main>
-
-                <!-- Großer Banner, der auf kinderfest.html weiterleitet -->
-        <div class="banner">
-            <h2>Itzehoer Kinderfest</h2>
-            <p>Weitere Infos finden Sie hier</p>
-            <a class="button" href="kinderfest.html">Itzehoer Kinderfest</a>
-        </div>
-
-        <section class="section" id="angebote">
-            <h1>Willkommen bei Custom Notebooks</h1>
-            <h2>Dein einzigartiges Notebook – nachhaltig und individuell gestaltet</h2>
-            <p>Bei <strong>Custom Notebooks</strong> kannst du deine ganz persönlichen, nachhaltigen Laptop gestalten und bestellen. Keine Massenware, sondern ganz nach deinen Vorstellungen – von der Hülle über das Innere bis hin zu speziellen Extras.</p>
-            <ul>
-                <li><strong>Personalisierte Notebook:</strong> Stelle dein individuelles Notebook zusammen – Material, Größe, Farben, Muster und mehr.</li>
-                <li><strong>Nachhaltige Materialien:</strong> Wir verwenden ökologische und recycelte Materialien, um unseren Planeten zu schützen.</li>
-                <li><strong>Innovatives Design:</strong> Moderne und ansprechende Designs, die funktional und stilvoll zugleich sind.</li>
-            </ul>
-        </section>
-
-        <section class="section" id="kinderfest">
-            <h2>Itzehoer Kinderfest am 26.07.2025</h2>
+        <section id="gestalten">
+            <h2>Notebook gestalten</h2>
+            <p>Entwerfen Sie Ihr perfektes Notebook mit unserem Designer! Wählen Sie aus verschiedenen Komponenten, Gehäusefarben, Tastaturoptionen und mehr. Wir bauen Ihr individuelles Notebook und liefern es Ihnen direkt nach Hause.</p>
             <div class="flyer">
-                <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/kinder.png" alt="Flyer Itzehoer Kinderfest 2025">
+                <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/Designer.png" alt="Notebook Designer">
             </div>
-            <p>Freu dich auf das jährliche <strong>Itzehoer Kinderfest</strong>! Ein Tag voller Spaß, Spiele und unvergesslicher Momente für die ganze Familie.</p>
-            <ul>
-                <li><strong>Wann:</strong> 26. Juli 2025</li>
-                <li><strong>Wo:</strong> Stadtpark Itzehoe</li>
-                <li><strong>Highlights:</strong> Workshops, Live-Musik, Gewinnspiele und vieles mehr!</li>
-            </ul>
-        </section>
-
-        <section class="section" id="nachhaltigkeit">
-            <h2>Unser Engagement für Nachhaltigkeit</h2>
-            <p>Wir arbeiten daran, unser Firmendach mit Photovoltaik-Anlagen auszustatten, um unseren ökologischen Fußabdruck weiter zu reduzieren. Nachhaltigkeit ist für uns nicht nur ein Wort, sondern ein Versprechen.</p>
-        </section>
-
-        <section class="section" id="ausbildung">
-            <h2>Ausbildung mit Zukunft</h2>
-            <p>Wir setzen auf Nachwuchsförderung! Unsere Auszubildenden erhalten eine hochwertige Ausbildung in einem innovativen und nachhaltigen Umfeld.</p>
-            <ul>
-                <li>Moderne Ausbildungsplätze</li>
-                <li>Individuelle Betreuung</li>
-                <li>Nachhaltige Unternehmensphilosophie</li>
-            </ul>
-        </section>
-
-        <section class="section" id="kontakt">
-            <h2>Kontakt</h2>
-            <p>Du möchtest mehr erfahren? Schreib uns gerne an oder besuche uns vor Ort.</p>
-            <div class="contact">
-                <p>Email: info@custom-notebooks.de</p>
-                <p>Telefon: +49 123 456789</p>
+            <div class="flyer">
+                <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/Designer%20(1).png" alt="Notebook Designer Detail">
             </div>
-            <div class="social-media">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
+        </section>
+
+        <section id="sale">
+            <div class="promo">
+                <h2>Weihnachtssale!</h2>
+                <p>Bis zum <span class="highlight">31. Dezember</span> erhalten Sie exklusive Rabatte auf alle Notebooks! Verpassen Sie nicht diese Gelegenheit, Ihr Traum-Notebook zu einem unschlagbaren Preis zu gestalten.</p>
+                <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/laptop.png" alt="Weihnachtssale Laptop">
+            </div>
+        </section>
+
+        <section id="kinderfest">
+            <h2>Zusatzaktionen</h2>
+            <p>Wir unterstützen lokale Veranstaltungen wie das Itzehoer Kinderfest. Hier ein Blick auf vergangene Events:</p>
+            <div class="flyer">
+                <img src="https://raw.githubusercontent.com/Knochensalat/Knochensalatonline/main/kinder.png" alt="Flyer Kinderfest">
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Custom Notebooks. Alle Rechte vorbehalten.</p>
-        <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+        <p>&copy; 2025 Notebook Designer. Alle Rechte vorbehalten.</p>
+        <p><a href="#">Zurück nach oben</a></p>
     </footer>
-
 </body>
 </html>
