@@ -284,11 +284,11 @@
                 return weekdaysCount;
             }
 
-            const targetDate = new Date("2024-12-20");
+            const targetDate = new Date("2025-04-11");
             const countdownElement = document.getElementById("countdown");
             const weekdaysLeft = countWeekdaysUntil(targetDate);
 
-            countdownElement.textContent = `Nur noch ${weekdaysLeft} Schultage bis zu den Weihnachtsferien`;
+            countdownElement.textContent = `Nur noch ${weekdaysLeft} Schultage bis zu den Osterferien`;
 
             // Aktuelles Datum und Kalenderwoche
             const today = new Date();
@@ -430,9 +430,9 @@
                 {
                     time: "12:45 - 13:00",
                     monday: "",
-                    tuesday: "Pause",
+                    tuesday: "",
                     wednesday: "",
-                    thursday: "Pause",
+                    thursday: "",
                     friday: ""
                 },
                 {
@@ -449,7 +449,7 @@
             if (isEvenWeek) {
                 timetableData[6].tuesday = "Englisch";
             } else {
-                timetableData[6].wednesday = "Deutsch";
+                timetableData[6].thursday = "Deutsch";
             }
 
             // Entferne die Pause, wenn kein Fach stattfindet
