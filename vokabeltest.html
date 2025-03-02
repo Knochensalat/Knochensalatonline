@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabeltest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question-container {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .question-container input {
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .question-container button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .question-container button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vokabeltest</h1>
+    <p>Beantworte die folgenden Fragen und gib die richtige Übersetzung der englischen Wörter ein.</p>
+
+    <div id="questionContainer" class="question-container">
+        <!-- Fragen werden hier angezeigt -->
+    </div>
+    
+    <div id="result" class="result"></div>
+
+    <script>
+        const vocabList = [
+            ["typical", "typisch, (ganz) normal"],
+            ["headquarters", "Zentrale, (Firmen-)Sitz"],
+            ["located in", "gelegen in"],
+            ["grinder", "(Kaffee-)Mühle"],
+            ["commercial", "gewerblich, kommerziell"],
+            ["domestic use", "private Nutzung, Hausgebrauch"],
+            ["daily", "täglich"],
+            ["routine", "Routine"],
+            ["to appear", "auftreten, erscheinen"],
+            ["to wake up", "aufwachen"],
+            ["alarm", "Wecker"],
+            ["to ring", "klingeln"],
+            ["to shower", "duschen"],
+            ["to get dressed", "sich anziehen"],
+            ["along", "entlang"],
+            ["motorway", "Autobahn"],
+            ["rare", "selten"],
+            ["traffic", "Verkehr"],
+            ["to clock on", "einstempeln"],
+            ["shift", "Schicht"],
+            ["late shift", "Spätschicht"],
+            ["to receive", "erhalten, bekommen"],
+            ["salary", "Gehalt"],
+            ["bonus", "Vergütung, Bonus"],
+            ["plant", "Werk, Betrieb, Anlage"],
+            ["plant floor", "Maschinenhalle, Produktionsbereich"],
+            ["to perform", "ausführen"],
+            ["repair", "Reparatur"],
+            ["occasionally", "gelegentlich, ab und zu"],
+            ["on the road", "unterwegs"],
+            ["urgent", "dringend"],
+            ["on site", "vor Ort"],
+            ["client", "Kunde"],
+            ["source", "Quelle"],
+            ["revenue", "Einkommen, Einkünfte"],
+            ["mobile", "mobil"],
+            ["servicing", "Wartung, Instandhaltung"],
+            ["to break down", "kaputtgehen"],
+            ["to happen", "passieren, geschehen"],
+            ["reliability", "Zuverlässigkeit"],
+            ["cafeteria", "Kantine, Cafeteria"],
+            ["healthy", "gesund"],
+            ["to eat out", "essen gehen"],
+            ["to offer", "bieten, anbieten"],
+            ["desk", "Schreibtisch"],
+            ["report", "Bericht"],
+            ["visit", "Besuch"],
+            ["well-respected", "angesehen"],
+            ["overtime", "Überstunden"],
+            ["absent", "abwesend"],
+            ["workmate", "Arbeitskollege"],
+            ["extra", "zusätzlich, extra"],
+            ["to earn", "verdienen"],
+            ["to match", "zuordnen"],
+            ["scale", "Skala"],
+            ["frequent", "häufig, oft"],
+            ["lunchtime", "Mittag, Mittagszeit"],
+            ["to invent", "erfinden"],
+            ["to report", "berichten"],
+            ["on time", "pünktlich, rechtzeitig"],
+            ["public transport", "öffentliche Verkehrsmittel"]
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let totalQuestions = 30; // Insgesamt 30 Vokabeln (15 Deutsch, 15 Englisch)
+
+        // Funktion zum Mischen der Vokabeln
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Funktion zum Starten des Tests
+        function startTest() {
+            shuffleArray(vocabList);
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            document.getElementById('result').innerHTML = ''; // Ergebnis zurücksetzen
+            showNextQuestion();
+        }
+
+        // Funktion zum Anzeigen der nächsten Frage
+        function showNextQuestion() {
+            if (currentQuestionIndex < totalQuestions) {
+                const question = vocabList[currentQuestionIndex];
+                document.getElementById('questionContainer').innerHTML = `
+                    <p><strong>Frage ${currentQuestionIndex + 1} von ${totalQuestions}</strong></p>
+                    <p>Was bedeutet "${question[0]}" auf Deutsch?</p>
+                    <input type="text" id="userAnswer" placeholder="Antwort eingeben">
+                    <button onclick="checkAnswer()">Antwort überprüfen</button>
+                `;
+
+                // Füge den Event-Listener für die Enter-Taste hinzu
+                document.getElementById('userAnswer').addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        checkAnswer();
+                    }
+                });
+            } else {
+                showResult();
+            }
+        }
+
+        // Funktion zum Überprüfen der Antwort
+        function checkAnswer() {
+            const userAnswer = document.getElementById('userAnswer').value.trim().toLowerCase();
+            const correctAnswer = vocabList[currentQuestionIndex][1].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                correctAnswers += 2; // 2 Punkte für richtige Antwort
+            } else if (isRecognizable(userAnswer, correctAnswer)) {
+                correctAnswers += 1; // 1 Punkt für Antwort mit Rechtschreibfehler, aber erkennbar
+            }
+
+            currentQuestionIndex++;
+            showNextQuestion();
+        }
+
+        // Funktion zum Überprüfen von Rechtschreibfehlern (basierend auf einfachen Erkennungsmerkmalen)
+        function isRecognizable(userAnswer, correctAnswer) {
+            // Umfasst einfachere Überprüfungen, z.B. ohne Groß- und Kleinschreibung und Zeichen
+            return correctAnswer.split(',').some(sub => userAnswer.includes(sub.trim()));
+        }
+
+        // Funktion zum Anzeigen des Ergebnisses
+        function showResult() {
+            document.getElementById('questionContainer').innerHTML = '';
+            document.getElementById('result').innerHTML = `Test abgeschlossen! Du hast ${correctAnswers} Punkte.`;
+        }
+
+        // Starten des Tests beim Laden der Seite
+        window.onload = startTest;
+    </script>
+
+</body>
+</html>
