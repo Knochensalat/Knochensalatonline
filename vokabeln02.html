@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Englisch Vokabeln</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518309373780-d5f743c82b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .card input {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .card button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .card button:hover {
+            background-color: #004080;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .test-card {
+            background-color: #0056b3;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .test-card:hover {
+            background-color: #004080;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Englisch Vokabeln</h1>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="mathe.html">Mathe</a>
+        <a href="deutsch.html">Deutsch</a>
+        <a href="englisch.html">Englisch</a>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 20px;">Lerne die wichtigsten Vokabeln</h2>
+        <div id="vocab-container">
+            <!-- Vokabeln werden hier eingefügt -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FSND31 Übungsplattform. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        // Vokabeln aus der CSV-Datei (alle!)
+        const vocabList = [
+    ["typical", "typisch, (ganz) normal"],
+    ["headquarters", "Zentrale, (Firmen-)Sitz"],
+    ["located in", "gelegen in"],
+    ["grinder", "(Kaffee-)Mühle"],
+    ["commercial", "gewerblich, kommerziell"],
+    ["domestic use", "private Nutzung, Hausgebrauch"],
+    ["daily", "täglich"],
+    ["routine", "Routine"],
+    ["to appear", "auftreten, erscheinen"],
+    ["to wake up", "aufwachen"],
+    ["alarm", "Wecker"],
+    ["to ring", "klingeln"],
+    ["to shower", "duschen"],
+    ["to get dressed", "sich anziehen"],
+    ["along", "entlang"],
+    ["motorway", "Autobahn"],
+    ["rare", "selten"],
+    ["traffic", "Verkehr"],
+    ["to clock on", "einstempeln"],
+    ["shift", "Schicht"],
+    ["late shift", "Spätschicht"],
+    ["to receive", "erhalten, bekommen"],
+    ["salary", "Gehalt"],
+    ["bonus", "Vergütung, Bonus"],
+    ["plant", "Werk, Betrieb, Anlage"],
+    ["plant floor", "Maschinenhalle, Produktionsbereich"],
+    ["to perform", "ausführen"],
+    ["repair", "Reparatur"],
+    ["occasionally", "gelegentlich, ab und zu"],
+    ["on the road", "unterwegs"],
+    ["urgent", "dringend"],
+    ["on site", "vor Ort"],
+    ["client", "Kunde"],
+    ["source", "Quelle"],
+    ["revenue", "Einkommen, Einkünfte"],
+    ["mobile", "mobil"],
+    ["servicing", "Wartung, Instandhaltung"],
+    ["to break down", "kaputtgehen"],
+    ["to happen", "passieren, geschehen"],
+    ["reliability", "Zuverlässigkeit"],
+    ["cafeteria", "Kantine, Cafeteria"],
+    ["healthy", "gesund"],
+    ["to eat out", "essen gehen"],
+    ["to offer", "bieten, anbieten"],
+    ["desk", "Schreibtisch"],
+    ["report", "Bericht"],
+    ["visit", "Besuch"],
+    ["well-respected", "angesehen"],
+    ["overtime", "Überstunden"],
+    ["absent", "abwesend"],
+    ["workmate", "Arbeitskollege"],
+    ["extra", "zusätzlich, extra"],
+    ["to earn", "verdienen"],
+    ["to match", "zuordnen"],
+    ["scale", "Skala"],
+    ["frequent", "häufig, oft"],
+    ["lunchtime", "Mittag, Mittagszeit"],
+    ["to invent", "erfinden"],
+    ["to report", "berichten"],
+    ["on time", "pünktlich, rechtzeitig"],
+    ["public transport", "öffentliche Verkehrsmittel"]
+];
+
+
+        const container = document.getElementById("vocab-container");
+
+        // Funktion zum Überprüfen der Eingabe
+        function checkAnswer(id, correctAnswer) {
+            const inputField = document.getElementById(`input-${id}`);
+            const resultField = document.getElementById(`result-${id}`);
+            const userAnswer = inputField.value.trim().toLowerCase();
+
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                resultField.textContent = "Richtig!";
+                resultField.className = "result correct";
+            } else {
+                resultField.textContent = `Falsch! Richtige Antwort: ${correctAnswer}`;
+                resultField.className = "result incorrect";
+            }
+        }
+
+        // Alle Vokabeln als Kacheln einfügen
+        vocabList.forEach(([english, german], index) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <h3>${german}</h3>
+                <input type="text" id="input-${index}" placeholder="Englisches Wort eingeben">
+                <button onclick="checkAnswer(${index}, '${english}')">Überprüfen</button>
+                <p id="result-${index}" class="result"></p>
+            `;
+            container.appendChild(card);
+        });
+
+        // Test-Kachel hinzufügen
+        const testCard = document.createElement("a");
+        testCard.href = "vokabeltest.html";
+        testCard.innerHTML = `<div class="test-card">Jetzt zum Vokabeltest</div>`;
+        container.appendChild(testCard);
+    </script>
+
+</body>
+</html>
