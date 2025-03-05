@@ -63,8 +63,9 @@
     </div>
     
     <script>
+        // Vokabelliste
         const vocabList = [
-            ["typical", "typisch, (ganz) normal"],
+               ["typical", "typisch, (ganz) normal"],
     ["headquarters", "Zentrale, (Firmen-)Sitz"],
     ["located in", "gelegen in"],
     ["grinder", "(Kaffee-)Mühle"],
@@ -182,110 +183,39 @@
     ["to consider", "in Betracht ziehen, erwägen"],
     ["public transport", "öffentliche Verkehrsmittel"]
         ];
-        ];
-
+      
         const quizContainer = document.getElementById("quiz");
 
-        vocabList.forEach((word, index) => {
-            let div = document.createElement("div");
-            div.classList.add("question");
-            div.innerHTML = `<strong>${word[0]}</strong><br><input type='text' id='answer${index}'>`;
-            quizContainer.appendChild(div);
-        });
+        function loadQuiz() {
+            vocabList.forEach((word, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                questionDiv.innerHTML = `
+                    <p><strong>${word[0]}</strong></p>
+                    <input type="text" id="answer-${index}" placeholder="Deutsche Übersetzung">
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+        }
 
         function checkAnswers() {
-            let score = 0;
+            let correct = 0;
+
             vocabList.forEach((word, index) => {
-                let userAnswer = document.getElementById(`answer${index}`).value.trim().toLowerCase();
-                let correctAnswer = word[1].toLowerCase();
+                const userAnswer = document.getElementById(`answer-${index}`).value.trim().toLowerCase();
+                const correctAnswer = word[1].toLowerCase();
+
                 if (userAnswer === correctAnswer) {
-                    score++;
+                    correct++;
                 }
             });
-            document.getElementById("result").innerText = `Du hast ${score} von ${vocabList.length} richtig!`;
+
+            document.getElementById("result").innerText = `Du hast ${correct} von ${vocabList.length} richtig!`;
         }
+
+        loadQuiz();
     </script>
 </body>
 </html>
 
-        const vocabList = [
-          
-
-        let currentQuestionIndex = 0;
-        let correctAnswers = 0;
-        let totalQuestions = 30; // Insgesamt 30 Vokabeln (15 Deutsch, 15 Englisch)
-
-        // Funktion zum Mischen der Vokabeln
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
-        // Funktion zum Starten des Tests
-        function startTest() {
-            shuffleArray(vocabList);
-            currentQuestionIndex = 0;
-            correctAnswers = 0;
-            document.getElementById('result').innerHTML = ''; // Ergebnis zurücksetzen
-            showNextQuestion();
-        }
-
-        // Funktion zum Anzeigen der nächsten Frage
-        function showNextQuestion() {
-            if (currentQuestionIndex < totalQuestions) {
-                const question = vocabList[currentQuestionIndex];
-                document.getElementById('questionContainer').innerHTML = `
-                    <p><strong>Frage ${currentQuestionIndex + 1} von ${totalQuestions}</strong></p>
-                    <p>Was bedeutet "${question[0]}" auf Deutsch?</p>
-                    <input type="text" id="userAnswer" placeholder="Antwort eingeben">
-                    <button onclick="checkAnswer()">Antwort überprüfen</button>
-                `;
-
-                // Füge den Event-Listener für die Enter-Taste hinzu
-                document.getElementById('userAnswer').addEventListener('keydown', function(event) {
-                    if (event.key === 'Enter') {
-                        checkAnswer();
-                    }
-                });
-            } else {
-                showResult();
-            }
-        }
-
-        // Funktion zum Überprüfen der Antwort
-        function checkAnswer() {
-            const userAnswer = document.getElementById('userAnswer').value.trim().toLowerCase();
-            const correctAnswer = vocabList[currentQuestionIndex][1].toLowerCase();
-
-            if (userAnswer === correctAnswer) {
-                correctAnswers += 2; // 2 Punkte für richtige Antwort
-            } else if (isRecognizable(userAnswer, correctAnswer)) {
-                correctAnswers += 1; // 1 Punkt für Antwort mit Rechtschreibfehler, aber erkennbar
-            }
-
-            currentQuestionIndex++;
-            showNextQuestion();
-        }
-
-        // Funktion zum Überprüfen von Rechtschreibfehlern (basierend auf einfachen Erkennungsmerkmalen)
-        function isRecognizable(userAnswer, correctAnswer) {
-            // Umfasst einfachere Überprüfungen, z.B. ohne Groß- und Kleinschreibung und Zeichen
-            return correctAnswer.split(',').some(sub => userAnswer.includes(sub.trim()));
-        }
-
-        // Funktion zum Anzeigen des Ergebnisses
-        function showResult() {
-            document.getElementById('questionContainer').innerHTML = '';
-            document.getElementById('result').innerHTML = `Test abgeschlossen! Du hast ${correctAnswers} Punkte.`;
-        }
-
-        // Starten des Tests beim Laden der Seite
-        window.onload = startTest;
-    </script>
-
-</body>
-</html>
-	
-	
+ 
