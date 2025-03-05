@@ -10,121 +10,206 @@
             margin: 0;
             padding: 20px;
             background-color: #f4f4f9;
+            text-align: center;
         }
         h1 {
-            text-align: center;
             color: #333;
         }
-        .question-container {
-            margin: 20px 0;
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .question-container input {
-            padding: 10px;
+        .question {
+            margin-bottom: 15px;
+        }
+        input {
             width: 100%;
+            padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-top: 10px;
         }
-        .question-container button {
-            padding: 10px 15px;
+        button {
             background-color: #4CAF50;
             color: white;
             border: none;
-            cursor: pointer;
+            padding: 10px;
             font-size: 16px;
+            cursor: pointer;
             margin-top: 10px;
+            border-radius: 5px;
         }
-        .question-container button:hover {
+        button:hover {
             background-color: #45a049;
         }
         .result {
             font-size: 18px;
             font-weight: bold;
             margin-top: 20px;
-            text-align: center;
         }
     </style>
 </head>
 <body>
-
     <h1>Vokabeltest</h1>
-    <p>Beantworte die folgenden Fragen und gib die richtige Übersetzung der englischen Wörter ein.</p>
-
-    <div id="questionContainer" class="question-container">
-        <!-- Fragen werden hier angezeigt -->
+    <p>Übersetze die englischen Begriffe ins Deutsche.</p>
+    <div class="container">
+        <div id="quiz"></div>
+        <button onclick="checkAnswers()">Überprüfen</button>
+        <div id="result" class="result"></div>
     </div>
     
-    <div id="result" class="result"></div>
-
     <script>
         const vocabList = [
             ["typical", "typisch, (ganz) normal"],
-            ["headquarters", "Zentrale, (Firmen-)Sitz"],
-            ["located in", "gelegen in"],
-            ["grinder", "(Kaffee-)Mühle"],
-            ["commercial", "gewerblich, kommerziell"],
-            ["domestic use", "private Nutzung, Hausgebrauch"],
-            ["daily", "täglich"],
-            ["routine", "Routine"],
-            ["to appear", "auftreten, erscheinen"],
-            ["to wake up", "aufwachen"],
-            ["alarm", "Wecker"],
-            ["to ring", "klingeln"],
-            ["to shower", "duschen"],
-            ["to get dressed", "sich anziehen"],
-            ["along", "entlang"],
-            ["motorway", "Autobahn"],
-            ["rare", "selten"],
-            ["traffic", "Verkehr"],
-            ["to clock on", "einstempeln"],
-            ["shift", "Schicht"],
-            ["late shift", "Spätschicht"],
-            ["to receive", "erhalten, bekommen"],
-            ["salary", "Gehalt"],
-            ["bonus", "Vergütung, Bonus"],
-            ["plant", "Werk, Betrieb, Anlage"],
-            ["plant floor", "Maschinenhalle, Produktionsbereich"],
-            ["to perform", "ausführen"],
-            ["repair", "Reparatur"],
-            ["occasionally", "gelegentlich, ab und zu"],
-            ["on the road", "unterwegs"],
-            ["urgent", "dringend"],
-            ["on site", "vor Ort"],
-            ["client", "Kunde"],
-            ["source", "Quelle"],
-            ["revenue", "Einkommen, Einkünfte"],
-            ["mobile", "mobil"],
-            ["servicing", "Wartung, Instandhaltung"],
-            ["to break down", "kaputtgehen"],
-            ["to happen", "passieren, geschehen"],
-            ["reliability", "Zuverlässigkeit"],
-            ["cafeteria", "Kantine, Cafeteria"],
-            ["healthy", "gesund"],
-            ["to eat out", "essen gehen"],
-            ["to offer", "bieten, anbieten"],
-            ["desk", "Schreibtisch"],
-            ["report", "Bericht"],
-            ["visit", "Besuch"],
-            ["well-respected", "angesehen"],
-            ["overtime", "Überstunden"],
-            ["absent", "abwesend"],
-            ["workmate", "Arbeitskollege"],
-            ["extra", "zusätzlich, extra"],
-            ["to earn", "verdienen"],
-            ["to match", "zuordnen"],
-            ["scale", "Skala"],
-            ["frequent", "häufig, oft"],
-            ["lunchtime", "Mittag, Mittagszeit"],
-            ["to invent", "erfinden"],
-            ["to report", "berichten"],
-            ["on time", "pünktlich, rechtzeitig"],
-            ["public transport", "öffentliche Verkehrsmittel"]
+    ["headquarters", "Zentrale, (Firmen-)Sitz"],
+    ["located in", "gelegen in"],
+    ["grinder", "(Kaffee-)Mühle"],
+    ["commercial", "gewerblich, kommerziell"],
+    ["domestic use", "private Nutzung, Hausgebrauch"],
+    ["daily", "täglich"],
+    ["routine", "Routine"],
+    ["to appear", "auftreten, erscheinen"],
+    ["to wake up", "aufwachen"],
+    ["alarm", "Wecker"],
+    ["to ring", "klingeln"],
+    ["to shower", "duschen"],
+    ["to get dressed", "sich anziehen"],
+    ["along", "entlang"],
+    ["motorway", "Autobahn"],
+    ["rare", "selten"],
+    ["traffic", "Verkehr"],
+    ["to clock on", "einstempeln"],
+    ["shift", "Schicht"],
+    ["late shift", "Spätschicht"],
+    ["to receive", "erhalten, bekommen"],
+    ["salary", "Gehalt"],
+    ["bonus", "Vergütung, Bonus"],
+    ["plant", "Werk, Betrieb, Anlage"],
+    ["plant floor", "Maschinenhalle, Produktionsbereich"],
+    ["to perform", "ausführen"],
+    ["repair", "Reparatur"],
+    ["occasionally", "gelegentlich, ab und zu"],
+    ["on the road", "unterwegs"],
+    ["urgent", "dringend"],
+    ["on site", "vor Ort"],
+    ["client", "Kunde"],
+    ["source", "Quelle"],
+    ["revenue", "Einkommen, Einkünfte"],
+    ["mobile", "mobil"],
+    ["servicing", "Wartung, Instandhaltung"],
+    ["to break down", "kaputtgehen"],
+    ["to happen", "passieren, geschehen"],
+    ["reliability", "Zuverlässigkeit"],
+    ["cafeteria", "Kantine, Cafeteria"],
+    ["healthy", "gesund"],
+    ["to eat out", "essen gehen"],
+    ["to offer", "bieten, anbieten"],
+    ["desk", "Schreibtisch"],
+    ["report", "Bericht"],
+    ["visit", "Besuch"],
+    ["well-respected", "angesehen"],
+    ["overtime", "Überstunden"],
+    ["absent", "abwesend"],
+    ["workmate", "Arbeitskollege"],
+    ["extra", "zusätzlich, extra"],
+    ["to earn", "verdienen"],
+    ["to match", "zuordnen"],
+    ["scale", "Skala"],
+    ["frequent", "häufig, oft"],
+    ["lunchtime", "Mittag, Mittagszeit"],
+    ["to invent", "erfinden"],
+    ["to report", "berichten"],
+    ["on time", "pünktlich, rechtzeitig"],
+	 ["refrigeration", "Kühlung, Kältetechnik"],
+    ["job ad(vertisment)", "Stellenanzeige, -ausschreibung"],
+    ["ad(vertisment)", "Anzeige, Ausschreibung"],
+    ["key", "wichtigste/r/s, Haupt-"],
+    ["industry", "Branche, Gewerbe, Industrie"],
+    ["full time", "Vollzeit"],
+    ["if so", "falls ja, wenn ja"],
+    ["available", "verfügbar"],
+    ["exciting", "spannend, aufregend"],
+    ["opportunity", "Gelegenheit, Möglichkeit, Chance"],
+    ["rapid(ly)", "rasch, schnell"],
+    ["to grow", "wachsen, anwachsen"],
+    ["to challenge sb", "jdn (heraus)fordern, jdm eine (schwierige) Aufgabe stellen"],
+    ["motivated", "motiviert"],
+    ["building site", "Baustelle"],
+    ["attractive", "attraktiv"],
+    ["package", "Paket"],
+    ["company vehicle", "Firmenfahrzeug"],
+    ["to weld", "schweißen, verschweißen"],
+    ["to solder", "löten, verlöten, weichlöten"],
+    ["pipe", "Rohrleitung"],
+    ["to insulate", "isolieren"],
+    ["underground", "unterirdisch"],
+    ["pipe run", "Leitungsverlauf, Rohrleitung"],
+    ["refrigeration cabinet", "Kälteschrank, Kühltruhe"],
+    ["drain", "Abfluss, Ablauf"],
+    ["to run (Leitung)", "verlegen"],
+    ["remote condenser", "externer Verflüssiger"],
+    ["CV (curriculum vitae)", "Lebenslauf"],
+    ["cover letter", "Anschreiben, Begleitschreiben"],
+    ["response", "Antwort, Reaktion, Erwiderung"],
+    ["to conduct oneself", "sich verhalten, sich benehmen"],
+    ["polite", "höflich"],
+    ["professional", "professionell"],
+    ["manner", "Art (und Weise)"],
+    ["consideration", "Beachtung, Erwägung"],
+    ["licensed", "(amtlich) zugelassen"],
+    ["Ireland", "Irland"],
+    ["move", "Schritt, Wechsel"],
+    ["large-scale", "groß(angelegt)"],
+    ["hard working", "fleißig"],
+    ["individual", "(Einzel-)Person, Mensch"],
+    ["similar(ly)", "ähnlich"],
+    ["to take care to do sth", "darauf achten, etw zu tun"],
+    ["to dress", "sich kleiden"],
+    ["appropriate(ly)", "angemessen"],
+    ["to respect", "respektieren"],
+    ["reputation", "Ruf, Ansehen"],
+    ["to replace", "ersetzen"],
+    ["work ethic", "Arbeitsmoral"],
+    ["suited to sth", "geeignet für etw"],
+    ["background", "Hintergrund, Herkunft, Vorgeschichte"],
+    ["candidate", "Bewerber/in, Kandidat/in"],
+    ["demanding", "anspruchsvoll"],
+    ["to appreciate", "zu schätzen wissen, schätzen"],
+    ["to consider", "in Betracht ziehen, erwägen"],
+    ["public transport", "öffentliche Verkehrsmittel"]
         ];
+        ];
+
+        const quizContainer = document.getElementById("quiz");
+
+        vocabList.forEach((word, index) => {
+            let div = document.createElement("div");
+            div.classList.add("question");
+            div.innerHTML = `<strong>${word[0]}</strong><br><input type='text' id='answer${index}'>`;
+            quizContainer.appendChild(div);
+        });
+
+        function checkAnswers() {
+            let score = 0;
+            vocabList.forEach((word, index) => {
+                let userAnswer = document.getElementById(`answer${index}`).value.trim().toLowerCase();
+                let correctAnswer = word[1].toLowerCase();
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+            });
+            document.getElementById("result").innerText = `Du hast ${score} von ${vocabList.length} richtig!`;
+        }
+    </script>
+</body>
+</html>
+
+        const vocabList = [
+          
 
         let currentQuestionIndex = 0;
         let correctAnswers = 0;
@@ -202,3 +287,5 @@
 
 </body>
 </html>
+	
+	
