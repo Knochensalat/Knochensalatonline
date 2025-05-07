@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPS / IoT Lernquiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { color: #333; text-align: center; }
+    p { text-align: center; }
+    #quiz { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 600px; margin: 20px auto; }
+    #question { font-size: 1.2em; margin-bottom: 20px; }
+    button { padding: 10px 20px; font-size: 1em; margin-right: 10px; border-radius: 4px; border: none; cursor: pointer; }
+    #answer { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>CPS / IoT Lernquiz</h1>
+  <p>Antworte die Frage zuerst im Kopf, bevor du auf "Antwort anzeigen" klickst.</p>
+  <div id="quiz">
+    <div id="question"></div>
+    <button id="showAnswerBtn">Antwort anzeigen</button>
+    <button id="nextBtn" style="display:none;">Nächste Frage</button>
+    <div id="answer" style="display:none;"></div>
+  </div>
+  <script>
+    const quizData = [
+      { q: "Was ist der Unterschied zwischen LAN und WLAN?", a: "LAN ist ein kabelgebundenes Netzwerk, WLAN ist kabellos." },
+      { q: "Wer ist im MQTT der Vermittler?", a: "Der Broker – er empfängt und verteilt die MQTT-Nachrichten." },
+      { q: "Was ist ein Topic im MQTT?", a: "Ein Thema oder Kanal, unter dem Nachrichten veröffentlicht und abonniert werden, z. B. 'Wohnzimmer/Temperatur'." },
+      { q: "Wofür steht MQTT?", a: "Message Queue Telemetry Transport – ein leichtgewichtiges Messaging-Protokoll fürs IoT." },
+      { q: "Wofür nutzt man MQTT hauptsächlich?", a: "Für die Kommunikation zwischen IoT-Geräten bei begrenzter Bandbreite und Energie." },
+      { q: "Was ist der Unterschied zwischen Sensorik und Aktorik?", a: "Sensorik misst Umweltgrößen (Input), Aktorik führt Aktionen aus (Output)." },
+      { q: "Wofür steht MCU / µC?", a: "Microcontroller Unit – ein kleiner Chip für Steuerungsaufgaben." },
+      { q: "Was macht ein Single Board Computer (SBC) besonders?", a: "Er ist ein kompletter Computer auf einer Platine, z. B. Raspberry Pi." },
+      { q: "Nenne ein Beispiel für ein CPS.", a: "Ein smarter Thermostat, der Temperatur misst und die Heizung steuert." },
+      { q: "Welche Größen misst Sensorik?", a: "Temperatur, Luftfeuchtigkeit, Bewegung, CO₂ etc." },
+      { q: "Was macht eine Smart Factory so besonders?", a: "Sie organisiert und optimiert sich selbst durch vernetzte CPS und Automatisierung." },
+      { q: "Was bedeutet Regelung im CPS-Kontext?", a: "Automatische Anpassung von Prozessen, z. B. Temperatur anpassen." },
+      { q: "Wie hilft Machine Learning in einem CPS?", a: "Es erkennt Muster in Daten und verbessert Prozesse oder erkennt Fehler." },
+      { q: "Worin unterscheiden sich Regelung und Adaption?", a: "Regelung ist direkte Reaktion, Adaption langfristige Anpassung an neue Bedingungen." },
+      { q: "Was versteht man unter Smart Home?", a: "Ein vernetztes Zuhause, in dem Geräte per App oder automatisch gesteuert werden." },
+      { q: "Was macht ein Publisher im MQTT?", a: "Er sendet Nachrichten an den Broker." },
+      { q: "Was bedeutet QoS 2 im MQTT?", a: "Genau einmal-Zustellung: keine Duplikate und keine verlorenen Nachrichten." },
+      { q: "Wozu dient eine Retained Message?", a: "Sie wird beim Abonnieren direkt ausgeliefert, auch wenn sie älter ist." },
+      { q: "Wer ist der Empfänger einer Nachricht im MQTT-Modell?", a: "Der Subscriber, der Nachrichten zu abonnierten Topics erhält." },
+      { q: "Wofür wird LWT (Last Will Testament) verwendet?", a: "Für das Senden einer Nachricht, wenn ein Client unerwartet offline geht." },
+      { q: "Was ist der Unterschied zwischen IoT und IIoT?", a: "IoT vernetzt Alltagsgeräte, IIoT vernetzt Industrieanlagen und Maschinen." },
+      { q: "Wofür braucht man eine API?", a: "Als Schnittstelle, damit Software und Dienste miteinander kommunizieren können." },
+      { q: "Was zeigt SCADA an?", a: "Zustände, Alarme und Fehler in Industrieanlagen zur Überwachung und Steuerung." },
+      { q: "Was ist ERP grob gesagt?", a: "Zentralisierte Software zur Verwaltung von Unternehmensprozessen wie Lager und Personal." },
+      { q: "Wofür steht API?", a: "Application Programming Interface." }
+    ];
+    let current = 0;
+    function loadQuestion() {
+      document.getElementById('question').textContent = (current + 1) + ". " + quizData[current].q;
+      document.getElementById('answer').style.display = 'none';
+      document.getElementById('nextBtn').style.display = 'none';
+    }
+    document.getElementById('showAnswerBtn').addEventListener('click', () => {
+      document.getElementById('answer').textContent = quizData[current].a;
+      document.getElementById('answer').style.display = 'block';
+      document.getElementById('nextBtn').style.display = 'inline-block';
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      current++;
+      if (current >= quizData.length) {
+        document.getElementById('question').textContent = "Quiz beendet!";
+        document.getElementById('showAnswerBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('answer').style.display = 'none';
+        return;
+      }
+      loadQuestion();
+    });
+    loadQuestion();
+  </script>
+</body>
+</html>
